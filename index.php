@@ -1,1 +1,1 @@
-<?php //l'index doit rester vierge
+<?php //l'index doit rester vierge.
