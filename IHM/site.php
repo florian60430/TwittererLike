@@ -1,0 +1,35 @@
+<?php require ("entete.html"); ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?php require ("footer.html"); ?>
