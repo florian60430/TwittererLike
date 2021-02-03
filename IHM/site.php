@@ -1,4 +1,4 @@
-<?php include 'entete.html' ?>
+<?php include "entete.html"; ?>
 
 
 <div class="mainStream" id="stream"></div>
