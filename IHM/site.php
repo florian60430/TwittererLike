@@ -17,8 +17,7 @@ let input = document.getElementById("tweet");
 
 
 
-input.addEventListener("change", function(event) {
-    
+input.addEventListener("change", function(event) {   
     button.addEventListener("click", function(){
         tweetContent.innerHTML = "<div>"+event.target.value+"</div>";
     });
