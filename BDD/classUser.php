@@ -20,7 +20,6 @@ class user {
         $this->_password = $tabData['password'];
     }
     
-    
     /* --------------
         Method Get
     --------------*/
