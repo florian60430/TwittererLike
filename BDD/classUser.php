@@ -6,20 +6,18 @@ class user {
     private $_identifiant;
     private $_pseudo;
     private $_birthdate;
-    private $_;
     private $_password;
     
-    function __construct($bdd, $email, $mdp) {
+    function __construct($bdd, $identifiant, $password) {
     
-        $data = $bdd->query("SELECT * from user where email = '".$email."' && mdp = '".$mdp."'");
+        $data = $bdd->query("SELECT * from user where email = '".$identifiant."' && mdp = '".$password."'");
         $tabData = $data->fetch();
         
         $this->_idUser = $tabData['id_user'];
-        $this->_nom = $tabData['nom'];
-        $this->_prenom = $tabData['prenom'];
-        $this->_email = $tabData['email'];
-        $this->_telephone = $tabData['telephone'];
-        $this->mdp = $tabData['mdp'];
+        $this->_identifiant = $tabData['identifiant'];
+        $this->_pseudo = $tabData['pseudo'];
+        $this->_birthdate = $tabData['birthdate'];
+        $this->_password = $tabData['password'];
     }
     
     
@@ -34,27 +32,22 @@ class user {
     
     public function GetIdentifiant() {
     
-        return $this->_nom;
+        return $this->_identifiant;
     }
     
     public function GetPseudo() {
     
-        return $this->_prenom;
+        return $this->_pseudo;
     }
     
     public function GetBirthdate() {
     
-        return $this->_email;
+        return $this->_birthdate;
     }
     
     public function GetPassword() {
     
-        return $this->_telephone;
-    }
-    
-    public function GetMdp() {
-    
-        return $this->_mdp;
+        return $this->_password;
     }
     
     
@@ -67,32 +60,26 @@ class user {
         $this->_idUser = $newIdUser;
     }
     
-    public function setNom($newNom) 
+    public function setIdentifiant($newIdentifiant) 
     {
-        $this->_nom = $newNom;
+        $this->_nom = $newIdentifiant;
     }
     
-    public function setPrenom($newPrenom) 
+    public function setPseudo($newPseudo) 
     {
-        $this->_prenom = $newPrenom;
+        $this->_prenom = $newPseudo;
     }
     
-    public function setEmail($newEmail) 
+    public function setBirthdate($newBirthdate) 
     {
-        $this->_email = $newEmail;
+        $this->_email = $newBirthdate;
     }
     
-    public function setTelephone($newTelephone) 
+    public function setPassword($newPassword) 
     {
-        $this->_telephone = $newTelephone;
+        $this->_password = $newPassword;
     }
     
-    public function setMdp($newMdp) 
-    {
-        $this->_mdp = $newMdp;
-    }
-    
-    
-    }
+}
 
-} 
+ 
