@@ -48,8 +48,6 @@ class user {
         return $this->_bio;
     }
     
-    
-    
     /* --------------
         Method Set
     --------------*/
@@ -100,12 +98,32 @@ class user {
             $this->_birthdate = $userData['birthdate'];
             $this->_password = $userData['password'];      
             $this->_bio = $userData['bio'];      
+            return "Succes";
+        } else {
+            return "Introuvable";
         }
     }
 
     public function create(){
-        if($this->_identifiant != NULL && $this->_pseudo != NULL && $this->_password != NULL && $this->_birthdate != NULL && $this->_bio != NULL)
-        $requeteCreation = $this->_bdd->query("INSERT INTO `user`(`id_user`, `identifiant`, `pseudo`, `password`, `birthdate`, `bio`) VALUES (NULL,".$this->_identifiant.",".$this->_pseudo.",".$this->_password.",".$this->_birthdate.",".$this->_bio.")");
+        if($this->_identifiant != NULL && $this->_pseudo != NULL && $this->_password != NULL && $this->_birthdate != NULL && $this->_bio != NULL){
+            $requeteCreation = $this->_bdd->query("INSERT INTO `user`(`id_user`, `identifiant`, `pseudo`, `password`, `birthdate`, `bio`) VALUES (NULL,'".$this->_identifiant."','".$this->_pseudo."','".$this->_password."','".$this->_birthdate."','".$this->_bio."')");
+            return "Succes";
+        } else {
+            return "Champs incomplets";
+        }
+    }
+
+    /*------------------
+        Methode modif
+    -------------------*/
+
+    public function modif(){
+        if($this->_identifiant != NULL && $this->_pseudo != NULL && $this->_password != NULL && $this->_birthdate != NULL && $this->_bio != NULL){
+            $requeteModif = $this->_bdd->query("UPDATE `user` SET `identifiant`='".$this->_identifiant."',`pseudo`='".$this->_pseudo."',`password`='".$this->_password."',`birthdate`='".$this->_birthdate."',`bio`='".$this->_bio."' WHERE 'id_user' = '".$this->_idUser."'");
+            return "Succes";
+        } else {
+            return "Champs incomplets";
+        }
     }
 }
 
