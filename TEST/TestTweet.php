@@ -1,13 +1,4 @@
 <?php
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-
-
-
-?>
-=======
->>>>>>> 56f174aa1c14c50157bb9152954ce91d9244cfdd
     include('../BDD/classtweet.php');
     include('../BDD/bdd.php');
 
