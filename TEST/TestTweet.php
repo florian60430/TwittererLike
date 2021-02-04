@@ -1,5 +1,5 @@
 <?php
-    include('../BDD/classTweet.php');
+    include('../BDD/classtweet.php');
     include('../BDD/bdd.php');
 
     $userLogged = new user($bdd);
