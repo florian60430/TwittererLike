@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.6deb4+deb9u2
--- https://www.phpmyadmin.net/
+-- version 4.1.4
+-- http://www.phpmyadmin.net
 --
--- Client :  localhost:3306
--- Généré le :  Mer 03 Février 2021 à 04:18
--- Version du serveur :  10.1.47-MariaDB-0+deb9u1
--- Version de PHP :  7.0.33-0+deb9u10
+-- Client :  127.0.0.1
+-- Généré le :  Mer 03 Février 2021 à 12:00
+-- Version du serveur :  5.6.15-log
+-- Version de PHP :  5.5.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,10 +14,10 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
--- Base de données :  `twater`
+-- Base de données :  `twitterlite`
 --
 
 -- --------------------------------------------------------
@@ -26,11 +26,12 @@ SET time_zone = "+00:00";
 -- Structure de la table `like`
 --
 
-CREATE TABLE `like` (
-  `id_like` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `like` (
+  `id_like` int(11) NOT NULL AUTO_INCREMENT,
   `id_user` int(50) NOT NULL,
-  `id_tweet` int(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `id_tweet` int(50) NOT NULL,
+  PRIMARY KEY (`id_like`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -38,12 +39,13 @@ CREATE TABLE `like` (
 -- Structure de la table `tweet`
 --
 
-CREATE TABLE `tweet` (
-  `id_tweet` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `tweet` (
+  `id_tweet` int(11) NOT NULL AUTO_INCREMENT,
   `contenu` varchar(340) NOT NULL,
   `id_user` int(50) NOT NULL,
-  `date` datetime(6) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `date` datetime(6) NOT NULL,
+  PRIMARY KEY (`id_tweet`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -51,56 +53,24 @@ CREATE TABLE `tweet` (
 -- Structure de la table `user`
 --
 
-CREATE TABLE `user` (
-  `id_user` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `user` (
+  `id_user` int(11) NOT NULL AUTO_INCREMENT,
   `identifiant` varchar(50) NOT NULL,
   `pseudo` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
   `birthdate` date NOT NULL,
-  `bio` varchar(350) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `bio` varchar(350) NOT NULL,
+  PRIMARY KEY (`id_user`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
--- Index pour les tables exportées
+-- Contenu de la table `user`
 --
 
---
--- Index pour la table `like`
---
-ALTER TABLE `like`
-  ADD PRIMARY KEY (`id_like`);
+INSERT INTO `user` (`id_user`, `identifiant`, `pseudo`, `password`, `birthdate`, `bio`) VALUES
+(1, 'flo', 'Jean-Street-Cred', '1234', '1998-08-16', 'J''ai une bonne déscente'),
+(2, 'flo', 'Jean-Street-Cred', '1234', '1998-08-16', 'J''ai une bonne déscente');
 
---
--- Index pour la table `tweet`
---
-ALTER TABLE `tweet`
-  ADD PRIMARY KEY (`id_tweet`);
-
---
--- Index pour la table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`id_user`);
-
---
--- AUTO_INCREMENT pour les tables exportées
---
-
---
--- AUTO_INCREMENT pour la table `like`
---
-ALTER TABLE `like`
-  MODIFY `id_like` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT pour la table `tweet`
---
-ALTER TABLE `tweet`
-  MODIFY `id_tweet` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT pour la table `user`
---
-ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

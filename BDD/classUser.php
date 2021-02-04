@@ -16,34 +16,34 @@ class user {
     
     /* --------------
         Method Get
-    --------------*/
+    ----------------*/
     
-    public function GetIdUser() {
+    public function getIdUser() {
     
         return $this->_idUser;
     }
     
-    public function GetIdentifiant() {
+    public function getIdentifiant() {
     
         return $this->_identifiant;
     }
     
-    public function GetPseudo() {
+    public function getPseudo() {
     
         return $this->_pseudo;
     }
     
-    public function GetBirthdate() {
+    public function getBirthdate() {
     
         return $this->_birthdate;
     }
     
-    public function GetPassword() {
+    public function getPassword() {
     
         return $this->_password;
     }
 
-    public function GetBio() {
+    public function getBio() {
     
         return $this->_bio;
     }
@@ -51,7 +51,7 @@ class user {
     /* --------------
         Method Set
     --------------*/
-    
+
     public function setIdUser($newIdUser) 
     {
         $this->_idUser = $newIdUser;
@@ -59,17 +59,17 @@ class user {
     
     public function setIdentifiant($newIdentifiant) 
     {
-        $this->_nom = $newIdentifiant;
+        $this->_identifiant = $newIdentifiant;
     }
     
     public function setPseudo($newPseudo) 
     {
-        $this->_prenom = $newPseudo;
+        $this->_pseudo = $newPseudo;
     }
     
     public function setBirthdate($newBirthdate) 
     {
-        $this->_email = $newBirthdate;
+        $this->_birthdate = $newBirthdate;
     }
     
     public function setPassword($newPassword) 
@@ -86,7 +86,7 @@ class user {
         Methode init & create
     ----------------------------*/
 
-    public function init(){
+    public function initLogin(){
         $rawData = $this->_bdd->prepare("SELECT * FROM user WHERE identifiant = ? AND password = ?"); //Requete qui sélectionne l'utilisateur par son identifiant et son mot de passe
         $rawData->execute(array($this->_identifiant, $this->_password));
         $userExist = $rawData->rowCount();
@@ -98,18 +98,36 @@ class user {
             $this->_birthdate = $userData['birthdate'];
             $this->_password = $userData['password'];      
             $this->_bio = $userData['bio'];      
-            return "Succes";
+            return true;
         } else {
-            return "Introuvable";
+            return false;
+        }
+    }
+
+    public function initId(){
+        $rawData = $this->_bdd->prepare("SELECT * FROM user WHERE `id_user` = ?"); //Requete qui sélectionne l'utilisateur par son identifiant et son mot de passe
+        $rawData->execute(array($this->_idUser));
+        $userExist = $rawData->rowCount();
+        if($userExist == 1){ //Test si la requête renvoie un résultat
+            $userData = $rawData->fetch();
+            $this->_idUser = $userData['id_user'];
+            $this->_identifiant = $userData['identifiant'];
+            $this->_pseudo = $userData['pseudo'];
+            $this->_birthdate = $userData['birthdate'];
+            $this->_password = $userData['password'];      
+            $this->_bio = $userData['bio'];      
+            return true;
+        } else {
+            return false;
         }
     }
 
     public function create(){
         if($this->_identifiant != NULL && $this->_pseudo != NULL && $this->_password != NULL && $this->_birthdate != NULL && $this->_bio != NULL){
             $requeteCreation = $this->_bdd->query("INSERT INTO `user`(`id_user`, `identifiant`, `pseudo`, `password`, `birthdate`, `bio`) VALUES (NULL,'".$this->_identifiant."','".$this->_pseudo."','".$this->_password."','".$this->_birthdate."','".$this->_bio."')");
-            return "Succes";
+            return true;
         } else {
-            return "Champs incomplets";
+            return false;
         }
     }
 
@@ -120,9 +138,9 @@ class user {
     public function modif(){
         if($this->_identifiant != NULL && $this->_pseudo != NULL && $this->_password != NULL && $this->_birthdate != NULL && $this->_bio != NULL){
             $requeteModif = $this->_bdd->query("UPDATE `user` SET `identifiant`='".$this->_identifiant."',`pseudo`='".$this->_pseudo."',`password`='".$this->_password."',`birthdate`='".$this->_birthdate."',`bio`='".$this->_bio."' WHERE 'id_user' = '".$this->_idUser."'");
-            return "Succes";
+            return true;
         } else {
-            return "Champs incomplets";
+            return false;
         }
     }
 }
