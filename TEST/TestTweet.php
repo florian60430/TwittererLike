@@ -1,4 +1,13 @@
 <?php
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+
+
+?>
+=======
+>>>>>>> 56f174aa1c14c50157bb9152954ce91d9244cfdd
     include('../BDD/classtweet.php');
     include('../BDD/bdd.php');
 
@@ -37,3 +46,4 @@
     <input type="text" name="textTweet">
     <input type="submit" name="submitTweet" value="Tweeter">
 </form>
+>>>>>>> 73bad8f74af0f0ee61d0e56f897db2d0bb118696
