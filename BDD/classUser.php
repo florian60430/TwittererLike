@@ -54,41 +54,40 @@ class user {
 
     public function setIdUser($newIdUser) 
     {
-        $this->_idUser = $newIdUser;
+        return $this->_idUser = $newIdUser;
     }
     
     public function setIdentifiant($newIdentifiant) 
     {
-        $this->_identifiant = $newIdentifiant;
+        return $this->_identifiant = $newIdentifiant;
     }
     
     public function setPseudo($newPseudo) 
     {
-        $this->_pseudo = $newPseudo;
+        return $this->_pseudo = $newPseudo;
     }
     
     public function setBirthdate($newBirthdate) 
     {
-        $this->_birthdate = $newBirthdate;
+        return $this->_birthdate = $newBirthdate;
     }
     
     public function setPassword($newPassword) 
     {
-        $this->_password = $newPassword;
+        return $this->_password = $newPassword;
     }
     
     public function setBio($newBio) 
     {
-        $this->_bio = $newBio;
+        return $this->_bio = $newBio;
     }
 
     /* --------------------------
         Methode init & create
     ----------------------------*/
 
-    public function initLogin(){
-        $rawData = $this->_bdd->prepare("SELECT * FROM user WHERE identifiant = ? AND password = ?"); //Requete qui sélectionne l'utilisateur par son identifiant et son mot de passe
-        $rawData->execute(array($this->_identifiant, $this->_password));
+    public function initLogin($identifiant, $password){
+        $rawData = $this->_bdd->query("SELECT * FROM user WHERE identifiant = '".$identifiant."' AND password = '".$password."'"); //Requete qui sélectionne l'utilisateur par son identifiant et son mot de passe
         $userExist = $rawData->rowCount();
         if($userExist == 1){ //Test si la requête renvoie un résultat
             $userData = $rawData->fetch();
@@ -104,9 +103,8 @@ class user {
         }
     }
 
-    public function initId(){
-        $rawData = $this->_bdd->prepare("SELECT * FROM user WHERE `id_user` = ?"); //Requete qui sélectionne l'utilisateur par son identifiant et son mot de passe
-        $rawData->execute(array($this->_idUser));
+    public function initId($idUser){
+        $rawData = $this->_bdd->query("SELECT * FROM user WHERE `id_user` = ".$idUser.""); //Requete qui sélectionne l'utilisateur par son identifiant et son mot de passe
         $userExist = $rawData->rowCount();
         if($userExist == 1){ //Test si la requête renvoie un résultat
             $userData = $rawData->fetch();

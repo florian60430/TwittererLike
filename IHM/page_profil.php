@@ -32,4 +32,4 @@
 
 
 
-<?php require ("footer.html"); ?>
+<?php include "footer.html"; ?>
