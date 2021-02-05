@@ -18,6 +18,21 @@ if (!empty($_POST['ID_1']) && !empty($_POST['MDP_1'])){
     }
 }
 
+if (!empty($_POST['new_ID']) && !empty($_POST['new_pseudo']) && !empty($_POST['new_MDP']) && !empty($_POST['new_BD'])){
+
+    $newuser = new user($bdd);
+    $newuserOK = $newuser->inscription($_POST['new_ID'],$_POST['new_pseudo'],$_POST['new_MDP'],$_POST['new_MDP']);
+
+    if($newuserOK == true){
+        $_SESSION["newinscripton"] = true;
+        echo"compte creer";
+    }else{
+        $_SESSION["newinscription"] = false;
+        echo"failed loser t nul";
+    }
+
+}
+
 
 ?>
     <body>
@@ -29,9 +44,10 @@ if (!empty($_POST['ID_1']) && !empty($_POST['MDP_1'])){
                     <button type="submit" class="submit-btn">Se Connecter</button>
                 </form>
                 <form id="register" class="input-group" method="POST">
-                    <input type="text" class="input-field" placeholder="Pseudo" name="new_ID" required>
-                    <input type="email" class="input-field" placeholder="E-mail" name="new_mail" required>
+                    <input type="text" class="input-field" placeholder="Identifiant" name="new_ID" required>
+                    <input type="text" class="input-field" placeholder="Pseudo" name="new_pseudo" required>
                     <input type="password" class="input-field" placeholder="Mot de passe" name="new_MDP" required>
+                    <input type="date" class="input-field" placeholder="date de naissance" name="new_BD" required>
                     <button type="submit" class="submit-btn">S'inscrire</button>
                 </form>
             </div>
