@@ -128,9 +128,9 @@ class user {
       Methode inscription
     ----------------------*/
 
-    public function inscription($_identifiant, $pseudo, $password, $birthday){
+    public function inscription($identifiant, $pseudo, $password, $birthdate){
             
-        $verifRequest = $this->_bdd->query("INSERT INTO `user`(`id_user`, `identifiant`, `pseudo`, `password`, `birthdate`, `bio`) VALUES (NULL,'".$_identifiant."','".$pseudo."','".$password."','".$birthdate."', NULL)");
+        $verifRequest = $this->_bdd->query("INSERT INTO `user`(`id_user`, `identifiant`, `pseudo`, `password`, `birthdate`, `bio`) VALUES (NULL,'".$identifiant."','".$pseudo."','".$password."','".$birthdate."', NULL)");
         if ($verifRequest)
         {
             return true;
