@@ -8,21 +8,6 @@
 
 
 
-<script> 
-
-let button = document.getElementById("submit");
-let tweetContent = document.getElementById("stream");
-let input = document.getElementById("tweet");
-
-
-
-
-input.addEventListener("change", function(event) {   
-    button.addEventListener("click", function(){
-        tweetContent.innerHTML = "<div>"+event.target.value+"</div>";
-    });
-});
-</script>
 
 
 
@@ -35,16 +20,4 @@ input.addEventListener("change", function(event) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-<?php require ("footer.html"); ?>
+<?php include "footer.html"; ?>

@@ -1,16 +1,15 @@
 <?php
-    include('../BDD/classtweet.php');
-    include('../BDD/bdd.php');
+    include '../BDD/classtweet.php';
+    include '../BDD/config.php';
 
     $userLogged = new user($bdd);
-    $userLogged->setIdUser(1);
-    $userLogged->initId();
+    $userLogged->initId(1);
 
     if(isset($_POST['submitTweet'])){
         $newTweet = new tweet($bdd);
         $newTweet->setContenu($_POST['textTweet']);
         $newTweet->setUser($userLogged);
-        $newTweet->create();
+        $newTweet->posterTweet();
     }
 
     $rawId = $bdd->query("SELECT `id_tweet` FROM `tweet` ORDER BY `date` DESC");
@@ -37,4 +36,4 @@
     <input type="text" name="textTweet">
     <input type="submit" name="submitTweet" value="Tweeter">
 </form>
->>>>>>> 73bad8f74af0f0ee61d0e56f897db2d0bb118696
+

@@ -1,6 +1,6 @@
 <?php
-include('../BDD/classtweet.php');
-include('../BDD/bdd.php');
+include '../BDD/classtweet.php';
+include '../BDD/config.php';
 
 $DonneeBruteTweet = $bdd->query("select * from tweet");
 $TabTweetIndex = 0;

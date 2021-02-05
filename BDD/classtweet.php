@@ -1,5 +1,5 @@
 <?php
-    require('classUser.php');
+    
     class tweet 
     {
         private $_idtweet;
@@ -17,11 +17,11 @@
             Method Get
         ----------------*/
         
-        public function getUser() {
+        public function getIdtweet() {
         
-            return $this->_user;
+            return $this->_idtweet;
         }
-        
+
         public function getContenu() {
         
             return $this->_contenu;
@@ -32,9 +32,9 @@
             return $this->_date;
         }
         
-        public function getIdtweet() {
+        public function getUser() {
         
-            return $this->_idtweet;
+            return $this->_user;
         }
         
         public function getNumberLikes(){
@@ -47,31 +47,31 @@
         
         public function setIdTweet($newIdTweet)
         {
-            $this->_idtweet = $newIdTweet;
+           return $this->_idtweet = $newIdTweet;
         }
 
         public function setUser($newUser) 
         {
-            $this->_user = $newUser;
+            return $this->_user = $newUser;
         }
         
         public function setContenu($newContenu) 
         {
-            $this->_contenu = $newContenu;
+            return $this->_contenu = $newContenu;
         }
         
         public function setDate($newDate) 
         {
-            $this->_date = $newDate;
+            return $this->_date = $newDate;
         }
         
-        /* --------------------------
-            Methode init & create
-        ----------------------------*/
+        /* ---------------
+            Methode Init
+        ----------------*/
         
         public function init(){
-            $rawData = $this->_bdd->prepare("SELECT * from `tweet` WHERE `id_tweet` = ".$this->_idtweet ); //Requete qui affiche les dernier tweet
-            $rawData->execute(array($this->_contenu, $this->_date));
+            $rawData = $this->_bdd->prepare("SELECT * from `tweet` WHERE `id_tweet` = ?"); //Requete qui affiche les dernier tweet
+            $rawData->execute(array($this->_idtweet));
             $tweetExist = $rawData->rowCount();
             if($tweetExist == 1){ //Test si la requête renvoie un résultat
                 $userData = $rawData->fetch();
@@ -92,7 +92,11 @@
             }
         }
 
-        public function create(){
+        /*---------------------
+           Methode PosterTweet
+        ----------------------*/
+
+        public function posterTweet(){
             if($this->_contenu != NULL && $this->_user->getIdUser() != NULL){
                 $requeteCreation = $this->_bdd->query("INSERT INTO `tweet`(`id_tweet`, `contenu`, `id_user`, `date`) VALUES (NULL,'".$this->_contenu."','".$this->_user->getIdUser()."',CURRENT_TIMESTAMP)");
                 return true;
@@ -101,7 +105,7 @@
             }
         }
 
-        /*-----------------
+        /*------------------
             Methode Like
         -------------------*/
 

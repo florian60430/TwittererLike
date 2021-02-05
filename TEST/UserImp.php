@@ -1,6 +1,6 @@
 <?php
-    include('../BDD/classUser.php');
-    include('../BDD/bdd.php');
+    include '../BDD/classUser.php';
+    include '../BDD/bdd.php';
 
     $user = new user($bdd);
     if(isset($_POST['signin'])){
