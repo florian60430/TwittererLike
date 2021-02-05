@@ -1,7 +1,7 @@
 <?php
-    $ip = 'localhost';
+    $ip = '192.168.64.56';
     $dbname = 'twater';
-    $username = 'root';
-    $password = '';
+    $username = 'florian';
+    $password = '60430';
     $bdd = new PDO('mysql:host='.$ip.'; dbname='.$dbname.'; charset=utf8', $username, $password);
 ?>

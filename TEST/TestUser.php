@@ -1,7 +1,7 @@
 <?php
     include('../BDD/classUser.php');
     include('../BDD/bdd.php');
-
+  
     $user = new user($bdd);
     if(isset($_POST['signin'])){
         $user->setIdentifiant($_POST['identifiant']);

@@ -1,6 +1,8 @@
 <?php
     include('../BDD/classTweet.php');
     include('../BDD/bdd.php');
+    
+    
 
     $userLogged = new user($bdd);
     $userLogged->setIdUser(1);
@@ -23,16 +25,27 @@
         if(isset($_POST['like'.$i])){
             ${"tweet".$i}->like($userLogged);
         }
-        echo ${"userTweet".$i}->getPseudo()." a dit ".${"tweet".$i}->getContenu()." a ".${"tweet".$i}->getDate()."<br>";
-        echo "Ce tweet a ".${"tweet".$i}->getNumberLikes()." likes<br>";
-        echo "<form method='POST' action=''>
-            <input type='hidden' name='idTweet' value='".${"tweet".$i}->getIdtweet()."'>
-            <input type='submit' name='like".$i."' value='Like'>
-        </form>";
-        $i++;
-    }
-
 ?>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="../IHM/style_css/style.css">
+    </head>
+    <body>
+        <div >
+            <?php
+                    echo ${"userTweet".$i}->getPseudo()." a dit ".${"tweet".$i}->getContenu()." a ".${"tweet".$i}->getDate()."<br>";
+                    echo "Ce tweet a ".${"tweet".$i}->getNumberLikes()." likes<br>";
+                    echo "<form method='POST' action=''>
+                        <input type='hidden' name='idTweet' value='".${"tweet".$i}->getIdtweet()."'>
+                        <input type='submit' name='like".$i."' value='Like'>
+                    </form>";
+                    $i++;
+                }
+
+            ?>
+        </div>
+    </body>
+</html>
 <form method="POST" action="">
     <input type="text" name="textTweet">
     <input type="submit" name="submitTweet" value="Tweeter">
