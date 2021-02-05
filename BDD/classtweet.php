@@ -107,7 +107,13 @@
         -------------------*/
 
         public function like($stranger){
-            $this->_bdd->query("INSERT INTO `like` (`id_like`,`id_user`,`id_tweet`) VALUES (NULL, '".$stranger->getIdUser()."','".$this->_idtweet."')");
+            $rawData = $this->_bdd->query("SELECT COUNT(*) from `like` WHERE `id_tweet` = ".$this->_idtweet." AND `id_user` = " .$stranger->getIdUser());
+            $likeExist = $rawData->fetch();
+            if($likeExist[0] >= 1){
+                $this->_bdd->query("DELETE FROM `like` WHERE `id_tweet` = ".$this->_idtweet." AND `id_user` = " .$stranger->getIdUser());
+            }else{
+                $this->_bdd->query("INSERT INTO `like` (`id_like`,`id_user`,`id_tweet`) VALUES (NULL, '".$stranger->getIdUser()."','".$this->_idtweet."')");
+            }
         }
     }
     
