@@ -86,7 +86,7 @@ class user {
         Methode init & create
     ----------------------------*/
 
-    public function connexionLogin($identifiant, $password){
+    public function connexion($identifiant, $password){
         $rawData = $this->_bdd->query("SELECT * FROM user WHERE identifiant = '".$identifiant."' AND password = '".$password."'"); //Requete qui sélectionne l'utilisateur par son identifiant et son mot de passe
         $userExist = $rawData->rowCount();
         if($userExist == 1){ //Test si la requête renvoie un résultat
@@ -130,7 +130,8 @@ class user {
 
     public function inscription($identifiant, $pseudo, $password, $birthdate){
             
-        $verifRequest = $this->_bdd->query("INSERT INTO `user`(`id_user`, `identifiant`, `pseudo`, `password`, `birthdate`, `bio`) VALUES (NULL,'".$identifiant."','".$pseudo."','".$password."','".$birthdate."', NULL)");
+        $verifRequest = $this->_bdd->query("INSERT INTO `user`(`id_user`, `identifiant`, `pseudo`, `password`, `birthdate`, `bio`) VALUES (NULL,'".$identifiant."','".$pseudo."','".$password."','".$birthdate."', ' ')");
+        
         if ($verifRequest)
         {
             return true;

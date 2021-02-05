@@ -1,41 +1,6 @@
-<?php include "entete.html";
-include "../BDD/config.php";
-include "../BDD/classUser.php";?>
+<?php include "structure/entete.html"; ?>
 
-<?php 
-
-if (!empty($_POST['ID_1']) && !empty($_POST['MDP_1'])){
-
-    $connexion = new user($bdd);
-    $connexionOK = $connexion->initLogin($_POST['ID_1'],$_POST['MDP_1']);
-
-    if($connexionOK == true){
-        $_SESSION["isconnect"] = true;
-        echo"connected";
-    }else{
-        $_SESSION["isconnect"] = false;
-        echo"error";
-    }
-}
-
-if (!empty($_POST['new_ID']) && !empty($_POST['new_pseudo']) && !empty($_POST['new_MDP']) && !empty($_POST['new_BD'])){
-
-    $newuser = new user($bdd);
-    $newuserOK = $newuser->inscription($_POST['new_ID'],$_POST['new_pseudo'],$_POST['new_MDP'],$_POST['new_BD']);
-
-    if($newuserOK == true){
-        $_SESSION["newinscripton"] = true;
-        echo"compte creer";
-    }else{
-        $_SESSION["newinscription"] = false;
-        echo"failed loser t nul";
-    }
-
-}
-
-
-?>
-    <body>
+<body>
         <div class="background">
             <div class="form-box">
                <form id="login" class="input-group" method="POST">
@@ -57,37 +22,4 @@ if (!empty($_POST['new_ID']) && !empty($_POST['new_pseudo']) && !empty($_POST['n
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<?php require ("footer.html"); ?>
+<?php include "structure/footer.html"; ?>

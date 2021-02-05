@@ -1,4 +1,4 @@
-<?php include "entete.html"; ?>
+<?php include "structure/entete.html"; ?>
 
 
 <body>
