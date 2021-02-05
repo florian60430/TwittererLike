@@ -1,15 +1,28 @@
-<?php include "entete.html"; ?>
+<?php include "entete.html";
+include "../BDD/config.php";
+include "../BDD/classUser.php";?>
+
+<?php 
+
+if (!empty($_POST['ID_1']) && !empty($_POST['MDP_1'])){
+
+    $connexion = new user($bdd);
+    $connexionOK = $connexion->initLogin($_POST['ID_1'],$_POST['MDP_1']);
+
+    if($connexionOK == true){
+        $_SESSION["isconnect"] = true;
+        echo"connected";
+    }else{
+        $_SESSION["isconnect"] = false;
+        echo"error";
+    }
+}
 
 
-
+?>
     <body>
         <div class="background">
             <div class="form-box">
-               <div class="button-box">
-                   <div id="btn"></div>
-                   <button type="button" class="toggle-btn" onclick="login()">Connexion</button>
-                   <button type="button" class="toggle-btn" onclick="register()">Inscription</button>
-               </div>
                <form id="login" class="input-group" method="POST">
                     <input type="text" class="input-field" placeholder="Pseudo" name="ID_1" required>
                     <input type="password" class="input-field" placeholder="Mot de passe" name="MDP_1" required>
@@ -23,25 +36,6 @@
                 </form>
             </div>
         </div>
-        <script>
-
-            var x = document.getElementById("login");
-            var y = document.getElementById("register");
-            var z = document.getElementById("btn");
-
-            function register(){
-                x.style.left = "-400px";
-                y.style.left = "50px";
-                z.style.left = "150px";
-            }
-
-            function login(){
-                x.style.left = "50px";
-                y.style.left = "450px";
-                z.style.left = "0px";
-            }
-
-        </script>
     </body>
 </html>
 
