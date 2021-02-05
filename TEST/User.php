@@ -5,7 +5,7 @@ include '../BDD/config.php';
 ?> <h2> Selection par identifiant et Password </h2>
 <?php 
 $user = new user($bdd);
-$user->initLogin("valou123", "123")."<br>";
+$user->connexionLogin("valou123", "123")."<br>";
 
 echo $user->getIdUser()."<br>";
 echo $user->getIdentifiant()."<br>";

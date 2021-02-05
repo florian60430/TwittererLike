@@ -69,9 +69,9 @@
             Methode Init
         ----------------*/
         
-        public function init(){
-            $rawData = $this->_bdd->prepare("SELECT * from `tweet` WHERE `id_tweet` = ?"); //Requete qui affiche les dernier tweet
-            $rawData->execute(array($this->_idtweet));
+        public function init($idTweet){
+            
+            $rawData = $this->_bdd->query("SELECT * from `tweet` WHERE `id_tweet` = ".$idTweet.""); //Requete qui affiche les dernier tweet
             $tweetExist = $rawData->rowCount();
             if($tweetExist == 1){ //Test si la requête renvoie un résultat
                 $userData = $rawData->fetch();
@@ -97,7 +97,7 @@
 
         public function posterTweet(){
             if($this->_contenu != NULL && $this->_user->getIdUser() != NULL){
-                $requeteCreation = $this->_bdd->query("INSERT INTO `tweet`(`id_tweet`, `contenu`, `id_user`, `date`) VALUES (NULL,'".$this->_contenu."','".$this->_user->getIdUser()."',CURRENT_TIMESTAMP)");
+               $this->_bdd->query("INSERT INTO `tweet`(`id_tweet`, `contenu`, `id_user`, `date`) VALUES (NULL,'".$this->_contenu."','".$this->_user->getIdUser()."',CURRENT_TIMESTAMP)");
                 return true;
             } else {
                 return false;

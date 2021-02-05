@@ -86,7 +86,7 @@ class user {
         Methode init & create
     ----------------------------*/
 
-    public function initLogin($identifiant, $password){
+    public function connexionLogin($identifiant, $password){
         $rawData = $this->_bdd->query("SELECT * FROM user WHERE identifiant = '".$identifiant."' AND password = '".$password."'"); //Requete qui sélectionne l'utilisateur par son identifiant et son mot de passe
         $userExist = $rawData->rowCount();
         if($userExist == 1){ //Test si la requête renvoie un résultat
