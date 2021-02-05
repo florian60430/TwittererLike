@@ -4,8 +4,7 @@ function afficherTweets($bdd,$userLogged){
     $i = 0;
     while($pureId = $rawId->fetch()){
         ${"tweet".$i} = new tweet($bdd);
-        ${"tweet".$i}->setIdTweet($pureId['id_tweet']);
-        ${"tweet".$i}->init();
+        ${"tweet".$i}->init($pureId['id_tweet']);
         ${"userTweet".$i} = ${"tweet".$i}->getUser();
         if(isset($_POST['like'.$i])){
             ${"tweet".$i}->like($userLogged);

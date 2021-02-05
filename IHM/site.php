@@ -5,11 +5,13 @@ include "../BDD/classtweet.php";
 include "../METIER/functionDisplayTL.php" ?>
 
 <div class="mainStream" id="stream"></div>
-
-<input id ="tweet" type="text" name="InputTweet" size="50px" placeholder="What's happening ?"> 
-<button name="btnSubmit" id="submit">Envoyer</button>
+<div>
+    <input id="tweet" type="text" name="InputTweet" size="50px" placeholder="What's happening ?">
+    <button name="btnSubmit" id="submit">Envoyer</button>
+</div>
 <?php
-    afficherTweets($bdd,$_SESSION['userLogged']);
+$_SESSION['userLogged'] = 1;
+afficherTweets($bdd, $_SESSION['userLogged']);
 ?>
 
 

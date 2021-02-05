@@ -128,11 +128,15 @@ class user {
       Methode inscription
     ----------------------*/
 
-    public function inscription(){
-        if($this->_identifiant != NULL && $this->_pseudo != NULL && $this->_password != NULL && $this->_birthdate != NULL && $this->_bio != NULL){
-            $this->_bdd->query("INSERT INTO `user`(`id_user`, `identifiant`, `pseudo`, `password`, `birthdate`, `bio`) VALUES (NULL,'".$this->_identifiant."','".$this->_pseudo."','".$this->_password."','".$this->_birthdate."','".$this->_bio."')");
+    public function inscription($_identifiant, $pseudo, $password, $birthday){
+            
+        $verifRequest = $this->_bdd->query("INSERT INTO `user`(`id_user`, `identifiant`, `pseudo`, `password`, `birthdate`, `bio`) VALUES (NULL,'".$_identifiant."','".$pseudo."','".$password."','".$birthdate."', NULL)");
+        if ($verifRequest)
+        {
             return true;
+        
         } else {
+        
             return false;
         }
     }
@@ -142,10 +146,14 @@ class user {
     -------------------*/
 
     public function modif(){
-        if($this->_identifiant != NULL && $this->_pseudo != NULL && $this->_password != NULL && $this->_birthdate != NULL && $this->_bio != NULL){
-            $this->_bdd->query("UPDATE `user` SET `identifiant`='".$this->_identifiant."',`pseudo`='".$this->_pseudo."',`password`='".$this->_password."',`birthdate`='".$this->_birthdate."',`bio`='".$this->_bio."' WHERE 'id_user' = '".$this->_idUser."'");
+            
+        $verifRequest = $this->_bdd->query("UPDATE `user` SET `identifiant`='".$this->_identifiant."',`pseudo`='".$this->_pseudo."',`password`='".$this->_password."',`birthdate`='".$this->_birthdate."',`bio`='".$this->_bio."' WHERE 'id_user' = '".$this->_idUser."'");
+        if ($verifRequest)
+        {     
             return true;
+        
         } else {
+            
             return false;
         }
     }
