@@ -1,10 +1,14 @@
 <?php
+<<<<<<< HEAD
 <<<<<<< HEAD:TEST/TestTweet.php
     include('../BDD/classtweet.php');
     include('../BDD/bdd.php');
     
     
 =======
+=======
+    include '../BDD/classUser.php';
+>>>>>>> f98f5b841a382f37447dc14f68cdaac6c3a3400c
     include '../BDD/classtweet.php';
     include '../BDD/config.php';
 >>>>>>> bcd7c99a1e40e889e29d936e8908df18754e59d8:TEST/TweetImp.php
