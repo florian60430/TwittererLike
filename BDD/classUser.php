@@ -103,6 +103,10 @@ class user {
         }
     }
 
+    /*----------------------
+     Methode Init par IdUser
+    -----------------------*/
+
     public function initId($idUser){
         $rawData = $this->_bdd->query("SELECT * FROM user WHERE `id_user` = ".$idUser.""); //Requete qui sélectionne l'utilisateur par son identifiant et son mot de passe
         $userExist = $rawData->rowCount();
@@ -120,9 +124,13 @@ class user {
         }
     }
 
-    public function create(){
+    /*----------------------
+      Methode inscription
+    ----------------------*/
+
+    public function inscription(){
         if($this->_identifiant != NULL && $this->_pseudo != NULL && $this->_password != NULL && $this->_birthdate != NULL && $this->_bio != NULL){
-            $requeteCreation = $this->_bdd->query("INSERT INTO `user`(`id_user`, `identifiant`, `pseudo`, `password`, `birthdate`, `bio`) VALUES (NULL,'".$this->_identifiant."','".$this->_pseudo."','".$this->_password."','".$this->_birthdate."','".$this->_bio."')");
+            $this->_bdd->query("INSERT INTO `user`(`id_user`, `identifiant`, `pseudo`, `password`, `birthdate`, `bio`) VALUES (NULL,'".$this->_identifiant."','".$this->_pseudo."','".$this->_password."','".$this->_birthdate."','".$this->_bio."')");
             return true;
         } else {
             return false;
@@ -135,7 +143,7 @@ class user {
 
     public function modif(){
         if($this->_identifiant != NULL && $this->_pseudo != NULL && $this->_password != NULL && $this->_birthdate != NULL && $this->_bio != NULL){
-            $requeteModif = $this->_bdd->query("UPDATE `user` SET `identifiant`='".$this->_identifiant."',`pseudo`='".$this->_pseudo."',`password`='".$this->_password."',`birthdate`='".$this->_birthdate."',`bio`='".$this->_bio."' WHERE 'id_user' = '".$this->_idUser."'");
+            $this->_bdd->query("UPDATE `user` SET `identifiant`='".$this->_identifiant."',`pseudo`='".$this->_pseudo."',`password`='".$this->_password."',`birthdate`='".$this->_birthdate."',`bio`='".$this->_bio."' WHERE 'id_user' = '".$this->_idUser."'");
             return true;
         } else {
             return false;

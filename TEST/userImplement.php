@@ -1,7 +1,13 @@
 <?php
+<<<<<<< HEAD:TEST/TestUser.php
+    include('../BDD/classUser.php');
+    include('../BDD/bdd.php');
+  
+=======
     include '../BDD/classUser.php';
     include '../BDD/config.php';
 
+>>>>>>> bcd7c99a1e40e889e29d936e8908df18754e59d8:TEST/UserImp.php
     $user = new user($bdd);
     if(isset($_POST['signin'])){
         $user->setIdentifiant($_POST['identifiant']);
