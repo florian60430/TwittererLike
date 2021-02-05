@@ -11,8 +11,10 @@ include "METIER/functionDisplayTL.php" ?>
     <button name="btnSubmit" id="submit">Envoyer</button>
 </div>
 <?php
-$_SESSION['userLogged'] = 1;
+
+
 afficherTweets($bdd, $_SESSION['userLogged']);
+
 ?>
 
 <div> <a href="IHM/deconnexion.php">Deconnexion</a> </div>
