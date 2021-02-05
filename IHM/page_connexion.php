@@ -1,5 +1,25 @@
-<?php include "entete.html"; ?>
+<?php include "entete.html";
+include "../BDD/config.php";
+include "../BDD/classUser.php";?>
 
+<?php 
+
+if (!empty($_POST['ID_1']) && !empty($_POST['MDP_1'])){
+
+    $connexion = new user($bdd);
+    $connexionOK = $connexion->initLogin($_POST['ID_1'],$_POST['MDP_1']);
+
+    if($connexionOK == true){
+        $_SESSION["isconnect"] = true;
+        echo"connected";
+    }else{
+        $_SESSION["isconnect"] = false;
+        echo"error";
+    }
+}
+
+
+?>
     <body>
         <div class="background">
             <div class="form-box">
