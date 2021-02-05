@@ -76,8 +76,7 @@
             if($tweetExist == 1){ //Test si la requête renvoie un résultat
                 $userData = $rawData->fetch();
                 $this->_user = new user($this->_bdd);
-                $this->_user->setIdUser($userData['id_user']);
-                $this->_user->initId();
+                $this->_user->initId($userData['id_user']);
                 $this->_contenu = $userData['contenu'];
                 $this->_date = $userData['date'];
                 $this->_idtweet = $userData['id_tweet'];
