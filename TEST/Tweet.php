@@ -4,35 +4,26 @@ include '../BDD/config.php';
 
 
 
-echo '</br>';
-
-echo '<h1> Tweet </h1>';
-//Contenu Tweet
+?> <h2> Tweet </h2>
+<?php 
 $tweet = new tweet($bdd);
-$tweet->setIdTweet(1);
-$tweet->init();
-echo $tweet->getContenu();
-echo '</br>';
+$tweet->init()."<br>";
 
-echo '<h1> identifiant </h1>';
-echo $tweet->getUser()->getIdentifiant();
-echo '</br>';
-
-echo '<h1> pseudo </h1>';
-echo $tweet->getUser()->getPseudo();
-//Date contenu 
-echo '</br>';
-
-echo '<h1> Date tweet </h1>';
-
-echo $tweet->getDate();
+echo $tweet->getIdtweet(1)."<br>";
+echo $tweet->getContenu()."<br>";
+echo $tweet->getDate()."<br>";
+echo $tweet->getUser(1)."<br>";
+echo $tweet->getNumberLikes()."<br>";
 
 
-$Newtweet = new tweet($bdd);
-$Newtweet->setContenu('Je suis nouveau contenu');
-$Newtweet->setIdTweet(2);
-$Newtweet->create();
-echo $Newtweet->getContenu();
+
+echo $tweet->setIdtweet(36)."<br>";
+echo $tweet->setContenu("Goudal la mandal")."<br>";
+echo $tweet->setDate("2021-03-05")."<br>";
+echo $tweet->setUser(6)."<br>";
+
+
+
 
 
 
