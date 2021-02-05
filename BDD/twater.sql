@@ -6,7 +6,6 @@
 -- Généré le :  Ven 05 Février 2021 à 08:55
 -- Version du serveur :  10.1.47-MariaDB-0+deb9u1
 -- Version de PHP :  7.0.33-0+deb9u10
-=======
 -- Client :  127.0.0.1
 -- Généré le :  Mer 03 Février 2021 à 12:00
 -- Version du serveur :  5.6.15-log
@@ -110,7 +109,6 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 --
 -- Contenu de la table `user`
-<<<<<<< HEAD
 --
 
 INSERT INTO `user` (`id_user`, `identifiant`, `pseudo`, `password`, `birthdate`, `bio`) VALUES
@@ -121,15 +119,12 @@ INSERT INTO `user` (`id_user`, `identifiant`, `pseudo`, `password`, `birthdate`,
 
 --
 -- Index pour les tables exportées
-=======
->>>>>>> 08b0a7a8f0c8184a317a14141f02fd3651ffff29
 --
 
 INSERT INTO `user` (`id_user`, `identifiant`, `pseudo`, `password`, `birthdate`, `bio`) VALUES
 (1, 'flo', 'Jean-Street-Cred', '1234', '1998-08-16', 'J''ai une bonne déscente'),
 (2, 'flo', 'Jean-Street-Cred', '1234', '1998-08-16', 'J''ai une bonne déscente');
 
-<<<<<<< HEAD
 --
 -- Index pour la table `user`
 --
@@ -155,8 +150,6 @@ ALTER TABLE `tweet`
 --
 ALTER TABLE `user`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-=======
->>>>>>> 08b0a7a8f0c8184a317a14141f02fd3651ffff29
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
