@@ -37,3 +37,4 @@
     <input type="text" name="textTweet">
     <input type="submit" name="submitTweet" value="Tweeter">
 </form>
+>>>>>>> 73bad8f74af0f0ee61d0e56f897db2d0bb118696
