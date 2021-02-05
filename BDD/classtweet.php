@@ -9,7 +9,6 @@
         private $_nbLikes;
         private $_bdd;
     
-    
         function __construct($bdd) {
             $this->_bdd = $bdd;
         }
