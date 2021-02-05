@@ -21,7 +21,7 @@ if (!empty($_POST['ID_1']) && !empty($_POST['MDP_1'])){
 if (!empty($_POST['new_ID']) && !empty($_POST['new_pseudo']) && !empty($_POST['new_MDP']) && !empty($_POST['new_BD'])){
 
     $newuser = new user($bdd);
-    $newuserOK = $newuser->inscription($_POST['new_ID'],$_POST['new_pseudo'],$_POST['new_MDP'],$_POST['new_MDP']);
+    $newuserOK = $newuser->inscription($_POST['new_ID'],$_POST['new_pseudo'],$_POST['new_MDP'],$_POST['new_BD']);
 
     if($newuserOK == true){
         $_SESSION["newinscripton"] = true;
