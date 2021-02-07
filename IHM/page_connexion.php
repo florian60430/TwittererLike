@@ -1,25 +1,28 @@
 <?php include "structure/entete.html"; ?>
 
 <body>
-        <div class="background">
-            <div class="form-box">
-               <form id="login" class="input-group" method="POST">
-                    <input type="text" class="input-field" placeholder="Pseudo" name="ID_1" required>
-                    <input type="password" class="input-field" placeholder="Mot de passe" name="MDP_1" required>
-                    <button type="submit" class="submit-btn">Se Connecter</button>
-                </form>
-                <form id="register" class="input-group" method="POST">
-                    <input type="text" class="input-field" placeholder="Identifiant" name="new_ID" required>
-                    <input type="text" class="input-field" placeholder="Pseudo" name="new_pseudo" required>
-                    <input type="password" class="input-field" placeholder="Mot de passe" name="new_MDP" required>
-                    <input type="date" class="input-field" placeholder="date de naissance" name="new_BD" required>
-                    <button type="submit" class="submit-btn">S'inscrire</button>
-                </form>
-            </div>
-        </div>
-    </body>
-</html>
 
+<!--------------------- 
+  FORMULAIRE CONNEXION
+---------------------->
+    <form id="login" method="POST" action="">
+        <input type="text" placeholder="identifiant" name="identifiantLogin" required>
+        <input type="password" placeholder="Mot de passe" name="passwordLogin" required>
+        <button type="submit">Se Connecter</button>
+    </form>
 
+<!------------------------- 
+  FORMULAIRE INSCRIPTION
+-------------------------->
+    <form id="register" method="POST" action="">
+        <input type="text" placeholder="Identifiant" name="identifiant" required>
+        <input type="text" placeholder="Pseudo" name="pseudo" required>
+        <input type="password" placeholder="Mot de passe" name="password" required>
+        <input type="date" placeholder="date de naissance" name="birthdate" required>
+        <button type="submit">S'inscrire</button>
+    </form>
+</body>
 
 <?php include "structure/footer.html"; ?>
+
+</html>

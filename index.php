@@ -11,12 +11,13 @@ include "BDD/classUser.php";
    CONNEXION 
 -------------*/
 
-if (!empty($_POST['ID_1']) && !empty($_POST['MDP_1'])) {
+if (!empty($_POST['identifiantLogin']) && !empty($_POST['passwordLogin'])) {
     $user = new user($bdd);
-    $verifUser = $user->connexion($_POST['ID_1'], $_POST['MDP_1']);
+    $verifUser = $user->connexion($_POST['identifiantLogin'], $_POST['passwordLogin']);
 
     if ($verifUser == true) {
-        $_SESSION["isconnect"] = true;
+        $_SESSION["isConnect"] = true;
+        $_SESSION["userId"] = $user->getIdUser();
     }
 }
 /*----------------
@@ -24,30 +25,33 @@ if (!empty($_POST['ID_1']) && !empty($_POST['MDP_1'])) {
 --------------*/
 
 
-if (!empty($_POST['new_ID']) && !empty($_POST['new_pseudo']) && !empty($_POST['new_MDP']) && !empty($_POST['new_BD'])) {
+if (!empty($_POST['identifiant']) && !empty($_POST['pseudo']) && !empty($_POST['password']) && !empty($_POST['birthdate'])) {
 
     $user = new user($bdd);
-    $verifUser = $user->inscription($_POST['new_ID'], $_POST['new_pseudo'], $_POST['new_MDP'], $_POST['new_BD']);
+    $verifUser = $user->inscription($_POST['identifiant'], $_POST['pseudo'], $_POST['password'], $_POST['birthdate']);
 
-    if ($verifUser == false) {
-        echo "erreur lors de l'inscription";
+    if ($verifUser == true) {
+
+        $user->connexion($_POST['identifiant'], $_POST['password']);
+        $_SESSION["isConnect"] = true;
+        $_SESSION["userId"] = $user->getIdUser();
     } else {
-        $_SESSION["isconnect"] = true;
+        echo "erreur lors de l'inscription";
     }
 }
 
 
 /*-----------------
-      USER CONNECTED 
-    -----------------*/
+   USER CONNECTED 
+-----------------*/
 
-if (isset($_SESSION['isconnect'])) {
+if (isset($_SESSION['isConnect'])) {
     include "IHM/site.php";
 }
 
 /*-----------------
-      USER UNCONNECTED
-    -----------------*/ else {
+   USER UNCONNECTED
+-----------------*/ else {
     include "IHM/page_connexion.php";
 }
 
