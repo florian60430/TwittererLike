@@ -108,13 +108,13 @@
             Methode Like
         -------------------*/
 
-        public function like($stranger){
-            $rawData = $this->_bdd->query("SELECT COUNT(*) from `like` WHERE `id_tweet` = ".$this->_idtweet." AND `id_user` = " .$stranger->getIdUser());
+        public function like($ObjetStranger){
+            $rawData = $this->_bdd->query("SELECT COUNT(*) from `like` WHERE `id_tweet` = ".$this->_idtweet." AND `id_user` = " .$ObjetStranger->getIdUser());
             $likeExist = $rawData->fetch();
             if($likeExist[0] >= 1){
-                $this->_bdd->query("DELETE FROM `like` WHERE `id_tweet` = ".$this->_idtweet." AND `id_user` = " .$stranger->getIdUser());
+                $this->_bdd->query("DELETE FROM `like` WHERE `id_tweet` = ".$this->_idtweet." AND `id_user` = " .$ObjetStranger->getIdUser());
             }else{
-                $this->_bdd->query("INSERT INTO `like` (`id_like`,`id_user`,`id_tweet`) VALUES (NULL, '".$stranger->getIdUser()."','".$this->_idtweet."')");
+                $this->_bdd->query("INSERT INTO `like` (`id_like`,`id_user`,`id_tweet`) VALUES (NULL, '".$ObjetStranger->getIdUser()."','".$this->_idtweet."')");
             }
         }
     }

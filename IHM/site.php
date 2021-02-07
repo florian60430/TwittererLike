@@ -1,7 +1,7 @@
 <?php
 include "structure/entete.html";
 include "BDD/classtweet.php";
-include "METIER/function.php"; ?>
+include "METIER/functionCopy.php"; ?>
 
 <div>
     <input id="tweet" type="text" name="InputTweet" size="50px" placeholder="What's happening ?">
@@ -17,7 +17,7 @@ include "METIER/function.php"; ?>
     $user = new user($bdd);
     $user->initId($_SESSION["userId"]);
 
-    afficherTweets($bdd, $user); ?>
+    AfficheTimeLine($bdd, $user); ?>
 </div>
 
 
