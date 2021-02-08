@@ -43,22 +43,3 @@ if (isset($_POST['InputTweet'])) {
 
 <div> <a href="IHM/deconnexion.php">Deconnexion</a> </div>
 <?php include "structure/footer.html"; ?>
-
-<script>
- 
-$(document).ready(function(){
- 
-    $("#submit").click(function(e){
-        e.preventDefault();
- 
-        $.post(
-            'traitement.php', // Un script PHP que l'on va créer juste après
-            {
-                username : $("#username").val(),  // Nous récupérons la valeur de nos input que l'on fait passer à connexion.php
-                password : $("#password").val()
-            },
-         );
-    });
-});
- 
-</script>
