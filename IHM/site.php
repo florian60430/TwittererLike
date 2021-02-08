@@ -1,23 +1,43 @@
 <?php
 include "structure/entete.html";
 include "BDD/classtweet.php";
-include "METIER/functionCopy.php"; ?>
+include "METIER/functionCopy.php";
 
+/*---------------------------- 
+   INSTANTIATION OBJET USER
+---------------------------*/
+
+$user = new user($bdd);
+$user->initId($_SESSION["userId"]);
+
+?>
 <div>
+  <form action="" method="POST">
     <input id="tweet" type="text" name="InputTweet" size="50px" placeholder="What's happening ?">
     <button name="btnSubmit" id="submit">Envoyer</button>
+  </form>
 </div>
 
+
+
+<?php
+/*-------------
+  POSTER TWEET
+--------------*/
+
+if (isset($_POST['InputTweet'])) {
+  $tweet = new tweet($bdd);
+  $tweet->setContenu($_POST['InputTweet']);
+  $tweet->setUser($user);
+  $tweet->posterTweet();
+}
+?>
 <!-------------
   AFFICHAGE TL
 -------------->
 
 <div class="mainStream" id="stream">
-    <?php 
-    $user = new user($bdd);
-    $user->initId($_SESSION["userId"]);
-
-    AfficheTimeLine($bdd, $user); ?>
+  <?php AfficheTimeLine($bdd, $user); ?>
 </div>
 
 
