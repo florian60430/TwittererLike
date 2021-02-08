@@ -1,23 +1,31 @@
 <?php
-function afficherTweets($bdd,$userLogged){
-    $rawId = $bdd->query("SELECT `id_tweet` FROM `tweet` ORDER BY `date` DESC");
+
+/*------------------------------
+AFFICHE LA TL DE L'UTILISATEUR
+-------------------------------*/
+
+function AfficheTimeLine($bdd, $ObjetUser)
+{
+
+    $data = $bdd->query("SELECT `id_tweet` FROM `tweet` ORDER BY `date` DESC");
     $i = 0;
-    while($pureId = $rawId->fetch()){
-        ${"tweet".$i} = new tweet($bdd);
-        ${"tweet".$i}->init($pureId['id_tweet']);
-        ${"userTweet".$i} = ${"tweet".$i}->getUser();
-        if(isset($_POST['like'.$i])){
-            ${"tweet".$i}->like($userLogged);
+
+    
+    while ($tabId = $data->fetch()) {
+        $tabOjbetTweet[$i] = new tweet($bdd);
+        $tabOjbetTweet[$i]->init($tabId['id_tweet']);
+        $tabOjbetUser[$i] =  $tabOjbetTweet[$i]->getUser();
+
+        if (isset($_POST[$i])) {
+            $tabOjbetTweet[$i]->like($ObjetUser);
         }
-        echo ${"userTweet".$i}->getPseudo()." a dit ".${"tweet".$i}->getContenu()." a ".${"tweet".$i}->getDate()."<br>";
-        echo "Ce tweet a ".${"tweet".$i}->getNumberLikes()." likes<br>";
-        echo "<form method='POST' action=''>
-            <input type='hidden' name='idTweet' value='".${"tweet".$i}->getIdtweet()."'>
-            <input type='submit' name='like".$i."' value='Like'>
-        </form>";
+        echo $tabOjbetUser[$i]->getPseudo() . " a dit " . $tabOjbetTweet[$i]->getContenu() . " a " . $tabOjbetTweet[$i]->getDate() . "<br>";
+        echo "Ce tweet a " . $tabOjbetTweet[$i]->getNumberLikes() . " likes<br>" ?>
+        <form method='POST' action=''>
+            <input type='submit' name=<?php echo $i; ?> value='Like'>
+        </form>
+<?php
         $i++;
     }
 }
 ?>
-
-
