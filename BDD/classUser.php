@@ -131,7 +131,7 @@ class user {
     public function inscription($identifiant, $pseudo, $password, $birthdate){
             
         $verifRequest = $this->_bdd->query("INSERT INTO `user`(`id_user`, `identifiant`, `pseudo`, `password`, `birthdate`, `bio`) VALUES (NULL,'".$identifiant."','".$pseudo."','".$password."','".$birthdate."', ' ')");
-        
+        // Manque sécurité, on peut aujouter 2x le meme user
         if ($verifRequest)
         {
             return true;

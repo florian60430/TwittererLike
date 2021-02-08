@@ -1,0 +1,9 @@
+créer le fichier "config.php" dans le dossier BDD et copier coller ce code en adaptant à votre config
+
+<?php
+    $ip = '192.168.64.56';
+    $dbname = 'twater';
+    $username = 'florian';
+    $password = '60430';
+    
+?>
