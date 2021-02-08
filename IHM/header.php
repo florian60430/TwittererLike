@@ -1,5 +1,9 @@
 <?php
-include 'BDD/config.php';
+if (file_exists('BDD/config.php'))
+    include 'BDD/config.php';
+else {
+    include '../BDD/config.php';
+}
 
 
 $bdd = null;
