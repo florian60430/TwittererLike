@@ -1,7 +1,7 @@
 <?php
 include "structure/entete.html";
 include "BDD/classtweet.php";
-include "METIER/functionCopy.php";
+include "METIER/function.php";
 
 /*---------------------------- 
    INSTANTIATION OBJET USER
