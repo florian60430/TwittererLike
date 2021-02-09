@@ -1,5 +1,5 @@
 <?php
-include "IHM/structure/entete.html";
+include "structure/entete.html";
 include "BDD/classtweet.php";
 include "METIER/function.php";
 
