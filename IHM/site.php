@@ -28,8 +28,9 @@ $user->initId($_SESSION["userId"]);
 --------------*/
 
 if (isset($_POST['InputTweet'])) {
+  $textTweet = htmlspecialchars($_POST["InputTweet"]); // Empeche d'executé le code implanter dans le formulaire
   $tweet = new tweet($bdd);
-  $tweet->setContenu($_POST['InputTweet']);
+  $tweet->setContenu($textTweet);
   $tweet->setUser($user);
   $tweet->posterTweet();
 }
