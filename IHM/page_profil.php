@@ -1,3 +1,5 @@
+<a href="../index.php">Acceuil</a>
+
 <?php 
     include "structure/entete.html"; 
     include "../BDD/classtweet.php";
@@ -14,20 +16,26 @@ session_start();
 
 
 <body>
-   
+   <div>
+ <h3>  Identifiant </h3> </div>
+ <?php echo $user->getIdentifiant();?>
+ <div>
+ <h3>  Pseudo </h3> </div>
+ <?php echo $user->getPseudo();?>
+ <div>
+ <h3>  Anniversaire </h3> </div>
+ <?php echo $user->getBirthdate(); ?>
+ <div>
+ <h3> Bio </h3> </div>
+ <?php echo $user->getBio(); ?>
+<br></br>
+
     <div class="mainStream" id="stream">
         <?php AfficheTimeLineProfil($bdd, $user); ?>
     </div>
-    <?php 
-
- echo $identifiant->getIdentifiant();
- echo $pseudo->getPseudo();
- echo $birthdate->getBirthdate();
- echo $Bio->getBio();
-?>
+   
 
 </html>
 </body>    
-
 
 <?php include "structure/footer.html"; ?>
