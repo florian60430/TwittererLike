@@ -2,7 +2,21 @@
     align-items: left;
     margin-left: 500px;
 }
-.mainStream{
 
-    background-color: rgb(29, 161, 243);
+.content{
+    border-style: solid;
+    border-color: black;
+    width: 500px;
+    height: max-content;
+    max-height: 300px;
+    margin-top: 10px;
+    
+}
+.text{
+    margin: 15px;  
+}
+.bouton{  
+    margin-top: 30px;
+    margin-bottom: 5px;
+    margin-left: 10px;
 }
