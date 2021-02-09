@@ -1,7 +1,7 @@
 <?php
 include '../BDD/classUser.php';
 include '../BDD/classtweet.php';
-include '../BDD/config.php';
+include '../IHM/header.php';
 
 
 
