@@ -147,7 +147,7 @@ class user {
     -------------------*/
 
     public function modif(){
-            
+            // Probléme modif 
         $verifRequest = $this->_bdd->query("UPDATE `user` SET `identifiant`='".$this->_identifiant."',`pseudo`='".$this->_pseudo."',`password`='".$this->_password."',`birthdate`='".$this->_birthdate."',`bio`='".$this->_bio."' WHERE 'id_user' = '".$this->_idUser."'");
         if ($verifRequest)
         {     

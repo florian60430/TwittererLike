@@ -1,5 +1,5 @@
 <?php
-include "structure/entete.html";
+
 include "BDD/classtweet.php";
 include "METIER/function.php";
 
@@ -11,9 +11,12 @@ $user = new user($bdd);
 $user->initId($_SESSION["userId"]);
 
 ?>
-<div class="left">
-  <a href="IHM/page_profil.php">Mon profil</a>
-</div>
+
+<!-------------------------
+   FORMULAIRE POSTER TWEET
+ ------------------------> 
+<a href="IHM/deconnexion.php">Deconnexion</a>
+<a href="IHM/page_profil.php">Mon profil</a>
 <div>
   <form action="" method="POST">
     <input id="tweet" type="text" name="InputTweet" size="50px" placeholder="What's happening ?">
@@ -28,8 +31,9 @@ $user->initId($_SESSION["userId"]);
 --------------*/
 
 if (isset($_POST['InputTweet'])) {
+  $textTweet = htmlspecialchars($_POST["InputTweet"]); // Empeche d'executé le code implanter dans le formulaire
   $tweet = new tweet($bdd);
-  $tweet->setContenu($_POST['InputTweet']);
+  $tweet->setContenu($textTweet);
   $tweet->setUser($user);
   $tweet->posterTweet();
 }
@@ -42,6 +46,4 @@ if (isset($_POST['InputTweet'])) {
   <?php AfficheTimeLine($bdd, $user); ?>
 </div>
 
-
-<div> <a href="IHM/deconnexion.php">Deconnexion</a> </div>
-<?php include "structure/footer.html"; ?>
+<?php include "IHM/structure/footer.html"; ?>

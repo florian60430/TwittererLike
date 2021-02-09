@@ -30,16 +30,4 @@ session_start();
 </body>    
 
 
-</html>
-
-
-
-
-
-
-
-
-
-
-
-<?php include "footer.html"; ?>
+<?php include "structure/footer.html"; ?>
