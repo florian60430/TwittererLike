@@ -26,7 +26,7 @@ if (!empty($_POST['identifiantLogin']) && !empty($_POST['passwordLogin'])) {
         $_SESSION["isConnect"] = true;
         $_SESSION["userId"] = $user->getIdUser();
     }else{
-        echo "Identifiant ou Mot de passe incorrecte."
+        echo "Identifiant ou Mot de passe incorrecte.";
     }
 }
 /*----------------
