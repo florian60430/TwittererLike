@@ -7,6 +7,7 @@
     $userLogged->initId(1);
 
     if(isset($_POST['submitTweet'])){
+        
         $newTweet = new tweet($bdd);
         $newTweet->setContenu($_POST['textTweet']);
         $newTweet->setUser($userLogged);
@@ -33,7 +34,7 @@
 
 ?>
 <form method="POST" action="">
-    <input type="text" name="textTweet">
+    <input type="text" name="textTweet" >
     <input type="submit" name="submitTweet" value="Tweeter">
 </form>
 
