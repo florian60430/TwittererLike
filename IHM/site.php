@@ -1,5 +1,5 @@
 <?php
-include "structure/entete.html";
+
 include "BDD/classtweet.php";
 include "METIER/function.php";
 
@@ -44,4 +44,4 @@ if (isset($_POST['InputTweet'])) {
 
 
 <div> <a href="IHM/deconnexion.php">Deconnexion</a> </div>
-<?php include "structure/footer.html"; ?>
+<?php include "IHM/structure/footer.html"; ?>

@@ -1,3 +1,4 @@
+<?php include "IHM/structure/entete.html"?>
 <div> 
     <a href="IHM/journal.html">
         <h3>Journal des DEV </h3> 
