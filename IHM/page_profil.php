@@ -12,7 +12,9 @@ session_start();
     $user->initId($_SESSION["userId"]);
 ?>
 
-
+<head>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
 <body>
    
     <div class="mainStream" id="stream">
