@@ -3,7 +3,7 @@
         <h3>Journal des DEV </h3> 
     </a>
 <span>
-    <a href="IHM/journal.html">
+    <a href="IHM/journalTest.html">
         <h3>Journal de TEST</h3> 
     </a>
 </span>
