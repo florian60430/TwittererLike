@@ -1,11 +1,11 @@
 <?php
 include '../BDD/classUser.php';
-include '../BDD/config.php';
+include '../IHM/header.php';
 
 ?> <h2> Selection par identifiant et Password </h2>
 <?php 
 $user = new user($bdd);
-$user->connexionLogin("valou123", "123")."<br>";
+$user->connexion("valou123", "123")."<br>";
 
 echo $user->getIdUser()."<br>";
 echo $user->getIdentifiant()."<br>";
@@ -43,3 +43,26 @@ echo $user->setBirthdate("2000-25-01")."<br>";
 echo $user->setPassword("newMDP")."<br>";
 echo $user->setBio("nouvelleBio")."<br>";
 
+// TEST Inscription
+echo "<h2> TEST Inscription </h2><br>";
+$user2 = new user($bdd);
+$return = $user2->inscription("bernard93GangBang", "bernardLeTrimar93", "mdpsecure123", "2000-01-01"."<br><br>");
+
+
+
+if ($retour = 1) {
+    echo "Inscription OK";
+} else {
+    echo "Inscription NOK";
+}
+
+
+// TEST Connexion
+echo "<h2> TEST Connexion </h2><br><br>";
+$returnCo = $user2->connexion("bernard93GangBang", "mdpsecure123");
+
+if ($retourCo = 1) {
+    echo "Connexion OK";
+} else {
+    echo "Connexion NOK";
+}
