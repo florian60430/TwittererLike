@@ -7,7 +7,7 @@
     $userLogged->initId(1);
 
     if(isset($_POST['submitTweet'])){
-        $textTweet= htmlspecialchars($_POST["textTweet"]); // Empeche de mettre du code dans le formulaire 
+        $textTweet= htmlspecialchars($_POST["textTweet"]); // Empeche d'executé le code implanter dans le formulaire
         $newTweet = new tweet($bdd);
         $newTweet->setContenu($textTweet);
         $newTweet->setUser($userLogged);
