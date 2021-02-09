@@ -83,7 +83,7 @@
 
                 $requeteCount = $this->_bdd->query("SELECT COUNT(*) FROM `like` WHERE `id_tweet` = ".$this->_idtweet);
                 $nbLikes = $requeteCount->fetch();
-                $this->_nbLikes = $nbLikes[0];
+                $this->_nbLikes = $nbLikes["COUNT(*)"];
 
                 return true;
             } else {
@@ -111,10 +111,12 @@
         public function like($ObjetStranger){
             $rawData = $this->_bdd->query("SELECT COUNT(*) from `like` WHERE `id_tweet` = ".$this->_idtweet." AND `id_user` = " .$ObjetStranger->getIdUser());
             $likeExist = $rawData->fetch();
-            if($likeExist[0] >= 1){
+            if($likeExist["COUNT(*)"] >= 1){
                 $this->_bdd->query("DELETE FROM `like` WHERE `id_tweet` = ".$this->_idtweet." AND `id_user` = " .$ObjetStranger->getIdUser());
+                $this->_nbLikes -= 1;
             }else{
                 $this->_bdd->query("INSERT INTO `like` (`id_like`,`id_user`,`id_tweet`) VALUES (NULL, '".$ObjetStranger->getIdUser()."','".$this->_idtweet."')");
+                $this->_nbLikes++;
             }
         }
     }
