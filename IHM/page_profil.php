@@ -31,7 +31,7 @@ session_start();
  <h3> Bio </h3> </div>
  <?php echo $user->getBio(); ?>
 <br></br>
-
+<h3>Mes tweet : </h3>
     <div class="mainStream" id="stream">
         <?php AfficheTimeLineProfil($bdd, $user); ?>
     </div>
