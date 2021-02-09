@@ -1,14 +1,14 @@
-<div> 
-    <a href="IHM/journal.html">
-        <h3>Journal des DEV </h3> 
-    </a>
-<span>
-    <a href="IHM/journalTest.html">
-        <h3>Journal de TEST</h3> 
-    </a>
-</span>
-</div>
+<?php include "IHM/structure/entete.html" ?>
 
+<!---------
+  JOURNAUX
+---------->
+<h3>
+<div>
+    <a href="IHM/journal.html">Journal des DEV</a>
+    <a href="IHM/journalTest.html">Journal de TEST</a>
+</div>
+</h3>
 <?php session_start();
 
 include "IHM/header.php";
@@ -25,6 +25,8 @@ if (!empty($_POST['identifiantLogin']) && !empty($_POST['passwordLogin'])) {
     if ($verifUser == true) {
         $_SESSION["isConnect"] = true;
         $_SESSION["userId"] = $user->getIdUser();
+    } else {
+        echo "Identifiant ou Mot de passe incorrecte.";
     }
 }
 /*----------------
@@ -43,7 +45,7 @@ if (!empty($_POST['identifiant']) && !empty($_POST['pseudo']) && !empty($_POST['
         $_SESSION["isConnect"] = true;
         $_SESSION["userId"] = $user->getIdUser();
     } else {
-        echo "erreur lors de l'inscription";
+        echo "erreur lors de l'inscription.";
     }
 }
 

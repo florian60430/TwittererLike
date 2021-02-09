@@ -1,14 +1,15 @@
 <?php
     include '../BDD/classUser.php';
     include '../BDD/classtweet.php';
-    include '../BDD/config.php';
+    include '../IHM/header.php';
 
     $userLogged = new user($bdd);
     $userLogged->initId(1);
 
     if(isset($_POST['submitTweet'])){
+        $textTweet= htmlspecialchars($_POST["textTweet"]); // Empeche d'executé le code implanter dans le formulaire
         $newTweet = new tweet($bdd);
-        $newTweet->setContenu($_POST['textTweet']);
+        $newTweet->setContenu($textTweet);
         $newTweet->setUser($userLogged);
         $newTweet->posterTweet();
     }
@@ -33,7 +34,7 @@
 
 ?>
 <form method="POST" action="">
-    <input type="text" name="textTweet">
+    <input type="text" name="textTweet" >
     <input type="submit" name="submitTweet" value="Tweeter">
 </form>
 

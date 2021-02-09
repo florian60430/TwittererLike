@@ -21,11 +21,14 @@ function AfficheTimeLine($bdd, $ObjetUser)
             $tabOjbetTweet[$i]->like($ObjetUser);
             
         }
-        echo $tabOjbetUser[$i]->getPseudo() . " a dit " . $tabOjbetTweet[$i]->getContenu() . " a " . $tabOjbetTweet[$i]->getDate() . "<br>";
-        echo "Ce tweet a <span id='liked".$i."'>" . $tabOjbetTweet[$i]->getNumberLikes() . "<span> likes" ?>
-        <form method='POST' action=''>
+        echo "<div class='content' name='content'><div class='text' name='text'>".$tabOjbetUser[$i]->getPseudo() . " a dit " . $tabOjbetTweet[$i]->getContenu() . " a " . $tabOjbetTweet[$i]->getDate() . "<br>";
+        echo "Ce tweet a <span id='liked".$i."'>" . $tabOjbetTweet[$i]->getNumberLikes() . "</span> likes" ?>
+       </div><div class='bouton' name='bouton'>
+       <form method='POST' action=''>
             <input type='submit' id=<?php echo "btn".$i; ?> name=<?php echo $i; ?> value='Like'>
         </form>
+       </div>
+    </div>
 <?php
         $i++;
     }

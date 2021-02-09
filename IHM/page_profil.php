@@ -18,41 +18,16 @@ session_start();
     <div class="mainStream" id="stream">
         <?php AfficheTimeLineProfil($bdd, $user); ?>
     </div>
+    <?php 
 
+ echo $identifiant->getIdentifiant();
+ echo $pseudo->getPseudo();
+ echo $birthdate->getBirthdate();
+ echo $Bio->getBio();
+?>
+
+</html>
 </body>    
 
 
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<?php include "footer.html"; ?>
+<?php include "structure/footer.html"; ?>
