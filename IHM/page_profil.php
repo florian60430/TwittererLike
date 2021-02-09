@@ -1,23 +1,16 @@
-<?php include "structure/entete.html"; ?>
+<?php 
+    include "structure/entete.html"; 
+    include "../BDD/classtweet.php";
+    include "../METIER/function.php";
+?>
 
 
 <body>
-    <div class="background">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3"></div>
-                <div class="col-lg-6 profil"> 
-                    salut
-                </div>
-                <div class="col-lg-3 "></div>
-            </div>
-        </div>
-
-
-
-
-
+   
+    <div class="mainStream" id="stream">
+        <?php AfficheTimeLineProfil($bdd, $objetuser, $_SESSION["userId"]); ?>
     </div>
+
 </body>    
 
 
