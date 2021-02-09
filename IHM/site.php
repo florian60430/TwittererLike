@@ -12,7 +12,7 @@ $user->initId($_SESSION["userId"]);
 
 ?>
 <div class="left">
-  <a href="page_profil.php">Mon profil</a>
+  <a href="IHM/page_profil.php">Mon profil</a>
 </div>
 <div>
   <form action="" method="POST">
