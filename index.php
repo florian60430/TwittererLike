@@ -25,6 +25,8 @@ if (!empty($_POST['identifiantLogin']) && !empty($_POST['passwordLogin'])) {
     if ($verifUser == true) {
         $_SESSION["isConnect"] = true;
         $_SESSION["userId"] = $user->getIdUser();
+    }else{
+        echo "Identifiant ou Mot de passe incorrecte."
     }
 }
 /*----------------
@@ -43,7 +45,7 @@ if (!empty($_POST['identifiant']) && !empty($_POST['pseudo']) && !empty($_POST['
         $_SESSION["isConnect"] = true;
         $_SESSION["userId"] = $user->getIdUser();
     } else {
-        echo "erreur lors de l'inscription";
+        echo "erreur lors de l'inscription.";
     }
 }
 
