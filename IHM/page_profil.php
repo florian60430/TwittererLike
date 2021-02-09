@@ -25,34 +25,4 @@ session_start();
 </html>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<?php include "footer.html"; ?>
+<?php include "structure/footer.html"; ?>
