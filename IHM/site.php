@@ -1,5 +1,5 @@
 <?php
-include "structure/entete.html";
+include "IHM/structure/entete.html";
 include "BDD/classtweet.php";
 include "METIER/function.php";
 
@@ -11,6 +11,9 @@ $user = new user($bdd);
 $user->initId($_SESSION["userId"]);
 
 ?>
+<div class="left">
+  <a href="page_profil.php">Mon profil</a>
+</div>
 <div>
   <form action="" method="POST">
     <input id="tweet" type="text" name="InputTweet" size="50px" placeholder="What's happening ?">

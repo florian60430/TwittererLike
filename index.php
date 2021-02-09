@@ -1,9 +1,14 @@
-<div> <a href="IHM/journal.html">
-        <h3>Journal des DEV </h3>
-    </a></div>
-<div> <a href="IHM/page_profil.php">
-        <h3>page de profil </h3>
-    </a></div>
+<div> 
+    <a href="IHM/journal.html">
+        <h3>Journal des DEV </h3> 
+    </a>
+<span>
+    <a href="IHM/journalTest.html">
+        <h3>Journal de TEST</h3> 
+    </a>
+</span>
+</div>
+
 <?php session_start();
 
 include "IHM/header.php";
