@@ -19,7 +19,6 @@ $user->initId($_SESSION["userId"]);
 </div>
 
 
-
 <?php
 /*-------------
   POSTER TWEET

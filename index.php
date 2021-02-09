@@ -1,7 +1,9 @@
 <div> <a href="IHM/journal.html">
         <h3>Journal des DEV </h3>
     </a></div>
-
+<div> <a href="IHM/page_profil.php">
+        <h3>page de profil </h3>
+    </a></div>
 <?php session_start();
 
 include "IHM/header.php";

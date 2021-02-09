@@ -30,10 +30,10 @@ function AfficheTimeLine($bdd, $ObjetUser)
         $i++;
     }
 }
-function AfficheTimeLineProfil($bdd, $ObjetUser,$user)
+function AfficheTimeLineProfil($bdd, $ObjetUser)
 {
 
-    $data = $bdd->query("SELECT `id_tweet` FROM `tweet` WHERE `identifiant` = '.$user.'");
+    $data = $bdd->query("SELECT `id_tweet` FROM `tweet` WHERE `id_user` = ".$ObjetUser->getIdUser());
     $i = 0;
 
     
