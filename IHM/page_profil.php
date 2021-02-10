@@ -14,7 +14,9 @@ session_start();
     $user->initId($_SESSION["userId"]);
 ?>
 
-
+<head>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
 <body>
    <div>
  <h3>  Identifiant </h3> </div>
@@ -29,7 +31,7 @@ session_start();
  <h3> Bio </h3> </div>
  <?php echo $user->getBio(); ?>
 <br></br>
-
+<h3>Mes tweet : </h3>
     <div class="mainStream" id="stream">
         <?php AfficheTimeLineProfil($bdd, $user); ?>
     </div>
