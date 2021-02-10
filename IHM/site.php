@@ -31,9 +31,11 @@ $user->initId($_SESSION["userId"]);
 --------------*/
 
 if (isset($_POST['InputTweet'])) {
-  $textTweet = htmlspecialchars($_POST["InputTweet"]); // Empeche d'executé le code implanter dans le formulaire
+
+  $textTweet = htmlspecialchars($_POST["InputTweet"]);// Empeche d'executé le code implanter dans le formulaire
+  $content = addslashes($textTweet); // On peut mettre des guillet
   $tweet = new tweet($bdd);
-  $tweet->setContenu($textTweet);
+  $tweet->setContenu($content);
   $tweet->setUser($user);
   $tweet->posterTweet();
 }
