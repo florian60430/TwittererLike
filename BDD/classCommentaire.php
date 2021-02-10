@@ -4,9 +4,11 @@
         private $_idCommentaire;
         private $_contenu;
         private $_user;
-        private $_tweet;
+        private $_tweetARepondre;
+        private $_commentaireARepondre;
         private $_bdd;
         private $_nbLikes;
+        private $_nbCommentaires;
 
         public function __construct($bdd)
         {
@@ -33,8 +35,16 @@
             return $this->_nbLikes;
         }
 
-        public function getTweet(){
-            return $this->_tweet;
+        public function getNumberCommentaires(){
+            return $this->_nbCommentaires;
+        }
+
+        public function getTweetARepondre(){
+            return $this->_tweetARepondre;
+        }
+
+        public function getCommentaireARepondre(){
+            return $this->_commentaireARepondre;
         }
 
         /*----------------
@@ -53,8 +63,12 @@
             $this->_user = $newUser;
         }
 
-        public function setTweet($newTweet){
-            $this->_tweet = $newTweet;
+        public function setTweetARepondre($newTweetARepondre){
+            $this->_tweetARepondre = $newTweetARepondre;
+        }
+
+        public function setCommentaireARepondre($newCommentaireARepondre){
+            $this->_commentaireARepondre = $newCommentaireARepondre;
         }
         
         /* -----------------
@@ -69,8 +83,11 @@
                 $this->_user = new user($this->_bdd);
                 $this->_user->initId($commentaireData['id_user']);
 
-                $this->_tweet = new tweet($this->_bdd);
-                $this->_tweet->init($commentaireData['id_tweet']);
+                $this->_tweetARepondre = new tweet($this->_bdd);
+                $this->_tweetARepondre->init($commentaireData['id_tweet']);
+
+                $this->_commentaireARepondre = new commentaire($this->_bdd);
+                $this->_commentaireARepondre->init($commentaireData['id_commente']);
 
                 $this->_contenu = $commentaireData['contenu'];
                 $this->_date = $commentaireData['date'];
@@ -79,6 +96,10 @@
                 $requeteCount = $this->_bdd->query("SELECT COUNT(*) FROM `like` WHERE `id_commentaire` = ".$this->_idCommentaire);
                 $nbLikes = $requeteCount->fetch();
                 $this->_nbLikes = $nbLikes["COUNT(*)"];
+                
+                $requeteCountCom = $this->_bdd->query("SELECT COUNT(*) FROM `commentaire` WHERE `id_tweet` = ".$this->_idtweet);
+                $nbCommentaires = $requeteCountCom->fetch();
+                $this->_nbCommentaires = $nbCommentaires["COUNT(*)"];
 
                 return true;
             } else {
@@ -86,14 +107,22 @@
             }
         }
 
-        
         /*---------------------
            Methode Commenter
         ----------------------*/
 
-        public function commenter(){
-            if($this->_contenu != NULL && $this->_user->getIdUser() != NULL && $this->_tweet->getIdtweet() != NULL){
-               $this->_bdd->query("INSERT INTO `commentaire`(`id_commentaire`, `contenu`, `id_user`, `id_tweet`, `date`) VALUES (NULL,'".$this->_contenu."','".$this->_user->getIdUser()."', '".$this->_tweet->getIdtweet()."',CURRENT_TIMESTAMP)");
+        public function commenterTweet(){
+            if($this->_contenu != NULL && $this->_user->getIdUser() != NULL && $this->_tweetARepondre->getIdtweet() != NULL){
+               $this->_bdd->query("INSERT INTO `commentaire`(`id_commentaire`, `contenu`, `id_user`, `id_tweet`, `id_commente`, `date`) VALUES (NULL,'".$this->_contenu."','".$this->_user->getIdUser()."', '".$this->_tweetARepondre->getIdtweet()."',NULL,CURRENT_TIMESTAMP)");
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        public function commenterCommentaire(){
+            if($this->_contenu != NULL && $this->_user->getIdUser() != NULL && $this->_commentaireARepondre->getIdCommentaire() != NULL){
+               $this->_bdd->query("INSERT INTO `commentaire`(`id_commentaire`, `contenu`, `id_user`, `id_tweet`, `id_commente`, `date`) VALUES (NULL,'".$this->_contenu."','".$this->_user->getIdUser()."', NULL,'".$this->_commentaireARepondre->getIdCommentaire()."',CURRENT_TIMESTAMP)");
                 return true;
             } else {
                 return false;
