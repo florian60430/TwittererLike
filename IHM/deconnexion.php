@@ -8,6 +8,6 @@ session_destroy();
 
 vous êtes déconnecté
 
-<a href="../index.php"> acceuil </a>
+<a href="../index.php"> accueil </a>
 
 

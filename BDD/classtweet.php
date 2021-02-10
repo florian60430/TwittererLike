@@ -8,6 +8,8 @@
         private $_user;
         private $_nbLikes;
         private $_bdd;
+        private $_nbCommentaires;
+        private $_tweetARepondre;
     
         function __construct($bdd) {
             $this->_bdd = $bdd;
@@ -40,6 +42,14 @@
         public function getNumberLikes(){
             return $this->_nbLikes;
         }
+
+        public function getNumberCommentaires(){
+            return $this->_nbCommentaires;
+        }
+
+        public function getTweetARepondre(){
+            return $this->_tweetARepondre;
+        }
         
         /*----------------
             Method Set
@@ -53,6 +63,11 @@
         public function setUser($newUser) 
         {
             return $this->_user = $newUser;
+        }
+        
+        public function setTweetARepondre($newTweetARepondre) 
+        {
+            return $this->_tweetARepondre = $newTweetARepondre;
         }
         
         public function setContenu($newContenu) 
@@ -77,6 +92,10 @@
                 $userData = $rawData->fetch();
                 $this->_user = new user($this->_bdd);
                 $this->_user->initId($userData['id_user']);
+
+                $this->_tweetARepondre = new tweet($this->_bdd);
+                $this->_tweetARepondre->init($userData['id_tweetARepondre']);
+
                 $this->_contenu = $userData['contenu'];
                 $this->_date = $userData['date'];
                 $this->_idtweet = $userData['id_tweet'];
@@ -84,6 +103,12 @@
                 $requeteCount = $this->_bdd->query("SELECT COUNT(*) FROM `like` WHERE `id_tweet` = ".$this->_idtweet);
                 $nbLikes = $requeteCount->fetch();
                 $this->_nbLikes = $nbLikes["COUNT(*)"];
+
+                $requeteCountCom = $this->_bdd->query("SELECT COUNT(*) FROM `tweet` WHERE `id_tweetARepondre` = ".$this->_idtweet);
+                $nbCommentaires = $requeteCountCom->fetch();
+                $this->_nbCommentaires = $nbCommentaires["COUNT(*)"];
+
+
 
                 return true;
             } else {
@@ -97,7 +122,16 @@
 
         public function posterTweet(){
             if($this->_contenu != NULL && $this->_user->getIdUser() != NULL){
-               $this->_bdd->query("INSERT INTO `tweet`(`id_tweet`, `contenu`, `id_user`, `date`) VALUES (NULL,'".$this->_contenu."','".$this->_user->getIdUser()."',CURRENT_TIMESTAMP)");
+               $this->_bdd->query("INSERT INTO `tweet`(`id_tweet`, `contenu`, `id_user`, `date`, `id_tweetARepondre`) VALUES (NULL,'".$this->_contenu."','".$this->_user->getIdUser()."',CURRENT_TIMESTAMP,NULL)");
+                return true;
+            } else {
+                return false;
+            }
+        }
+        
+        public function commenter(){
+            if($this->_contenu != NULL && $this->_user->getIdUser() != NULL && $this->_tweetARepondre->getIdtweet() != NULL){
+               $this->_bdd->query("INSERT INTO `tweet`(`id_tweet`, `contenu`, `id_user`, `date`, `id_tweetARepondre`) VALUES (NULL,'".$this->_contenu."','".$this->_user->getIdUser()."',CURRENT_TIMESTAMP, '".$this->_tweetARepondre->getIdtweet()."')");
                 return true;
             } else {
                 return false;
