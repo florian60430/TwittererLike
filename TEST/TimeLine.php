@@ -14,7 +14,7 @@
         $newTweet->posterTweet();
     }
 
-    $rawId = $bdd->query("SELECT `id_tweet` FROM `tweet` WHERE `id_tweetARepondre` = NULL ORDER BY `date` DESC");
+    $rawId = $bdd->query("SELECT `id_tweet` FROM `tweet` WHERE `id_tweetARepondre` IS NULL ORDER BY `date` DESC");
     $i = 0;
     while($pureId = $rawId->fetch()){
         ${"tweet".$i} = new tweet($bdd);

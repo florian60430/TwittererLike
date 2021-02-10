@@ -86,7 +86,8 @@
         
         public function init($idTweet){
             
-            $rawData = $this->_bdd->query("SELECT * from `tweet` WHERE `id_tweet` = ".$idTweet.""); //Requete qui affiche les dernier tweet
+            $rawData = $this->_bdd->prepare("SELECT * from `tweet` WHERE `id_tweet` = ?"); //Requete qui affiche les dernier tweet
+            $rawData->execute(array($idTweet));
             $tweetExist = $rawData->rowCount();
             if($tweetExist == 1){ //Test si la requête renvoie un résultat
                 $userData = $rawData->fetch();
