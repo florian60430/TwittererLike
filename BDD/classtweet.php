@@ -8,6 +8,7 @@
         private $_user;
         private $_nbLikes;
         private $_bdd;
+        private $_nbCommentaires;
     
         function __construct($bdd) {
             $this->_bdd = $bdd;
@@ -39,6 +40,10 @@
         
         public function getNumberLikes(){
             return $this->_nbLikes;
+        }
+
+        public function getNumberCommentaires(){
+            return $this->_nbCommentaires;
         }
         
         /*----------------
@@ -85,6 +90,10 @@
                 $nbLikes = $requeteCount->fetch();
                 $this->_nbLikes = $nbLikes["COUNT(*)"];
 
+                $requeteCountCom = $this->_bdd->query("SELECT COUNT(*) FROM `commentaire` WHERE `id_tweet` = ".$this->_idtweet);
+                $nbCommentaires = $requeteCountCom->fetch();
+                $this->_nbCommentaires = $nbCommentaires["COUNT(*)"];
+
                 return true;
             } else {
                 return false;
@@ -115,7 +124,7 @@
                 $this->_bdd->query("DELETE FROM `like` WHERE `id_tweet` = ".$this->_idtweet." AND `id_user` = " .$ObjetStranger->getIdUser());
                 $this->_nbLikes -= 1;
             }else{
-                $this->_bdd->query("INSERT INTO `like` (`id_like`,`id_user`,`id_tweet`) VALUES (NULL, '".$ObjetStranger->getIdUser()."','".$this->_idtweet."')");
+                $this->_bdd->query("INSERT INTO `like` (`id_like`,`id_user`,`id_tweet`,`id_commentaire`) VALUES (NULL, '".$ObjetStranger->getIdUser()."','".$this->_idtweet."', NULL)");
                 $this->_nbLikes++;
             }
         }
