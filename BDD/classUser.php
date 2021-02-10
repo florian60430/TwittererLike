@@ -130,18 +130,21 @@ class user {
 
     public function inscription($identifiant, $pseudo, $password, $birthdate){
             
-        $rawData = $this->_bdd->query("SELECT * FROM user WHERE `identifiant` = ".$identifiant.""); //Requete qui sélectionne l'utilisateur par son identifiant et son mot de passe
+        $rawData = $this->_bdd->prepare("SELECT * FROM user WHERE `identifiant` = ?"); //Requete qui sélectionne l'utilisateur par son identifiant et son mot de passe
+        $rawData->execute(array($identifiant));
         $identifiantExist = $rawData->rowCount();
         if($identifiantExist == 0){
             $verifRequest = $this->_bdd->query("INSERT INTO `user`(`id_user`, `identifiant`, `pseudo`, `password`, `birthdate`, `bio`) VALUES (NULL,'".$identifiant."','".$pseudo."','".$password."','".$birthdate."', ' ')");
             // Manque sécurité, on peut aujouter 2x le meme user -> FIXED A TESTER
-        }
-        if ($verifRequest)
-        {
-            return true;
-        
+            if ($verifRequest)
+            {
+                return true;
+            
+            } else {
+            
+                return false;
+            }
         } else {
-        
             return false;
         }
     }

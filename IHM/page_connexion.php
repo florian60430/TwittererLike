@@ -23,6 +23,7 @@
     </form>
 </body>
 
+
 <?php include "structure/footer.html"; ?>
 
 </html>
