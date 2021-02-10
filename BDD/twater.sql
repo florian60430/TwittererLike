@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost:3306
--- Généré le :  Mer 10 Février 2021 à 04:24
+-- Généré le :  Mer 10 Février 2021 à 04:55
 -- Version du serveur :  10.1.47-MariaDB-0+deb9u1
 -- Version de PHP :  7.0.33-0+deb9u10
 
@@ -55,15 +55,16 @@ CREATE TABLE `follow` (
 CREATE TABLE `like` (
   `id_like` int(11) NOT NULL,
   `id_user` int(50) NOT NULL,
-  `id_tweet` int(50) NOT NULL
+  `id_tweet` int(50) DEFAULT NULL,
+  `id_commentaire` int(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `like`
 --
 
-INSERT INTO `like` (`id_like`, `id_user`, `id_tweet`) VALUES
-(4, 5, 8);
+INSERT INTO `like` (`id_like`, `id_user`, `id_tweet`, `id_commentaire`) VALUES
+(4, 5, 8, NULL);
 
 -- --------------------------------------------------------
 
@@ -94,7 +95,12 @@ INSERT INTO `tweet` (`id_tweet`, `contenu`, `id_user`, `date`) VALUES
 (9, 'fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh ', 2, '2021-02-10 04:13:23.000000'),
 (10, 'fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh ', 2, '2021-02-10 04:14:04.000000'),
 (11, 'yolo', 2, '2021-02-10 04:19:06.000000'),
-(12, 'tt', 20, '2021-02-10 04:24:31.000000');
+(12, 'tt', 20, '2021-02-10 04:24:31.000000'),
+(13, 'bitch dab', 5, '2021-02-10 04:26:30.000000'),
+(14, 'd**f/sdg*ffr*-reagvfd          *fsdsqd-* f**              f*ze *f*ef*aefr', 5, '2021-02-10 04:26:49.000000'),
+(15, 'd**f/sdg*ffr*-reagvfd          *fsdsqd-* f**              f*ze *f*ef*aefr', 5, '2021-02-10 04:27:32.000000'),
+(16, 'd**f/sdg*ffr*-reagvfd          *fsdsqd-* f**              f*ze *f*ef*aefr', 5, '2021-02-10 04:38:14.000000'),
+(17, 'ea', 26, '2021-02-10 04:43:41.000000');
 
 -- --------------------------------------------------------
 
@@ -123,7 +129,10 @@ INSERT INTO `user` (`id_user`, `identifiant`, `pseudo`, `password`, `birthdate`,
 (14, 'JeSuisNouvea', 'JeSuisNouvea', '123456', '2021-02-09', ' '),
 (15, 'JeSuisNouvea', 'JeSuisNouvea', '123456', '2021-02-09', ' '),
 (16, 'Marco', 'Pade', '0000', '2001-09-20', ' '),
-(20, 'lololo', 'lolola', '123456', '2021-02-10', ' ');
+(20, 'lololo', 'lolola', '123456', '2021-02-10', ' '),
+(27, 'azerty', 'jetest', 'azeRty156+*-', '2021-02-02', ' '),
+(30, 'azer_ty', 'jetest', 'azER12*+', '2021-02-03', ' '),
+(31, 'Apo_80', 'jetest', 'AP0l/nea', '2021-02-09', ' ');
 
 --
 -- Index pour les tables exportées
@@ -177,17 +186,17 @@ ALTER TABLE `follow`
 -- AUTO_INCREMENT pour la table `like`
 --
 ALTER TABLE `like`
-  MODIFY `id_like` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_like` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT pour la table `tweet`
 --
 ALTER TABLE `tweet`
-  MODIFY `id_tweet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_tweet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
