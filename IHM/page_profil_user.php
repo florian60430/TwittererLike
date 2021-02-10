@@ -8,19 +8,16 @@
     include "../BDD/classUser.php";  
     
 
-session_start();
-
-    $user = new user($bdd);
-    $user->initId($_SESSION["userId"]);
+echo "coucou";
 ?>
 
-<head>
+    <<head>
     <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
-   <div>
+<div>
  <h3>  Identifiant </h3> </div>
- <?php echo $user->getIdentifiant();?>
+ <?php echo $profiluser->getUser();?>
  <div>
  <h3>  Pseudo </h3> </div>
  <?php echo $user->getPseudo();?>
@@ -35,9 +32,3 @@ session_start();
     <div class="mainStream" id="stream">
         <?php AfficheTimeLineProfil($bdd, $user); ?>
     </div>
-   
-
-</html>
-</body>    
-
-<?php include "structure/footer.html"; ?>
