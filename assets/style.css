@@ -5,13 +5,33 @@
     height: max-content;
     max-height: 300px;
     margin-top: 10px;
-    
 }
 .text{
-    margin: 15px;  
+    max-width: max-content;
+    max-height: max-content;
+    margin: 15px;
+    background-color: blueviolet;
+    overflow: auto;
 }
 .bouton{  
-    margin-top: 30px;
-    margin-bottom: 5px;
-    margin-left: 10px;
+    margin: 5px;
+    background-color: brown;
+}
+.user{
+    margin: 5px;
+    background-color: cornflowerblue;
+}
+.btn{
+    margin: 5px;
+    text-align: center;
+    background: whitesmoke;
+    width: max-content;
+    height: 25px;
+    outline: none;
+    color: rgb(0, 0, 0);
+    border-radius: 20px;
+    transition: 0.5s;   
+}
+.btn:hover{
+    height: 30px;
 }

@@ -21,11 +21,13 @@ function AfficheTimeLine($bdd, $ObjetUser)
             $tabOjbetTweet[$i]->like($ObjetUser);
             
         }
-        echo "<div class='content' name='content'><div class='text' name='text'>".$tabOjbetUser[$i]->getPseudo() . " a dit " . $tabOjbetTweet[$i]->getContenu() . " a " . $tabOjbetTweet[$i]->getDate() . "<br>";
-        echo "Ce tweet a <span id='liked".$i."'>" . $tabOjbetTweet[$i]->getNumberLikes() . "</span> likes" ?>
+        echo "<div class='content' name='content'><div class='user' name='user'>".$tabOjbetUser[$i]->getPseudo() . " a dit : <p><div class ='text' name='text'>" . $tabOjbetTweet[$i]->getContenu() . " </div></p><p> Date du post : " . $tabOjbetTweet[$i]->getDate() . "</p><br>";
+         ?>
        </div><div class='bouton' name='bouton'>
        <form method='POST' action=''>
-            <input type='submit' id=<?php echo "btn".$i; ?> name=<?php echo $i; ?> value='Like'>
+            <input type='submit' class="btn" id=<?php echo "btn".$i; ?> name=<?php echo $i; ?> value='Like'> <?php echo " <span id='liked". $i ."'>" . $tabOjbetTweet[$i]->getNumberLikes() . " likes "  ?>
+            <input type='submit' class="btn" id=<?php echo "btn".$i; ?> name=<?php echo $i; ?> value='Commenter'>
+            <input type='submit' class="btn" id=<?php echo "btn".$i; ?> name=<?php echo $i; ?> value='Retweeter'>
         </form>
        </div>
     </div>
@@ -36,10 +38,12 @@ function AfficheTimeLine($bdd, $ObjetUser)
 function AfficheTimeLineProfil($bdd, $ObjetUser)
 {
 
-    $data = $bdd->query("SELECT `id_tweet` FROM `tweet` WHERE `id_user` = ".$ObjetUser->getIdUser());
+    $data = $bdd->query("SELECT `id_tweet` FROM `tweet` WHERE `id_user` = ".$ObjetUser->getIdUser()." ORDER BY `date` DESC ");
+    if ($data->rowcount() == 0){
+        echo "vous n'avez pas de twat.";
+    }
     $i = 0;
 
-    
     while ($tabId = $data->fetch()) {
         $tabOjbetTweet[$i] = new tweet($bdd);
         $tabOjbetTweet[$i]->init($tabId['id_tweet']);
@@ -48,11 +52,14 @@ function AfficheTimeLineProfil($bdd, $ObjetUser)
         if (isset($_POST[$i])) {
             $tabOjbetTweet[$i]->like($ObjetUser);
         }
-        echo $tabOjbetUser[$i]->getPseudo() . " a dit " . $tabOjbetTweet[$i]->getContenu() . " a " . $tabOjbetTweet[$i]->getDate() . "<br>";
-        echo "Ce tweet a " . $tabOjbetTweet[$i]->getNumberLikes() . " likes<br>" ?>
-        <form method='POST' action=''>
-            <input type='submit' name=<?php echo $i; ?> value='Like'>
+        echo "<div class='content' name='content'><div class='user' name='user'>".$tabOjbetUser[$i]->getPseudo() . " a dit : <p><div class ='text' name='text'>" . $tabOjbetTweet[$i]->getContenu() . " </div></p><p> Date du post : " . $tabOjbetTweet[$i]->getDate() . "</p><br>";
+         ?>
+       </div><div class='bouton' name='bouton'>
+       <form method='POST' action=''>
+            <input type='submit' id=<?php echo "btn".$i; ?> name=<?php echo $i; ?> value='Like' <?php echo " <span id='liked". $i ."'>" . $tabOjbetTweet[$i]->getNumberLikes() . " likes" ?>
         </form>
+       </div>
+    </div>
 <?php
         $i++;
     }
