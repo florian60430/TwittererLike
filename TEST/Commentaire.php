@@ -19,7 +19,7 @@
     echo $tweet->getContenu()."<br>";
     echo $tweet->getUser()->getPseudo()."<br>";
     echo "Reponse<br>";
-    $reponse->init(1);
+    $reponse->init(22);
     echo $reponse->getContenu();
     echo $reponse->getUser()->getPseudo();
 
