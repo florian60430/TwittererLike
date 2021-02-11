@@ -129,24 +129,30 @@ class user {
     ----------------------*/
 
     public function inscription($identifiant, $pseudo, $password, $birthdate){
+        
+        if(preg_match('#^[a-zA-Z0-9]*$#', $_POST['identifiant']))
+        {
+          if(preg_match('#^[a-zA-Z0-9!:;,?()%@+-_*/=]*$#', $_POST['password'])) 
+            {     
+                $verifRequest = $this->_bdd->query("INSERT INTO `user`(`id_user`, `identifiant`, `pseudo`, `password`, `birthdate`, `bio`) VALUES (NULL,'".$identifiant."','".$pseudo."','".$password."','".$birthdate."', ' ')");
+                    // Manque sécurité, on peut aujouter 2x le meme user
+                if ($verifRequest)
+                {
+                 return true;
             
-        $rawData = $this->_bdd->prepare("SELECT * FROM user WHERE `identifiant` = ?"); //Requete qui sélectionne l'utilisateur par son identifiant et son mot de passe
-        $rawData->execute(array($identifiant));
-        $identifiantExist = $rawData->rowCount();
-        if($identifiantExist == 0){
-            $verifRequest = $this->_bdd->query("INSERT INTO `user`(`id_user`, `identifiant`, `pseudo`, `password`, `birthdate`, `bio`) VALUES (NULL,'".$identifiant."','".$pseudo."','".$password."','".$birthdate."', ' ')");
-            // Manque sécurité, on peut aujouter 2x le meme user -> FIXED A TESTER
-            if ($verifRequest)
-            {
-                return true;
-            
-            } else {
-            
+                } else {
                 return false;
-            }
-        } else {
+                }
+            } 
+          else { 
+            echo "Le mot de passe n'est pas correct"; 
+            return false;
+          }  
+        }else{
+            echo "L'identifiant n'est pas correct \n"; 
             return false;
         }
+         
     }
 
     /*------------------

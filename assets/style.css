@@ -1,6 +1,5 @@
 .content{
-    border-style: solid;
-    border-color: black;
+    border: 5px solid #ff9900;
     width: 500px;
     height: max-content;
     max-height: 300px;
@@ -34,4 +33,43 @@
 }
 .btn:hover{
     height: 30px;
+}
+
+.set-bg {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+    background-image: url("../assets/image/tuning.jpg");
+    border-bottom: 10px solid #f9cb9c;
+}
+
+.username {
+    color: white;
+    font-size: 30px;
+    text-align: center;
+    padding: 110px;
+
+}
+
+.center-element{
+    text-align: center;
+    margin-top : -100px ;
+}
+
+.circle {
+
+    background-image: url("../assets/image/valou.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+    border-radius:50%;
+    border:7px solid #f9cb9c; 
+    display: inline-block;
+    padding: 100px;
+
+}
+
+.biographie{
+    padding: 30px;
+    text-align: 18px;
 }
