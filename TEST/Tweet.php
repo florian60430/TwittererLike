@@ -15,7 +15,7 @@ $tweet->init(21) . "<br>";
 
 // Classe user
 $iDuser = new user($bdd);
-$iDuser->initId(1);
+$iDuser->initId(2);
 
 
 
@@ -28,14 +28,16 @@ echo "PSEUDO USER:  <br>" . $tweet->getUser()->getPseudo() . "<br><br>";
 echo "IDENTIFIANT USER: <br> " . $tweet->getUser()->getIdentifiant() . "<br><br>";
 echo "NUMBER LIKE:  <br>" . $tweet->getNumberLikes() . "<br><br>";
 // TEST LIKERS
-echo "PERSONNE LIKE:  <br><br>" ;
+echo "PERSONNE LIKE:  <br><br>";
 echo  $tweet->likers(21);
 
 // Formulaire pour liker
 ?>
+
 <form action="" method="POST">
     <input type="submit" name="like" value="LIKE">
 </form>
+
 <?php
 // Traitement like
 if (isset($_POST["like"])) {
