@@ -20,7 +20,7 @@ function AfficheTimeLine($bdd, $ObjetUser)
             $tabOjbetTweet[$i]->like($ObjetUser);
         }
         $tabOjbetTweet[0]->CalculDate();
-        echo "<div class='tweet' name='tweet".$i."'><div class='user' name='user'> <a href='IHM/page_profil_user.php'>" . $tabOjbetUser[$i]->getPseudo() . "</a> a dit : <p><div class ='text' name='text'>" . $tabOjbetTweet[$i]->getContenu() . " </div></p><p> Date du post : " . $tabOjbetTweet[$i]->getDate() . "</p><br>";
+        echo "<div class='tweet' name='tweet".$i."'><div class='user' name='user'> <a href='IHM/page_profil_user.php?id=".$tabOjbetUser[$i]->getIdUser()."'>" . $tabOjbetUser[$i]->getPseudo() . "</a> a dit : <p><div class ='text' name='text'>" . $tabOjbetTweet[$i]->getContenu() . " </div></p><p> Date du post : " . $tabOjbetTweet[$i]->getDate() . "</p><br>";
 ?>
         </div>
             <div class='bouton' name='bouton'>
