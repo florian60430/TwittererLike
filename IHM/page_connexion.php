@@ -1,7 +1,4 @@
-<head>
-  <LINK rel="stylesheet" type="text/css" href="page_connexion_css.css">
-  <LINK rel="stylesheet" type="text/css" href="bootstrap-4.5.3-dist/css/bootstrap.css">
-</head>
+
 
 <body>
 
@@ -16,76 +13,57 @@
   <!--------------------- 
     FORMULAIRE CONNEXION
   ---------------------->
-      <form id="login" method="POST" action="">
-        <div class="container">
-            <div class="zone_connexion" align="center">
-              <div class="row">
-                <div class="espacement">
-                  <div class="col-12" align="center"><input class="bouton" type="text" placeholder="identifiant" name="identifiantLogin" required></div>
+<div class="container">
+  <div class="row">
+    <div class="col-12" align="center">
+      <div id="titre">
+        <h1>Twatter</h1>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+            <div class="col-12" align="center">
+                <div id="under_titre">
+                    <h2>Le meilleur reseau social de 1999</h2>
                 </div>
-              </div>
-              <div class="row">
-                <div class="espacement">
-                  <div class="col-12" align="center"><input type="password" placeholder="Mot de passe" name="passwordLogin" required></div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="espacement">
-                  <div class="col-12" align="center"><button class="button" type="submit">Se Connecter</button></div>
-                </div>
-              </div>
             </div>
         </div>
-      </form>
+  <div class="row">
+    <div id="logo">
+      
+    </div>
+  </div>
 
-  <!------------------------- 
+  <div class="row">
+    <div id="bouton_co_ins">
+      <div class="col-12" align="center"><button class="submit-btn_co" type="submit">Se Connecter</button></div>
+      <div class="col-12" align="center"><button class="submit-btn_co" type="submit">S'inscrire</button></div>
+    </div>
+  </div>
+
+<form id="login" method="POST" action="">
+    <div class="zone_connexion" align="center">
+      <div class="col-12" align="center"><input type="text" placeholder="identifiant" name="identifiantLogin" required></div>
+      <div class="col-12" align="center"><input type="password" placeholder="Mot de passe" name="passwordLogin" required></div>
+      <div class="col-12" align="center"><button class="button" type="submit">Se Connecter</button></div>
+    </div>
+  </form>
+
+ ------------------------ 
     FORMULAIRE INSCRIPTION
-  -------------------------->
-      <form id="register" method="POST" action="">
-        <div class="container">
-          <div class="zone_connexion" align="center">
-            <div class="row">
-              <div class="espacement">
-                <div class="col-12" align="center"><input type="text" placeholder="Identifiant" name="identifiant" required></div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="espacement">
-                <div class="col-12" align="center"><input type="text" placeholder="Pseudo" name="pseudo" required></div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="espacement">
-                <div class="col-12" align="center"><input type="password" placeholder="Mot de passe" name="password" required></div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="espacement">
-                <div class="col-12" align="center"><input type="date" placeholder="date de naissance" name="birthdate" required></div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="espacement">
-                <div class="col-12" align="center"><button class="button" type="submit">S'inscrire</button></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </form>
+  -------------------------
+  <form id="register" method="POST" action="">
+    <div class="zone_connexion" align="center">
+      <div class="col-12" align="center"><input type="text" placeholder="Identifiant" name="identifiant" required></div>
+      <div class="col-12" align="center"><input type="text" placeholder="Pseudo" name="pseudo" required></div>
+      <div class="col-12" align="center"><input type="password" placeholder="Mot de passe" name="password" required></div>
+      <div class="col-12" align="center"><input type="date" placeholder="date de naissance" name="birthdate" required></div>
+      <div class="col-12" align="center"><button class="button" type="submit">S'inscrire</button></div>
+    </div>
+  </form>
+  
+</div>
 
-<<<<<<< HEAD
-=======
-<!------------------------- 
-  FORMULAIRE INSCRIPTION
--------------------------->
-    <form id="register" method="POST" action="">
-        <input type="text" placeholder="Identifiant" name="identifiant" minlength="6" maxlength="12" required>
-        <input type="text" placeholder="Pseudo" name="pseudo" required>
-        <input type="password" placeholder="Mot de passe" name="password" minlength="6" maxlength="15" required>
-        <input type="date" placeholder="date de naissance" name="birthdate" required>
-        <button type="submit">S'inscrire</button>
-    </form>
->>>>>>> 9a28d927095c12f0ecffdb6c3c213e7e75de2916
 </body>
 
 
