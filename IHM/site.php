@@ -17,14 +17,6 @@ $user->initId($_SESSION["userId"]);
  ------------------------> 
 <a href="IHM/deconnexion.php">Deconnexion</a>
 <a href="IHM/page_profil.php">Mon profil</a>
-<div>
-  <form action="" method="POST">
-    <input id="tweet" type="text" name="InputTweet" size="50px" placeholder="What's happening ?">
-    <button name="btnSubmit" id="submit">Envoyer</button>
-  </form>
-</div>
-
-
 <?php
 /*-------------
   POSTER TWEET
@@ -47,19 +39,24 @@ if (isset($_POST['InputTweet'])) {
   salut
 </div>
 <div class="sidebar col-sm-12 col-md-12 col-lg-2 col-xl-2">
-    <div class="col-sm-12 col-md-12 col-lg-2 col-xl-2" align="center">
-        <button type="submit" class="submit-btn">Nouveaux post</button>  
-    </div>
-    <div class="col-sm-12 col-md-12 col-lg-2 col-xl-2" align="center">
+    <div  align="center">
         <button type="submit" class="submit-btn">Profil</button>  
     </div>
-    <div class="col-sm-12 col-md-12 col-lg-2 col-xl-2" align="center">
+    <div align="center">
         <button type="submit" class="submit-btn">Paramètres</button>  
     </div>
-    <div class="col-sm-12 col-md-12 col-lg-2 col-xl-2" align="center">
+    <div  align="center">
         <button type="submit" class="deco-btn">Deconnexion</button>  
     </div>
 </div>
+
+<div id="poster">
+  <form action="" method="POST">
+    <input class="input_tweet" type="text" name="InputTweet" placeholder="What's happening ?">
+    <button name="btnSubmit" class="btn_tweet">Envoyer</button>
+  </form>
+</div>
+
 <div class="mainStream" id="stream">
   <?php AfficheTimeLine($bdd, $user); ?>
 </div>
