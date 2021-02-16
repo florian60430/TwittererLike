@@ -114,9 +114,7 @@ body{
 .deco-btn:hover{
     background: transparent;
 }
-.btn:hover{
-    height: 30px;
-}
+
 
 .set-bg {
     background-repeat: no-repeat;
