@@ -110,7 +110,7 @@
 }
 
 body{
-    background-image: url(image/background_connexion.png);
+    background-image: url(image/simple-background-backgrounds-passion-simple-1-5c9b95c5ee7db.png);
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
@@ -209,7 +209,7 @@ h2{
     outline: none;
     border: solid;
     border-color: orange;
-   margin: 25px auto;
+    margin: 25px auto;
     transition: 0.5s;
 }
 
