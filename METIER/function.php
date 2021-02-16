@@ -66,4 +66,5 @@ function AfficheTimeLineProfil($bdd, $ObjetUser)
         $i++;
     }
 }
+
 ?>

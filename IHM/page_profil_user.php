@@ -2,19 +2,28 @@
     include "structure/entete.html"; 
     include "../BDD/classtweet.php";
     include "../IHM/header.php";
-   // include "../BDD/classUser.php";  
-   // include "../METIER/function.php";
+    include "../BDD/classUser.php";  
+    include "../METIER/function.php";
 ?> 
 
 <a href="../index.php">Accueil</a>
 
 <?php
     
+    /*-----------------------
+      Recuperer l'id du tweet
+    --------------------------*/
+
     /*$data = $bdd->query("SELECT `id_user` FROM `tweet` WHERE id_tweet = 4");
     $idteweetstranger = $data->fetch();
     echo $idteweetstranger['id_user'];*/
 
 
+    /*-----------------------
+       Afficher l'utilisateur
+    --------------------------*/
+    $stranger = new user($bdd);
+    $stranger->initId(5);
          $data2 =$bdd->query("SELECT * FROM user WHERE `id_user` = 5"); // requeter qui recupere l'utilisateur du tweet
             $strangerData = $data2->fetch();
             $strageridentifiant = $strangerData['identifiant'];
@@ -37,8 +46,8 @@
          <?php echo   $stragerbio; ?>
         <br></br>
         <h3>Ses tweet : </h3>
-            <div class="mainStream" id="stream">
-                <?php AfficheTimeLineProfil($bdd, $user); ?>
+            
+                <?php AfficheTimeLineProfil($bdd, $stranger)?>
             </div>
            
            
