@@ -1,15 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.4
--- http://www.phpmyadmin.net
+-- version 4.6.6deb4+deb9u2
+-- https://www.phpmyadmin.net/
 --
 -- Client :  localhost:3306
--- Généré le :  Ven 05 Février 2021 à 08:55
+-- Généré le :  Mer 10 Février 2021 à 05:38
 -- Version du serveur :  10.1.47-MariaDB-0+deb9u1
 -- Version de PHP :  7.0.33-0+deb9u10
--- Client :  127.0.0.1
--- Généré le :  Mer 03 Février 2021 à 12:00
--- Version du serveur :  5.6.15-log
--- Version de PHP :  5.5.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -18,11 +14,23 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `twitterlite`
+-- Base de données :  `twater`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `follow`
+--
+
+CREATE TABLE `follow` (
+  `id_follow` int(11) NOT NULL,
+  `id_follower` int(50) NOT NULL,
+  `id_followed` int(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -30,27 +38,18 @@ SET time_zone = "+00:00";
 -- Structure de la table `like`
 --
 
-CREATE TABLE IF NOT EXISTS `like` (
-  `id_like` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `like` (
+  `id_like` int(11) NOT NULL,
   `id_user` int(50) NOT NULL,
-  `id_tweet` int(50) NOT NULL,
-  PRIMARY KEY (`id_like`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `id_tweet` int(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `like`
 --
 
 INSERT INTO `like` (`id_like`, `id_user`, `id_tweet`) VALUES
-(52, 2, 12),
-(114, 4, 18),
-(115, 4, 19),
-(116, 4, 16),
-(117, 4, 15),
-(120, 1, 15),
-(121, 1, 16),
-(122, 1, 17),
-(123, 1, 18);
+(4, 5, 8);
 
 -- --------------------------------------------------------
 
@@ -58,38 +57,37 @@ INSERT INTO `like` (`id_like`, `id_user`, `id_tweet`) VALUES
 -- Structure de la table `tweet`
 --
 
-CREATE TABLE IF NOT EXISTS `tweet` (
-  `id_tweet` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tweet` (
+  `id_tweet` int(11) NOT NULL,
   `contenu` varchar(340) NOT NULL,
   `id_user` int(50) NOT NULL,
   `date` datetime(6) NOT NULL,
-  PRIMARY KEY (`id_tweet`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `id_tweetARepondre` int(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `tweet`
 --
 
-INSERT INTO `tweet` (`id_tweet`, `contenu`, `id_user`, `date`) VALUES
-(1, 'hello world!', 1, '2021-02-03 07:13:20.000000'),
-(2, 'mdr', 1, '2021-02-04 02:10:56.000000'),
-(3, 'cc', 1, '2021-02-04 02:11:00.000000'),
-(4, 'bonjour', 1, '2021-02-04 02:11:16.000000'),
-(5, 'yolo', 1, '2021-02-04 02:11:41.000000'),
-(6, 'yolo', 1, '2021-02-04 09:15:56.000000'),
-(7, 'salut les rheys', 1, '2021-02-04 09:18:20.000000'),
-(8, 'salut les rheys', 1, '2021-02-04 09:22:35.000000'),
-(9, 'PROUT', 1, '2021-02-04 09:29:32.000000'),
-(10, 'fhudhudhfsfdhiohodmojohgdniojdgsiojhdgjok', 1, '2021-02-04 09:33:54.000000'),
-(11, 'PROUT', 1, '2021-02-04 09:36:32.000000'),
-(12, 'Nouveau utilisateur', 2, '2021-02-04 09:38:56.000000'),
-(13, 'a', 4, '2021-02-04 09:46:26.000000'),
-(14, 'salut les mecs', 4, '2021-02-04 09:46:35.000000'),
-(15, 'a b c d e f g h i j k l ', 4, '2021-02-04 09:46:46.000000'),
-(16, 'eazeazkejazkejazkejazkjazkjazkejazkejazkejazkejazkejazkeazjkeazjkeazjkazjkazjkazjkazjkazjazkjazkjazkjazkjazkjazkejazkejazkejazkeazjkeazjkejaz', 4, '2021-02-04 09:47:50.000000'),
-(17, 'salut les mecs comment vosu allez today ? ', 4, '2021-02-04 09:48:08.000000'),
-(18, 'ggg', 1, '2021-02-04 09:50:58.000000'),
-(19, 'yolo', 1, '2021-02-04 10:27:10.000000');
+INSERT INTO `tweet` (`id_tweet`, `contenu`, `id_user`, `date`, `id_tweetARepondre`) VALUES
+(1, 'bordel de merde pade arret de faire des conneries', 2, '2021-02-10 03:01:30.000000', NULL),
+(2, 'rip', 4, '2021-02-10 03:01:50.000000', NULL),
+(3, 'je twat vue d\'en haut sur la twature', 5, '2021-02-10 03:02:37.000000', NULL),
+(4, 'je twat vue d\'en haut sur la twature', 5, '2021-02-10 03:02:40.000000', NULL),
+(5, 'gg', 5, '2021-02-10 03:03:07.000000', NULL),
+(6, 'dfd', 5, '2021-02-10 03:03:09.000000', NULL),
+(7, 'rip', 4, '2021-02-10 03:03:22.000000', NULL),
+(8, 'dfd', 5, '2021-02-10 03:39:05.000000', NULL),
+(9, 'fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh ', 2, '2021-02-10 04:13:23.000000', NULL),
+(10, 'fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh fgh ', 2, '2021-02-10 04:14:04.000000', NULL),
+(11, 'yolo', 2, '2021-02-10 04:19:06.000000', NULL),
+(12, 'tt', 20, '2021-02-10 04:24:31.000000', NULL),
+(13, 'bitch dab', 5, '2021-02-10 04:26:30.000000', NULL),
+(14, 'd**f/sdg*ffr*-reagvfd          *fsdsqd-* f**              f*ze *f*ef*aefr', 5, '2021-02-10 04:26:49.000000', NULL),
+(15, 'd**f/sdg*ffr*-reagvfd          *fsdsqd-* f**              f*ze *f*ef*aefr', 5, '2021-02-10 04:27:32.000000', NULL),
+(16, 'd**f/sdg*ffr*-reagvfd          *fsdsqd-* f**              f*ze *f*ef*aefr', 5, '2021-02-10 04:38:14.000000', NULL),
+(17, 'ea', 26, '2021-02-10 04:43:41.000000', NULL),
+(20, 'd**f/sdg*ffr*-reagvfd          *fsdsqd-* f**              f*ze *f*ef*aefr', 5, '2021-02-10 04:58:59.000000', NULL);
 
 -- --------------------------------------------------------
 
@@ -97,33 +95,58 @@ INSERT INTO `tweet` (`id_tweet`, `contenu`, `id_user`, `date`) VALUES
 -- Structure de la table `user`
 --
 
-CREATE TABLE IF NOT EXISTS `user` (
-  `id_user` int(11) NOT NULL AUTO_INCREMENT,
-  `identifiant` varchar(50) NOT NULL,
-  `pseudo` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL,
+CREATE TABLE `user` (
+  `id_user` int(11) NOT NULL,
+  `identifiant` varchar(12) NOT NULL,
+  `pseudo` varchar(12) NOT NULL,
+  `password` varchar(15) NOT NULL,
   `birthdate` date NOT NULL,
-  `bio` varchar(350) NOT NULL,
-  PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+  `bio` varchar(350) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `user`
 --
 
 INSERT INTO `user` (`id_user`, `identifiant`, `pseudo`, `password`, `birthdate`, `bio`) VALUES
-(1, 'valou123', 'valou', '123', '1999-03-07', 'fuck'),
-(2, 'clement', 'StingyFox', '2468', '2000-04-20', 'la binouse'),
-(3, 'tbonny', 'tbonny', 'tbonny', '2001-08-01', 'welcome to twatter'),
-(4, 'Marco', 'Marco', 'Marco', '2001-04-29', 'Je m\'appelle Marco, j\'ai 19 ans.\r\n');
+(2, 'valou123', 'valou', '123456', '2021-02-09', ' '),
+(4, 'Apoline', 'ApolineV', '123', '2000-09-12', ' '),
+(5, 'FloGoudalavo', 'FloGoudalavo', '123456', '2021-02-10', ' '),
+(13, 'JeSuisNouvea', 'JeSuisNouvea', '123456', '2021-02-09', ' '),
+(14, 'JeSuisNouvea', 'JeSuisNouvea', '123456', '2021-02-09', ' '),
+(15, 'JeSuisNouvea', 'JeSuisNouvea', '123456', '2021-02-09', ' '),
+(16, 'Marco', 'Pade', '0000', '2001-09-20', ' '),
+(20, 'lololo', 'lolola', '123456', '2021-02-10', ' '),
+(40, 'azerty123', 'azerty', 'gre95++*', '2021-02-09', ' '),
+(41, 'azerty', 'jetest', 'AZ35Rty!+-', '2021-02-06', ' '),
+(42, 'aaa bbb', 'jetest', 'fef95+-', '2021-02-09', ' '),
+(43, 'aaaccc', 'azertfsd', '14fe9r5fze9+', '2021-02-02', ' '),
+(44, 'azerty', 'jetest', '1891256', '2021-02-09', ' '),
+(45, 'persona', 'azertfsd', '1984581f', '2021-02-03', ' '),
+(46, 'hfjehsfkj', 'fzefzef', '184165efz', '2021-02-02', ' '),
+(47, 'pademarco', 'freztraz', '1234567', '2021-02-06', ' ');
 
 --
 -- Index pour les tables exportées
 --
 
-INSERT INTO `user` (`id_user`, `identifiant`, `pseudo`, `password`, `birthdate`, `bio`) VALUES
-(1, 'flo', 'Jean-Street-Cred', '1234', '1998-08-16', 'J''ai une bonne déscente'),
-(2, 'flo', 'Jean-Street-Cred', '1234', '1998-08-16', 'J''ai une bonne déscente');
+--
+-- Index pour la table `follow`
+--
+ALTER TABLE `follow`
+  ADD PRIMARY KEY (`id_follow`);
+
+--
+-- Index pour la table `like`
+--
+ALTER TABLE `like`
+  ADD PRIMARY KEY (`id_like`);
+
+--
+-- Index pour la table `tweet`
+--
+ALTER TABLE `tweet`
+  ADD PRIMARY KEY (`id_tweet`);
 
 --
 -- Index pour la table `user`
@@ -136,20 +159,25 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT pour la table `follow`
+--
+ALTER TABLE `follow`
+  MODIFY `id_follow` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT pour la table `like`
 --
 ALTER TABLE `like`
-  MODIFY `id_like` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
+  MODIFY `id_like` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT pour la table `tweet`
 --
 ALTER TABLE `tweet`
-  MODIFY `id_tweet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_tweet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
