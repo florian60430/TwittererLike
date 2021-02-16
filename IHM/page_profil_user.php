@@ -22,31 +22,26 @@
     /*-----------------------
        Afficher l'utilisateur
     --------------------------*/
+
+    $idStranger = $_GET["id"];
     $stranger = new user($bdd);
-    $stranger->initId(5);
-         $data2 =$bdd->query("SELECT * FROM user WHERE `id_user` = 5"); // requeter qui recupere l'utilisateur du tweet
-            $strangerData = $data2->fetch();
-            $strageridentifiant = $strangerData['identifiant'];
-            $stragerpseudo = $strangerData['pseudo'];
-            $stragerbirthdate = $strangerData['birthdate'];    
-            $stragerbio = $strangerData['bio'];      
-          
-            
+    $stranger->initId($idStranger);
+    
+                    
           ?>
         </head>
         <body>
          <div>
          <h3>  Pseudo </h3> </div>
-         <?php echo $stragerpseudo;?>
+         <?php echo $stranger->getPseudo();?>
          <div>
          <h3>  Anniversaire </h3> </div>
-         <?php echo  $stragerbirthdate; ?>
+         <?php echo  $stranger->getBirthdate(); ?>
          <div>
          <h3> Bio </h3> </div>
-         <?php echo   $stragerbio; ?>
+         <?php echo  $stranger->getBio(); ?>
         <br></br>
         <h3>Ses tweet : </h3>
-            
                 <?php AfficheTimeLineProfil($bdd, $stranger)?>
             </div>
            
