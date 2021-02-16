@@ -9,11 +9,14 @@ $user->initId(2);
 $tweet = new tweet($bdd);
 $tweet->init(1);
 
-$reponse = new tweet($bdd);
-$reponse->setContenu("REPONSE TEST");
-$reponse->setUser($user);
-$reponse->setTweetARepondre($tweet);
-$reponse->commenter();
+    $reponse = new tweet($bdd);
+    $reponse->setContenu("REPONSE TEST");
+    $reponse->setUser($user);
+    $reponse->setTweetARepondre($tweet);
+    $reponse->commenter();
+    echo $reponse->commenter();
+   
+
 
 $tweet->init(1);
 echo $tweet->getContenu() . "<br>";
