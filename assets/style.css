@@ -6,7 +6,6 @@
     max-height: max-content;
     background: orange;    
 }
-
 .sidebar{
     margin: 2%;
     float: left;
@@ -16,13 +15,18 @@
     border: solid;
     border-color: orange;
 }
-.content{
-    display: flex;
-    flex-direction: column;
-    margin: 2% auto;
-    width: 45%;
-    height: max-content;
+#stream{
     background-color: orange;
+    float: left;
+    margin-left: 25%;
+    margin-top: 2%;
+    width: 50%;
+    float: inherit;
+}
+.tweet{
+    background-color: ivory;
+    display: flex;
+   
     
 }
 .submit-btn{
@@ -62,15 +66,46 @@
 .deco-btn:hover{
     background: transparent;
 }
-.bouton{
-    
+.btn:hover{
+    height: 30px;
 }
-.text{
+
+.set-bg {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+    background-image: url("../assets/image/tuning.jpg");
+    border-bottom: 10px solid #f9cb9c;
+}
+
+.username {
+    color: white;
+    font-size: 30px;
+    text-align: center;
+    padding: 110px;
 
 }
-.date{   
-    
+
+.center-element{
+    text-align: center;
+    margin-top : -100px ;
 }
-.user{
-    
+
+.circle {
+
+    background-image: url("../assets/image/valou.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+    border-radius:50%;
+    border:7px solid #f9cb9c; 
+    display: inline-block;
+    padding: 100px;
+
 }
+
+.biographie{
+    padding: 30px;
+    text-align: 18px;
+}
+
