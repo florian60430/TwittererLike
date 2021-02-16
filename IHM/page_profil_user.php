@@ -11,13 +11,13 @@
 echo "coucou";
 ?>
 
-    <<head>
+    <head>
     <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
 <div>
  <h3>  Identifiant </h3> </div>
- <?php echo $profiluser->getUser();?>
+ <?php echo $profiluser->getIdUser();?>
  <div>
  <h3>  Pseudo </h3> </div>
  <?php echo $user->getPseudo();?>

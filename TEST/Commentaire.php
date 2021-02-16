@@ -14,6 +14,9 @@
     $reponse->setUser($user);
     $reponse->setTweetARepondre($tweet);
     $reponse->commenter();
+    echo $reponse->commenter();
+   
+
 
     $tweet->init(1);
     echo $tweet->getContenu()."<br>";
