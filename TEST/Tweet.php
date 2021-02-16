@@ -5,12 +5,13 @@ include '../IHM/header.php';
 
 
 
-?> <h2> GET Tweet </h2>
+?>
+<h2> GET Tweet </h2>
 <?php
 
 // Classe tweet
 $tweet = new tweet($bdd);
-$tweet->init(17) . "<br>";
+$tweet->init(21) . "<br>";
 
 // Classe user
 $iDuser = new user($bdd);
@@ -26,6 +27,9 @@ echo "DATE TWEET:  <br>" . $tweet->getDate() . "<br><br>";
 echo "PSEUDO USER:  <br>" . $tweet->getUser()->getPseudo() . "<br><br>";
 echo "IDENTIFIANT USER: <br> " . $tweet->getUser()->getIdentifiant() . "<br><br>";
 echo "NUMBER LIKE:  <br>" . $tweet->getNumberLikes() . "<br><br>";
+// TEST LIKERS
+echo "PERSONNE LIKE:  <br><br>" ;
+echo  $tweet->likers(21);
 
 // Formulaire pour liker
 ?>
@@ -61,12 +65,12 @@ echo "USER TWEET:  <br>" . $tweet->setUser(6) . "<br><br>";
 <?php
 // Traitement tweet
 
-    if (isset($_POST["PostTweet"])) {
-        $newTweet = new tweet($bdd);
-        $newTweet->setContenu($_POST["contenuTweet"]);
-        $newTweet->setUser($iDuser);
-        $newTweet->posterTweet();
-    }
+if (isset($_POST["PostTweet"])) {
+    $newTweet = new tweet($bdd);
+    $newTweet->setContenu($_POST["contenuTweet"]);
+    $newTweet->setUser($iDuser);
+    $newTweet->posterTweet();
+}
 
 
 
