@@ -10,6 +10,7 @@ $user = new user($bdd);
 $user->initId($_SESSION["userId"]);
 
 ?>
+
 <!DOCTYPE html>
 <html lang="zxx">
 

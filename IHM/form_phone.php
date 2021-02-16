@@ -19,7 +19,7 @@
         <div class="row">
             <div class="col-12" align="center">
                 <div id="under_titre">
-                    <h2>Le meilleur reseau social de 1999</h2>
+                    <h2>Le meilleur reseau social de 1998</h2>
                 </div>
             </div>
         </div>
