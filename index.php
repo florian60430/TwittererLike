@@ -1,6 +1,6 @@
 <?php include "IHM/structure/entete.html" ?>
 
-<!---------
+<!-------------
   JOURNAUX
 ---------->
 <h3>
