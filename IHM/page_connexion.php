@@ -1,15 +1,6 @@
 
 
 <body>
-
-<!--
-  TO DO :
-  -Add title
-  -Add twatter logo
-  -find a way to add the background
-  -make sure everything stay responsive
--->
-
   <!--------------------- 
     FORMULAIRE CONNEXION
   ---------------------->
