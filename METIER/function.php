@@ -22,13 +22,13 @@ function AfficheTimeLine($bdd, $ObjetUser)
         echo "<div class='tweet' name='tweet".$i."'><div class='user' name='user'> <a href='IHM/page_profil_user.php'>" . $tabOjbetUser[$i]->getPseudo() . "</a> a dit : <p><div class ='text' name='text'>" . $tabOjbetTweet[$i]->getContenu() . " </div></p><p> Date du post : " . $tabOjbetTweet[$i]->getDate() . "</p><br>";
 ?>
         </div>
-        <div class='bouton' name='bouton'>
-            <form method="POST" action="">
-                <input type='submit' class="btn" id=<?php echo "btn" . $i; ?> name=<?php echo $i; ?> value='Like'> <?php echo " <span id='liked" . $i . "'>" . $tabOjbetTweet[$i]->getNumberLikes() . " likes "  ?>
-            </form>
-            <button type='submit' class="btn-commenter" id=<?php echo "commenter".$i; ?> name=<?php echo "btn-commenter".$i; ?> >Commenter</button>
-            <button type='submit' class="btn-retweeter" id=<?php echo "retweeter".$i; ?> name=<?php echo "btn-retweeter".$i; ?> >Retweeter</button>
-        </div>
+            <div class='bouton' name='bouton'>
+                <form method="POST" action="">
+                    <input type='submit' class="btn" id=<?php echo "btn" . $i; ?> name=<?php echo $i; ?> value='Like'> <?php echo " <span id='liked" . $i . "'>" . $tabOjbetTweet[$i]->getNumberLikes() . " likes "  ?>
+                </form>
+                <button type='submit' class="btn-commenter" id=<?php echo "commenter".$i; ?> name=<?php echo "btn-commenter".$i; ?> >Commenter</button>
+                <button type='submit' class="btn-retweeter" id=<?php echo "retweeter".$i; ?> name=<?php echo "btn-retweeter".$i; ?> >Retweeter</button>
+            </div>
         </div>
     <?php
         $i++;
