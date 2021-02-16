@@ -50,6 +50,8 @@
         public function getTweetARepondre(){
             return $this->_tweetARepondre;
         }
+
+   
         
         /*----------------
             Method Set
@@ -154,7 +156,22 @@
                 $this->_nbLikes++;
             }
         }
+
+        /*------------------
+            Methode Likers
+        -------------------*/
+
+        public function likers($id_tweet){
+
+            $rawData = $this->_bdd->query("SELECT `identifiant` FROM `like`,`user` WHERE user.id_user = like.id_user AND ".$id_tweet);
+            while ($tabRawData = $rawData->fetch())
+            {
+                echo "<br>".$tabRawData['identifiant']."<br><br>";
+            } 
+           
     }
+}
+    ?>
     
     
     
