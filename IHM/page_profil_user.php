@@ -6,18 +6,21 @@
     include "../METIER/function.php";
     include "../IHM/header.php";
     include "../BDD/classUser.php";  
+    $user = new user($bdd);
+
     
+  
 
 echo "coucou";
 ?>
 
-    <<head>
+    <head>
     <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
 <div>
  <h3>  Identifiant </h3> </div>
- <?php echo $profiluser->getUser();?>
+ <?php echo $user->getUser();?>
  <div>
  <h3>  Pseudo </h3> </div>
  <?php echo $user->getPseudo();?>

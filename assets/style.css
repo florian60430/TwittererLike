@@ -108,4 +108,6 @@
     padding: 30px;
     text-align: 18px;
 }
-
+.content_co{
+    background-image: url(image/background_connexion.png);
+}
