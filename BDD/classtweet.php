@@ -168,41 +168,27 @@
             {
                 echo "<br>".$tabRawData['identifiant']."<br><br>";
             } 
+
+        }
+
+        /* ---------------
+            Methode Date
+        ----------------*/
+
+        public function CalculDate($id_tweet){
+
+            $date = date('d');
+            $rawData = $this->_bdd->query("SELECT `identifiant` FROM `like`,`user` WHERE user.id_user = like.id_user AND " .$id_tweet);
+            $this->setDate($date);
+
+        }
            
     }
-}
     ?>
     
     
     
     
     
-    
+   // SELECT DATEDIFF('2021-02-16 11:10:30', '2021-02-10')
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-
-
-?>
