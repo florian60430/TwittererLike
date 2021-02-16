@@ -168,41 +168,21 @@
             {
                 echo "<br>".$tabRawData['identifiant']."<br><br>";
             } 
+
+        }
+
+        /* ---------------
+            Methode Date
+        ----------------*/
+
+        public function CalculDate(){
+
+            $date = date('d');
+            $this->setDate($date);
+
+        }
            
     }
-}
     ?>
-    
-    
-    
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
 
-
-?>
