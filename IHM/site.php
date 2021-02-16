@@ -43,10 +43,10 @@ if (isset($_POST['InputTweet'])) {
         <button type="submit" class="submit-btn">Profil</button>  
     </div>
     <div align="center">
-        <button type="submit" class="submit-btn">Paramètres</button>  
+        <button type="submit" class="submit-btn">Message</button>  
     </div>
     <div  align="center">
-        <button type="submit" class="deco-btn">Deconnexion</button>  
+        <button type="submit" class="deco-btn">Accueil</button>  
     </div>
 </div>
 

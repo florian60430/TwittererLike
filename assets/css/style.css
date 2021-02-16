@@ -125,11 +125,15 @@ body{
 }
 
 .username {
+    color: black;
+    font-size: 30px;
+}
+
+.banniere{
     color: white;
     font-size: 30px;
     text-align: center;
     padding: 110px;
-
 }
 
 .center-element{
@@ -153,6 +157,7 @@ body{
 .biographie{
     padding: 30px;
     text-align: 18px;
+    color: black;
 }
 #titre{
     margin: 20px auto;
