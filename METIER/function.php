@@ -21,14 +21,14 @@ function AfficheTimeLine($bdd, $ObjetUser)
             $tabOjbetTweet[$i]->like($ObjetUser);
             
         }
-        echo "<div class='content' name='content'><div class='user' name='user'>".$tabOjbetUser[$i]->getPseudo() . " a dit : <p><div class ='text' name='text'>" . $tabOjbetTweet[$i]->getContenu() . " </div></p><p> Date du post : " . $tabOjbetTweet[$i]->getDate() . "</p><br>";
+        echo "<div class='content' name='content'><div class='user' name='user' >".$tabOjbetUser[$i]->getPseudo() . "</div><div class='date' name='date'> Date du post : " . $tabOjbetTweet[$i]->getDate() . "</div><p><div class ='text' name='text'>" . $tabOjbetTweet[$i]->getContenu() . " </div></p><br>";
          ?>
-       </div><div class='bouton' name='bouton'>
-       <form method='POST' action=''>
-            <input type='submit' class="btn" id=<?php echo "btn".$i; ?> name=<?php echo $i; ?> value='Like'> <?php echo " <span id='liked". $i ."'>" . $tabOjbetTweet[$i]->getNumberLikes() . " likes "  ?>
-            <input type='submit' class="btn" id=<?php echo "btn".$i; ?> name=<?php echo $i; ?> value='Commenter'>
-            <input type='submit' class="btn" id=<?php echo "btn".$i; ?> name=<?php echo $i; ?> value='Retweeter'>
-        </form>
+       <div class='bouton' name='bouton'>
+        <form method='POST' action=''>
+                <input type='submit' class="btn" id=<?php echo "btn".$i; ?> name=<?php echo $i; ?> value='Like'> <?php echo " <span id='liked". $i ."'>" . $tabOjbetTweet[$i]->getNumberLikes() . " likes "  ?>
+                <input type='submit' class="btn" id=<?php echo "btn".$i; ?> name=<?php echo $i; ?> value='Commenter'>
+                <input type='submit' class="btn" id=<?php echo "btn".$i; ?> name=<?php echo $i; ?> value='Retweeter'>
+            </form>
        </div>
     </div>
 <?php
