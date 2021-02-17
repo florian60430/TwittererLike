@@ -19,8 +19,8 @@ function AfficheTimeLine($bdd, $ObjetUser)
         if (isset($_POST[$i])) {
             $tabOjbetTweet[$i]->like($ObjetUser);
         }
-        $tabOjbetTweet[0]->CalculDate();
-        echo "<a href='METIER/cibleTweet.php?idTweet=".$tabOjbetTweet[$i]->getIdtweet()."'> voir commenthair </a>
+       // $tabOjbetTweet[0]->CalculDate();
+        echo "<a href='IHM/cibleTweet.php?idTweet=".$tabOjbetTweet[$i]->getIdtweet()."'> voir commenthair </a>
         <div class='tweet' name='tweet" . $i . "'>
             <div class='user' name='user'> 
                 <a href='IHM/page_profil_user.php?id=" . $tabOjbetUser[$i]->getIdUser() . "'>" . $tabOjbetUser[$i]->getPseudo() . "</a> a dit : 
@@ -42,6 +42,14 @@ function AfficheTimeLine($bdd, $ObjetUser)
     <?php
         $i++;
     }
+
+    echo "<script type='text/javascript' src='METIER/main.js'></script>";
+
+}
+
+function AffichePopUpLike() 
+{
+    
 }
 
 function AfficheTimeLineProfil($bdd, $ObjetUser)

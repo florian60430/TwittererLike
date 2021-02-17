@@ -171,6 +171,25 @@ class user {
             return false;
         }
     }
+
+    /*------------------
+        Methode follow
+    -------------------*/
+
+    public function follow($id_stranger,$id_user){
+       
+        $rawData = $this->_bdd->query("INSERT INTO `follow`(`id_follow`, `id_follower`, `id_followed`) VALUES (0,".$id_user.",".$id_stranger.")");
+
+    }
+
+
+
+
+
+
+
+
+
 }
 
  
