@@ -109,4 +109,3 @@ function AfficheTweet($bdd, $ObjetUser)
     </div>
 <?php
 }
-
