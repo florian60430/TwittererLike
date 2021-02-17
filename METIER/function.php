@@ -95,3 +95,9 @@ function AfficheTweet($bdd, $ObjetUser)
         </div>
     <?php
 }
+
+function AfficheTweetARepondre($bdd, $ObjetUser)
+{
+   
+}
+
