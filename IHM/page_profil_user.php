@@ -5,8 +5,6 @@ include "../BDD/classUser.php";
 include "../METIER/function.php";
 ?>
 
-<a href="../index.php">Accueil</a>
-
 <?php
 
 
@@ -14,7 +12,7 @@ include "../METIER/function.php";
       Recuperer l'id du tweet
     --------------------------*/
 
-$idStranger = $_GET["id"];
+$idStranger = $_GET["idUser"];
 $stranger = new user($bdd);
 $stranger->initId($idStranger);
 
@@ -39,7 +37,7 @@ $stranger->initId($idStranger);
 
 <body>
 
-
+<a href="../index.php">Accueil</a>
   <!-----------------
       HAUT DE LA PAGE
      ----------------->

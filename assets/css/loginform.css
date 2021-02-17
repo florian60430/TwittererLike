@@ -82,7 +82,7 @@ header {
 }
 
 .btn-login {
-    background-color: #ff8300;
+    background-color: orange;
     outline: none;
     color: #fff;
     font-size: 14px;
@@ -90,14 +90,14 @@ header {
     font-weight: normal;
     padding: 14px 0;
     text-transform: uppercase;
-    border-color: #ff8300;
+    border-color: orange;
 }
 
 .btn-login:hover,
 .btn-login:focus {
     color: #fff;
-    background-color: #e47702;
-    border-color: #e47702;
+    background-color: orange;
+    border-color: orange;
 }
 
 .forgot-password {
@@ -112,7 +112,7 @@ header {
 }
 
 .btn-register {
-    background-color: #ff8300;
+    background-color: orange;
     outline: none;
     color: #fff;
     font-size: 14px;
@@ -120,14 +120,14 @@ header {
     font-weight: normal;
     padding: 14px 0;
     text-transform: uppercase;
-    border-color: #ff8300;
+    border-color: orange;
 }
 
 .btn-register:hover,
 .btn-register:focus {
     color: #fff;
-    background-color: #e47702;
-    border-color: #e47702;
+    background-color: orange;
+    border-color: orange;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
