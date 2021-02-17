@@ -1,7 +1,7 @@
 <?php
 
 /*------------------------------
-AFFICHE LA TL DE L'UTILISATEUR
+AFFICHE LA TL DE GENERAL
 -------------------------------*/
 
 function AfficheTimeLine($bdd, $ObjetUser)
@@ -50,6 +50,10 @@ function AffichePopUpLike()
 {
 }
 
+/*------------------------------
+AFFICHE LA TL DE L'UTILISATEUR
+-------------------------------*/
+
 function AfficheTimeLineProfil($bdd, $ObjetUser)
 {
 
@@ -79,6 +83,10 @@ function AfficheTimeLineProfil($bdd, $ObjetUser)
         $i++;
     }
 }
+
+/*-----------------------
+AFFICHE UN SEUL TWEET
+----------------------*/
 
 function AfficheTweet($ObjetUser, $ObjetTweet)
 
