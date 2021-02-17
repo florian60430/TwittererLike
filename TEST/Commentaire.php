@@ -4,6 +4,11 @@ include '../BDD/classtweet.php';
 include '../IHM/header.php';
 include '../METIER/function.php';
 
+echo "<h1> test fonction Affiche commentaire </h1><br><br>";
+$OjbetTweet= new tweet($bdd);
+$OjbetTweet->init(5);
+
+AfficheCommentaire($bdd, $OjbetTweet);
 
 echo "<h1> test commentaire </h1><br><br>";
 
