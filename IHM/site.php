@@ -36,7 +36,7 @@ if (isset($_POST['InputTweet'])) {
   AFFICHAGE TL
 -------------->
 <div class="header">
-  salut
+  
 </div>
 <div class="sidebar col-sm-12 col-md-12 col-lg-2 col-xl-2">
     <div  align="center">
