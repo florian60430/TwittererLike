@@ -1,4 +1,7 @@
 <?php
+include '../BDD/classUser.php';
+include '../BDD/classtweet.php';
+include '../IHM/header.php';
 
 /*------------------------------
 AFFICHE LA TL DE L'UTILISATEUR
@@ -109,3 +112,23 @@ function AfficheTweet($bdd, $ObjetUser)
     </div>
 <?php
 }
+
+/*------------------------------
+    AFFICHE COMMENTAITRE
+-------------------------------*/
+function AfficheCommentaire($bdd, $OjbetTweet)
+{
+    $data = $bdd->query("SELECT `id_tweet`,`contenu` FROM `tweet` WHERE `id_tweetARepondre` = ".   $OjbetTweet-> getIdtweet());
+
+
+    while($ComId = $data->fetch()){
+        echo "<br>".$ComId['contenu']."<br><br>";
+    }
+   
+   
+
+}
+
+
+
+?>
