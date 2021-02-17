@@ -98,17 +98,6 @@ function AfficheTweet($bdd, $ObjetUser)
                     <?php echo $OjbetTweet->getNumberLikes() . " likes" ?>
             </form>
         </div>
-<<<<<<< HEAD
-    <?php
-}
-
-function AfficheTweetARepondre($bdd, $ObjetUser)
-{
-   
-}
-
-=======
     </div>
 <?php
 }
->>>>>>> 091cc652625cbad29274b09161cdbd332276467b
