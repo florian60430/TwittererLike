@@ -4,7 +4,7 @@ include '../BDD/classtweet.php';
 include '../IHM/header.php';
 
 /*------------------------------
-AFFICHE LA TL DE L'UTILISATEUR
+AFFICHE LA TL DE GENERAL
 -------------------------------*/
 
 function AfficheTimeLine($bdd, $ObjetUser)
@@ -26,7 +26,7 @@ function AfficheTimeLine($bdd, $ObjetUser)
         echo "<a href='IHM/cibleTweet.php?idTweet=".$tabOjbetTweet[$i]->getIdtweet()."'> voir commenthair </a>
         <div class='tweet' name='tweet" . $i . "'>
             <div class='user' name='user'> 
-                <a href='IHM/page_profil_user.php?id=" . $tabOjbetUser[$i]->getIdUser() . "'>" . $tabOjbetUser[$i]->getPseudo() . "</a> a dit : 
+                <a href='IHM/page_profil_user.php?idUser=" . $tabOjbetUser[$i]->getIdUser() . "'>" . $tabOjbetUser[$i]->getPseudo() . "</a> a dit : 
                     <p>
                         <div class ='text' name='text'>" . $tabOjbetTweet[$i]->getContenu() . " </div>
                     </p>
@@ -47,13 +47,15 @@ function AfficheTimeLine($bdd, $ObjetUser)
     }
 
     echo "<script type='text/javascript' src='METIER/main.js'></script>";
-
 }
 
-function AffichePopUpLike() 
+function AffichePopUpLike()
 {
-    
 }
+
+/*------------------------------
+AFFICHE LA TL DE L'UTILISATEUR
+-------------------------------*/
 
 function AfficheTimeLineProfil($bdd, $ObjetUser)
 {
@@ -85,19 +87,38 @@ function AfficheTimeLineProfil($bdd, $ObjetUser)
     }
 }
 
-function AfficheTweet($bdd, $ObjetUser)
-{
-    $data = $bdd->query("SELECT `id_tweet` FROM `tweet` WHERE `id_user` = 5 ");
-    if ($data->rowCount() == 0) {
-        echo "Aucun twat.";
-    }
-    $tabId = $data->fetch();
-    $OjbetTweet = new tweet($bdd);
-    $OjbetTweet->init($tabId['id_tweet']);
-    $OjbetUser = $OjbetTweet->getUser();
+/*-----------------------
+AFFICHE UN SEUL TWEET
+----------------------*/
 
+function AfficheTweet($ObjetUser, $ObjetTweet)
+
+{
     if (isset($_POST["liker"])) {
-        $OjbetTweet->like($ObjetUser);
+        $ObjetTweet->like($ObjetUser);
+    } ?>
+    <div class='tweet' name='tweet'>
+        <div class='user' name='user'>
+            <a href='page_profil_user.php?idUser= <?php echo $ObjetUser->getIdUser(); ?>'>
+                <?php echo $ObjetUser->getPseudo() ?>
+            </a>
+            <p>
+            <div class='text' name='text'>
+                a dit : <?php echo $ObjetTweet->getContenu() ?>
+            </div>
+            </p>
+            <p> Date du post : <?php echo $ObjetTweet->getDate() ?> </p>
+            <div>
+                <div class='bouton' name='bouton'>
+                    <form method='POST' action=''>
+                        <input type='submit' id="btn" name="liker" value='Like'>
+                        <span id='liked'>
+                            <?php echo $ObjetTweet->getNumberLikes() . " likes" ?>
+                        </span>
+                    </form>
+                </div>
+            </div>
+        <?php
     }
     echo "<div class='tweet' name='tweet'><div class='user' name='user'> <a href='IHM/page_profil_user.php'>" . $OjbetUser->getPseudo() . "</a> a dit : <p><div class ='text' name='text'>" . $OjbetTweet->getContenu() . " </div></p><p> Date du post : " . $OjbetTweet->getDate() . "</p><br>";
     ?>
