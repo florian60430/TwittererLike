@@ -180,21 +180,51 @@ class user {
        
         $rawData = $this->_bdd->query("INSERT INTO `follow`(`id_follow`, `id_follower`, `id_followed`) VALUES (0,".$id_user.",".$id_stranger.")");
 
+        if($rawData == NULL)
+        {
+            return false;
+
+        }else{
+
+            return true;
+        }
+
     }
 
     /*------------------
         Methode Voirfollow
     -------------------*/
 
-    public function Voirfollow($id_user){
+    public function Abonnement($id_user){
        
         //Permet de voir qui on follow
         $rawData = $this->_bdd->query("SELECT `identifiant` FROM `user`, `follow` WHERE follow.id_followed = user.id_user AND follow.id_follower = ".$id_user.")");
 
+        if($rawData == NULL)
+        {
+            return false;
+            
+        }else{
+
+            return true;
+        }
+    }
+
+    public function followers($id_user){
+       
         //Permet de voir qui nous suit
         $rawData = $this->_bdd->query("SELECT `identifiant` FROM `user`, `follow` WHERE follow.id_follower = user.id_user AND follow.id_followed = ".$id_user.")");
+        
+        if($rawData == NULL)
+        {
+            return false;
+            
+        }else{
 
+            return true;
+        }
     }
+
 
 
 
