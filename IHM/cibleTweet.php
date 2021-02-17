@@ -34,6 +34,25 @@ $user->initId($_SESSION["userId"]);
 
 <a href="../index.php">Accueil</a>
 
-<?php AfficheTweet($user, $tweet); ?>
+<?php 
+
+AfficheTweet($user, $tweet); 
+AfficheCommentaire($bdd, $tweet); 
+
+if (isset($_POST['submitTweet'])) {
+    $tweetReponse = new tweet($bdd);
+    $tweetReponse->setContenu($_POST["com"]);
+    $tweetReponse->setUser($user);
+    $tweetReponse->setTweetARepondre($tweet);
+
+    //Appelle fonction commentaire
+    $tweetReponse->commenter();
+}
+?>
+
+<form method="POST" action="">
+    <input type="text" name="com">
+    <input type="submit" name="submitTweet" value="Comment">
+</form>
 
 

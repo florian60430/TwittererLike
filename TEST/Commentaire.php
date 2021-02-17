@@ -2,15 +2,26 @@
 include '../BDD/classUser.php';
 include '../BDD/classtweet.php';
 include '../IHM/header.php';
+include '../METIER/function.php';
+
+echo "<h1> test fonction Affiche commentaire </h1><br><br>";
+$OjbetTweet= new tweet($bdd);
+$OjbetTweet->init(5);
+
+AfficheCommentaire($bdd, $OjbetTweet);
+
 echo "<h1> test commentaire </h1><br><br>";
+
+
+
 $user = new user($bdd);
 $user->initId(2);
 
 $tweet = new tweet($bdd);
-$tweet->init(1);
+$id = $tweet->init(5);
 
 $reponse = new tweet($bdd);
-$reponse->setContenu("REPONSE TEST");
+$reponse->setContenu("wsh salut");
 $reponse->setUser($user);
 $reponse->setTweetARepondre($tweet);
 $reponse->commenter();
@@ -19,7 +30,7 @@ $tweet->init(1);
 echo $tweet->getContenu() . "<br>";
 echo $tweet->getUser()->getPseudo() . "<br>";
 echo "Reponse<br>";
-$reponse->init(22);
+
 echo $reponse->getContenu();
 echo $reponse->getUser()->getPseudo() . "<br><br>";
 
@@ -28,12 +39,12 @@ echo "<h1> test commentaire avec formulaire  </h1><br><br>";
 // test avec formulaire
 
 $tweet2 = new tweet($bdd);
-$tweet2->init(3);
+$tweet2->init(69);
 
 
 
 $userLogged = new user($bdd);
-$userLogged->initId(4);
+$userLogged->initId(47);
 
 if (isset($_POST['submitTweet'])) {
     $response2 = new tweet($bdd);
@@ -50,13 +61,13 @@ echo $tweet2->getContenu() . "<br>";
 echo $tweet2->getUser()->getPseudo() . "<br>";
 echo "Reponse<br>";
 
-echo "Pseudo: ".$response2->getUser()->getPseudo() . " <br>";
-echo $response2->getContenu();
+
+echo "Commentaire : ".$response2->getContenu();
 
 
 
 // Formulaire commentaire
-?>
+?>  
 
 <form method="POST" action="">
     <input type="text" name="com">

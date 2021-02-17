@@ -117,3 +117,23 @@ function AfficheTweet($ObjetUser, $ObjetTweet)
             </div>
         <?php
     }
+
+/*------------------------------
+    AFFICHE COMMENTAITRE
+-------------------------------*/
+function AfficheCommentaire($bdd, $OjbetTweet)
+{
+    $data = $bdd->query("SELECT `id_tweet`,`contenu` FROM `tweet` WHERE `id_tweetARepondre` = ".   $OjbetTweet-> getIdtweet());
+
+
+    while($ComId = $data->fetch()){
+        echo "<br>".$ComId['contenu']."<br><br>";
+    }
+   
+   
+
+}
+
+
+
+?>
