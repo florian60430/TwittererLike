@@ -9,8 +9,8 @@
 
     $ObjetUser = new user($bdd);
     $ObjetUser->initId(2);
-?>
 
+?>
 
 <head>
 <link rel="stylesheet" href="../assets/style.css">  
@@ -24,6 +24,9 @@
     <div class="mainStream" id="stream">
         <?php AfficheTweet($bdd, $ObjetUser); ?>
     </div>
-    
+    <div class="mainStream" id="stream">
+        <?php AfficheTweetARepondre($bdd, $ObjetUser); ?>
+    </div>
+
 </body>
 </html>

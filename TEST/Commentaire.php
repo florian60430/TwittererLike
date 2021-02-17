@@ -14,17 +14,14 @@ $tweet->init(1);
     $reponse->setUser($user);
     $reponse->setTweetARepondre($tweet);
     $reponse->commenter();
-    echo $reponse->commenter();
    
-
-
-$tweet->init(1);
-echo $tweet->getContenu() . "<br>";
-echo $tweet->getUser()->getPseudo() . "<br>";
-echo "Reponse<br>";
-$reponse->init(22);
-echo $reponse->getContenu();
-echo $reponse->getUser()->getPseudo() . "<br><br>";
+    $tweet->init(1);
+    echo $tweet->getContenu() . "<br>";
+    echo $tweet->getUser()->getPseudo() . "<br>";
+    echo "Reponse<br>";
+    $reponse->init(22);
+    echo $reponse->getContenu();
+    echo $reponse->getUser()->getPseudo() . "<br><br>";
 
 // test avec formulaire
 
@@ -39,13 +36,10 @@ if (isset($_POST['submitTweet'])) {
     $newTweet->setUser($userLogged);
     //Appelle fonction commentaire
     $newTweet->commenter();
-    
-    
 }
 
 // Affiche commentaire
 echo "COMMENT: <br> " . $newTweet ->getContenu() . "<br><br>";
-
 
 // Formulaire commentaire
 ?>
