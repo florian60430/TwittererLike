@@ -34,6 +34,11 @@ $user->initId($_SESSION["userId"]);
 
 <a href="../index.php">Accueil</a>
 
-<?php AfficheTweet($user, $tweet); ?>
+<?php 
+
+AfficheTweet($user, $tweet); 
+AfficheCommentaire($bdd, $tweet); 
+
+?>
 
 
