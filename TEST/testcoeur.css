@@ -43,58 +43,58 @@ svg #main-circ {
 
 .checkbox:checked+label svg #heartgroup1 {
   opacity: 1;
-  /* transition: .1s all .3s */
+  transition: .1s all .3s
 }
 
 .checkbox:checked+label svg #heartgroup1 #heart1 {
   transform: scale(0) translate(0, -30px);
   transform-origin: 0 0 0;
-  /* transition: .5s transform .3s */
+  transition: .5s transform .3s
 }
 
 .checkbox:checked+label svg #heartgroup1 #heart2 {
   transform: scale(0) translate(10px, -50px);
   transform-origin: 0 0 0;
-  /* transition: 1.5s transform .3s */
+  transition: 1.5s transform .3s
 }
 
 .checkbox:checked+label svg #heartgroup2 {
   opacity: 1;
-  /* transition: .1s all .3s */
+  transition: .1s all .3s
 }
 
 .checkbox:checked+label svg #heartgroup2 #heart1 {
   transform: scale(0) translate(30px, -15px);
   transform-origin: 0 0 0;
-  /* transition: .5s transform .3s */
+  transition: .5s transform .3s
 }
 
 .checkbox:checked+label svg #heartgroup2 #heart2 {
   transform: scale(0) translate(60px, -15px);
   transform-origin: 0 0 0;
-  /* transition: 1.5s transform .3s */
+  transition: 1.5s transform .3s
 }
 
 .checkbox:checked+label svg #heartgroup3 {
   opacity: 1;
-  /* transition: .1s all .3s */
+  transition: .1s all .3s
 }
 
 .checkbox:checked+label svg #heartgroup3 #heart1 {
   transform: scale(0) translate(30px, 0px);
   transform-origin: 0 0 0;
-  /* transition: .5s transform .3s */
+  transition: .5s transform .3s
 }
 
 .checkbox:checked+label svg #heartgroup3 #heart2 {
   transform: scale(0) translate(60px, 10px);
   transform-origin: 0 0 0;
-  /* transition: 1.5s transform .3s */
+  transition: 1.5s transform .3s
 }
 
 .checkbox:checked+label svg #heartgroup4 {
   opacity: 1;
-  /* transition: .1s all .3s */
+  transition: .1s all .3s
 }
 
 .checkbox:checked+label svg #heartgroup4 #heart1 {
@@ -106,12 +106,12 @@ svg #main-circ {
 .checkbox:checked+label svg #heartgroup4 #heart2 {
   transform: scale(0) translate(40px, 50px);
   transform-origin: 0 0 0;
-  /* transition: 1.5s transform .3s */
+  transition: 1.5s transform .3s
 }
 
 .checkbox:checked+label svg #heartgroup5 {
   opacity: 1;
-  /* transition: .1s all .3s */
+  transition: .1s all .3s
 }
 
 .checkbox:checked+label svg #heartgroup5 #heart1 {
@@ -123,71 +123,71 @@ svg #main-circ {
 .checkbox:checked+label svg #heartgroup5 #heart2 {
   transform: scale(0) translate(-60px, 30px);
   transform-origin: 0 0 0;
-  /* transition: 1.5s transform .3s */
+  transition: 1.5s transform .3s
 }
 
 .checkbox:checked+label svg #heartgroup6 {
   opacity: 1;
-  /* transition: .1s all .3s */
+  transition: .1s all .3s
 }
 
 .checkbox:checked+label svg #heartgroup6 #heart1 {
   transform: scale(0) translate(-30px, 0px);
   transform-origin: 0 0 0;
-  /* transition: .5s transform .3s */
+  transition: .5s transform .3s
 }
 
 .checkbox:checked+label svg #heartgroup6 #heart2 {
   transform: scale(0) translate(-60px, -5px);
   transform-origin: 0 0 0;
-  /* transition: 1.5s transform .3s */
+  transition: 1.5s transform .3s
 }
 
 .checkbox:checked+label svg #heartgroup7 {
   opacity: 1;
-  /* transition: .1s all .3s */
+  transition: .1s all .3s
 }
 
 .checkbox:checked+label svg #heartgroup7 #heart1 {
   transform: scale(0) translate(-30px, -15px);
   transform-origin: 0 0 0;
-  /* transition: .5s transform .3s */
+  transition: .5s transform .3s
 }
 
 .checkbox:checked+label svg #heartgroup7 #heart2 {
   transform: scale(0) translate(-55px, -30px);
   transform-origin: 0 0 0;
-  /* transition: 1.5s transform .3s */
+  transition: 1.5s transform .3s
 }
 
 .checkbox:checked+label svg #heartgroup2 {
   opacity: 1;
-  /* transition: .1s opacity .3s */
+  transition: .1s opacity .3s
 }
 
 .checkbox:checked+label svg #heartgroup3 {
   opacity: 1;
-  /* transition: .1s opacity .3s */
+  transition: .1s opacity .3s
 }
 
 .checkbox:checked+label svg #heartgroup4 {
   opacity: 1;
-  /* transition: .1s opacity .3s */
+  transition: .1s opacity .3s
 }
 
 .checkbox:checked+label svg #heartgroup5 {
   opacity: 1;
-  /* transition: .1s opacity .3s */
+  transition: .1s opacity .3s
 }
 
 .checkbox:checked+label svg #heartgroup6 {
   opacity: 1;
-  /* transition: .1s opacity .3s */
+  transition: .1s opacity .3s
 }
 
 .checkbox:checked+label svg #heartgroup7 {
   opacity: 1;
-  /* transition: .1s opacity .3s */
+  transition: .1s opacity .3s
 }
 
 @keyframes animateCircle {
