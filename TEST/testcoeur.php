@@ -23,11 +23,6 @@
 <body>
 
 
-
-
-
-
-
 <form  action="" method="POST">
    
         <input type="text" name="text" value="bjr">
@@ -94,9 +89,7 @@
                         <circle id="heart2" fill="#9FC7FA" cx="7.5" cy="2" r="2" />
                     </g>
                 </g>
-                
             </svg>
-        
         </label>
  </div>
 </form>
