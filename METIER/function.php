@@ -19,8 +19,8 @@ function AfficheTimeLine($bdd, $ObjetUser)
         if (isset($_POST[$i])) {
             $tabOjbetTweet[$i]->like($ObjetUser);
         }
-        $tabOjbetTweet[0]->CalculDate();
-        echo "<a href='IHM/cibleTweet.php?idTweet=" . $tabOjbetTweet[$i]->getIdtweet() . "'> voir commenthair </a>
+       // $tabOjbetTweet[0]->CalculDate();
+        echo "<a href='IHM/cibleTweet.php?idTweet=".$tabOjbetTweet[$i]->getIdtweet()."'> voir commenthair </a>
         <div class='tweet' name='tweet" . $i . "'>
             <div class='user' name='user'> 
                 <a href='IHM/page_profil_user.php?idUser=" . $tabOjbetUser[$i]->getIdUser() . "'>" . $tabOjbetUser[$i]->getPseudo() . "</a> a dit : 

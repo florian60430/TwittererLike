@@ -177,12 +177,15 @@
 
         public function CalculDate(){
 
-            $date = date('d');
-            $this->setDate($date);
+            $Recupdata = $this->_bdd->query("SELECT * FROM tweet WHERE id_tweet = 20");
+            $tabData = $Recupdata->fetch();
+            $date2 = $tabData['date'];
+            $date = date('y-m-d');
+            $rawData = $this->_bdd->query("SELECT DATEDIFF(".$date.",".$date2.")");
+            $CalculDate = $rawData;
+            $this->setDate($CalculDate);
 
         }
-           
+
     }
     ?>
-
-
