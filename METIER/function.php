@@ -19,17 +19,26 @@ function AfficheTimeLine($bdd, $ObjetUser)
         if (isset($_POST[$i])) {
             $tabOjbetTweet[$i]->like($ObjetUser);
         }
-        echo "<div class='tweet' name='tweet".$i."'><div class='user' name='user'> <a href='IHM/page_profil_user.php'>" . $tabOjbetUser[$i]->getPseudo() . "</a> a dit : <p><div class ='text' name='text'>" . $tabOjbetTweet[$i]->getContenu() . " </div></p><p> Date du post : " . $tabOjbetTweet[$i]->getDate() . "</p><br>";
+        $tabOjbetTweet[0]->CalculDate();
+        echo "<a href='METIER/cibleTweet.php?idTweet=".$tabOjbetTweet[$i]->getIdtweet()."'> voir commenthair </a>
+        <div class='tweet' name='tweet" . $i . "'>
+            <div class='user' name='user'> 
+                <a href='IHM/page_profil_user.php?id=" . $tabOjbetUser[$i]->getIdUser() . "'>" . $tabOjbetUser[$i]->getPseudo() . "</a> a dit : 
+                    <p>
+                        <div class ='text' name='text'>" . $tabOjbetTweet[$i]->getContenu() . " </div>
+                    </p>
+                    <p> Date du post : " . $tabOjbetTweet[$i]->getDate() . "</p>";
 ?>
         </div>
-            <div class='bouton' name='bouton'>
-                <form method="POST" action="">
-                    <input type='submit' class="btn" id=<?php echo "btn" . $i; ?> name=<?php echo $i; ?> value='Like'> <?php echo " <span id='liked" . $i . "'>" . $tabOjbetTweet[$i]->getNumberLikes() . " likes "  ?>
-                </form>
-                <button type='submit' class="btn-commenter" id=<?php echo "commenter".$i; ?> name=<?php echo "btn-commenter".$i; ?> >Commenter</button>
-                <button type='submit' class="btn-retweeter" id=<?php echo "retweeter".$i; ?> name=<?php echo "btn-retweeter".$i; ?> >Retweeter</button>
-            </div>
+        <div class='bouton' name='bouton'>
+            <form method="POST" action="">
+                <input type='submit' class="btn" id=<?php echo "btn" . $i; ?> name=<?php echo $i; ?> value='Like'> <?php echo " <span id='liked" . $i . "'>" . $tabOjbetTweet[$i]->getNumberLikes() . " likes "  ?>
+            </form>
+            <button type='submit' class="btn-commenter" id=<?php echo "commenter" . $i; ?> name=<?php echo "btn-commenter" . $i; ?>>Commenter</button>
+            <button type='submit' class="btn-retweeter" id=<?php echo "retweeter" . $i; ?> name=<?php echo "btn-retweeter" . $i; ?>>Retweeter</button>
         </div>
+        </div>
+        </a>
     <?php
         $i++;
     }
@@ -57,11 +66,10 @@ function AfficheTimeLineProfil($bdd, $ObjetUser)
         </div>
         <div class='bouton' name='bouton'>
             <form method='POST' action=''>
-                <input type='submit' id=<?php echo "btn" . $i; ?> name=<?php echo $i; ?> value='Like' <?php echo " <span id='liked" . $i . "'>" . $tabOjbetTweet[$i]->getNumberLikes() . " likes" ?> 
-            </form>
+                <input type='submit' id=<?php echo "btn" . $i; ?> name=<?php echo $i; ?> value='Like' <?php echo " <span id='liked" . $i . "'>" . $tabOjbetTweet[$i]->getNumberLikes() . " likes" ?> </form>
         </div>
         </div>
-<?php
+    <?php
         $i++;
     }
 }
@@ -69,30 +77,28 @@ function AfficheTimeLineProfil($bdd, $ObjetUser)
 function AfficheTweet($bdd, $ObjetUser)
 {
     $data = $bdd->query("SELECT `id_tweet` FROM `tweet` WHERE `id_user` = 5 ");
-    if ($data->rowCount() == 0)
-    {
+    if ($data->rowCount() == 0) {
         echo "Aucun twat.";
     }
     $tabId = $data->fetch();
     $OjbetTweet = new tweet($bdd);
     $OjbetTweet->init($tabId['id_tweet']);
-    $OjbetUser = $OjbetTweet->getUser(); 
+    $OjbetUser = $OjbetTweet->getUser();
 
-    if (isset($_POST["liker"]))
-    {
+    if (isset($_POST["liker"])) {
         $OjbetTweet->like($ObjetUser);
     }
     echo "<div class='tweet' name='tweet'><div class='user' name='user'> <a href='IHM/page_profil_user.php'>" . $OjbetUser->getPseudo() . "</a> a dit : <p><div class ='text' name='text'>" . $OjbetTweet->getContenu() . " </div></p><p> Date du post : " . $OjbetTweet->getDate() . "</p><br>";
-    ?>  
-        <div>
-            <div class='bouton' name='bouton'>
-                <form method='POST' action=''>
-                    <input type='submit' id="btn" name="liker" value='Like'>  
-                    <span id='liked'> 
-                        <?php  echo $OjbetTweet->getNumberLikes(). " likes" ?> 
-                </form>
-            </div>
+    ?>
+    <div>
+        <div class='bouton' name='bouton'>
+            <form method='POST' action=''>
+                <input type='submit' id="btn" name="liker" value='Like'>
+                <span id='liked'>
+                    <?php echo $OjbetTweet->getNumberLikes() . " likes" ?>
+            </form>
         </div>
+<<<<<<< HEAD
     <?php
 }
 
@@ -101,3 +107,8 @@ function AfficheTweetARepondre($bdd, $ObjetUser)
    
 }
 
+=======
+    </div>
+<?php
+}
+>>>>>>> 091cc652625cbad29274b09161cdbd332276467b
