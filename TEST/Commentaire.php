@@ -5,7 +5,6 @@ include '../IHM/header.php';
 include '../METIER/function.php';
 
 
-
 echo "<h1> test commentaire </h1><br><br>";
 
 

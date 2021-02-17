@@ -1,7 +1,4 @@
 <?php
-include '../BDD/classUser.php';
-include '../BDD/classtweet.php';
-include '../IHM/header.php';
 
 /*------------------------------
 AFFICHE LA TL DE GENERAL
@@ -120,19 +117,6 @@ function AfficheTweet($ObjetUser, $ObjetTweet)
             </div>
         <?php
     }
-    echo "<div class='tweet' name='tweet'><div class='user' name='user'> <a href='IHM/page_profil_user.php'>" . $OjbetUser->getPseudo() . "</a> a dit : <p><div class ='text' name='text'>" . $OjbetTweet->getContenu() . " </div></p><p> Date du post : " . $OjbetTweet->getDate() . "</p><br>";
-    ?>
-    <div>
-        <div class='bouton' name='bouton'>
-            <form method='POST' action=''>
-                <input type='submit' id="btn" name="liker" value='Like'>
-                <span id='liked'>
-                    <?php echo $OjbetTweet->getNumberLikes() . " likes" ?>
-            </form>
-        </div>
-    </div>
-<?php
-}
 
 /*------------------------------
     AFFICHE COMMENTAITRE
