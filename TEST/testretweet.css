@@ -3,13 +3,14 @@
 P.S: Eeedback appreciated :)*/
 
 *{
+  filter:inverse(100%);
     transition: all .2s ease;
   }
   
   .fa-twitter
   {
     font-size: 80px;
-    pdding-top:100px;
+    padding-top:100px;
     color:#1da1f2;
     text-shadow: 0px 0px 10px #1da1f2;
   }
@@ -54,3 +55,14 @@ P.S: Eeedback appreciated :)*/
       cursor:pointer;
   }
  
+#yolo{
+  background-color: #445eac;
+  width: 400px;
+  height: 200px;
+  transition: 0.5s;
+  margin: 10px auto;
+}
+#yolo:hover{
+  width: 500px;
+  border-radius: 50px;
+}
