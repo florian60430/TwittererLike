@@ -50,7 +50,7 @@ $return = $user3->inscription("bernard93GangBang", "bernardLeTrimar93", "mdpsecu
 
 
 
-if ($retour = 1) {
+if ($return = 1) {
     echo "Inscription OK";
 } else {
     echo "Inscription NOK";
@@ -87,3 +87,4 @@ if ($returnModif = 1) {
 } else {
     echo "Modif NOK<br><br>";
 }
+?>

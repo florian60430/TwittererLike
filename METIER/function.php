@@ -134,6 +134,25 @@ function AfficheCommentaire($bdd, $OjbetTweet)
 
 }
 
+/*------------------------------
+    FONCTION FOLLOW
+-------------------------------*/
+function follow($id_stranger,$id_user, $bdd){
+       
+    $rawData = $bdd->query("INSERT INTO `follow`(`id_follow`, `id_follower`, `id_followed`) VALUES (0,".$id_user.",".$id_stranger.")");
 
+    if($rawData == NULL) 
+    {
+       
+        return false;
+       
+
+    }else{
+        
+        return true;
+        
+    }
+
+}
 
 ?>

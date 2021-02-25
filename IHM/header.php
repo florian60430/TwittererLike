@@ -12,4 +12,4 @@ try {
 } catch (Exception $e) {
 
     echo "erreur lors de la connexion a la bdd : " . $e->getMessage();
-}
+} 

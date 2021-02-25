@@ -176,17 +176,20 @@ class user {
         Methode follow
     -------------------*/
 
-    public function follow($id_stranger,$id_user){
+    public function follow($id_stranger,$id_user){ // Probleme voir journal test ou trello
        
         $rawData = $this->_bdd->query("INSERT INTO `follow`(`id_follow`, `id_follower`, `id_followed`) VALUES (0,".$id_user.",".$id_stranger.")");
 
-        if($rawData == NULL)
+        if($rawData == NULL) 
         {
+           
             return false;
+           
 
         }else{
-
+            
             return true;
+            
         }
 
     }
