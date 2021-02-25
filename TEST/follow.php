@@ -18,17 +18,22 @@ if (isset($_POST["follow"])) { // Traitement follow
     $user2 = new user($bdd);
     $user2->initId(4);
     $userDEUX = $user2->getIdUser();
+    $follow = new user($bdd);
    
 
 
 
-    $return = follow($userUN, $userDEUX, $bdd); // Fonction follow dans METIER/function.php
+    $return = $follow->follow($userUN, $userDEUX); // Fonction follow dans METIER/function.php
     if ($return == NULL) {
         echo "Error";
     } else {
         echo "OK";
     }
 }
+
+$voirAbo = new user($bdd);
+
+//Abonnement($id_user)
 
 
 // Formulaire follow
