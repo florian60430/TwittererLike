@@ -19,26 +19,60 @@ function AfficheTimeLine($bdd, $ObjetUser)
         if (isset($_POST[$i])) {
             $tabOjbetTweet[$i]->like($ObjetUser);
         }
-       // $tabOjbetTweet[0]->CalculDate();
-        echo "<a href='IHM/cibleTweet.php?idTweet=".$tabOjbetTweet[$i]->getIdtweet()."'> voir commenthair </a>
-        <div class='tweet' name='tweet" . $i . "'>
-            <div class='user' name='user'> 
-                <a href='IHM/page_profil_user.php?idUser=" . $tabOjbetUser[$i]->getIdUser() . "'>" . $tabOjbetUser[$i]->getPseudo() . "</a> a dit : 
-                    <p>
-                        <div class ='text' name='text'>" . $tabOjbetTweet[$i]->getContenu() . " </div>
-                    </p>
-                    <p> Date du post : " . $tabOjbetTweet[$i]->getDate() . "</p>";
-?>
+        // $tabOjbetTweet[0]->CalculDate();
+
+
+    ?> <div class="tweet-container"> <?php 
+
+        /* ZONE CLIQUABLE DU TWEET */
+        echo "<a href='IHM/cibleTweet.php?idTweet=" . $tabOjbetTweet[$i]->getIdtweet() . "class='tweet-click'>"; ?>
+        <div name="cadre" class="cadre" id="cadre">
+            <a class="points"> . . . </a>
+
+            <!-- NOM D UTILISATEUR -->
+            <?php echo "<a class='username' href='IHM/page_profil_user.php?idUser=" . $tabOjbetUser[$i]->getIdUser() . "'>" . $tabOjbetUser[$i]->getPseudo() . "</a>"; ?>
+
+            <!-- CONTENU DU TWEET -->
+            </span>
+            <?php echo "<div class='tweet' name='tweet" . $i . "'>";
+
+            echo $tabOjbetTweet[$i]->getContenu() ?>
+            <!--<a href="assets/image/Baniere/tuning.jpg">
+                <img src="assets/image/Baniere/tuning.jpg" class="picture">
+            </a>
+    -->
         </div>
-        <div class='bouton' name='bouton'>
-            <form method="POST" action="">
-                <input type='submit' class="btn" id=<?php echo "btn" . $i; ?> name=<?php echo $i; ?> value='Like'> <?php echo " <span id='liked" . $i . "'>" . $tabOjbetTweet[$i]->getNumberLikes() . " likes "  ?>
-            </form>
-            <button type='submit' class="btn-commenter" id=<?php echo "commenter" . $i; ?> name=<?php echo "btn-commenter" . $i; ?>>Commenter</button>
-            <button type='submit' class="btn-retweeter" id=<?php echo "retweeter" . $i; ?> name=<?php echo "btn-retweeter" . $i; ?>>Retweeter</button>
-        </div>
-        </div>
-        </a>
+        <!-- BOUTONS -->
+        <form method="POST" action="">
+            <div class="cadreBtn">
+
+                <!-- BTN LIKE -->
+                <span class="btn-like">
+                    <input type='submit' class="btn" id=<?php echo "btn" . $i; ?> name=<?php echo $i; ?> value='Like'>
+                </span>
+
+                <!-- NOMBRE DE LIKE -->
+                <?php echo " <span id='liked" . $i . "'>"; ?>
+                <?php echo $tabOjbetTweet[$i]->getNumberLikes(); ?>
+                </span>
+
+                <!-- BTN RETWEET -->
+                <span class="btn-retweet">
+                <button type='submit' class="btn-retweeter" id=<?php echo "retweeter" . $i; ?> name=<?php echo "btn-retweeter" . $i; ?>>Retweeter</button>
+                </span>
+
+                <!-- NOMBRE DE RETWEET -->
+                <span class="number-retweet">
+                    1359
+                </span>
+                <span class="date">
+                    <?php echo $tabOjbetTweet[$i]->getDate(); ?>
+                </span>
+            </div>
+            </div>
+            </a>
+        </form>
+    </div>
     <?php
         $i++;
     }
@@ -118,22 +152,19 @@ function AfficheTweet($ObjetUser, $ObjetTweet)
         <?php
     }
 
-/*------------------------------
+    /*------------------------------
     AFFICHE COMMENTAITRE
 -------------------------------*/
-function AfficheCommentaire($bdd, $OjbetTweet)
-{
-    $data = $bdd->query("SELECT `id_tweet`,`contenu` FROM `tweet` WHERE `id_tweetARepondre` = ".   $OjbetTweet-> getIdtweet());
+    function AfficheCommentaire($bdd, $OjbetTweet)
+    {
+        $data = $bdd->query("SELECT `id_tweet`,`contenu` FROM `tweet` WHERE `id_tweetARepondre` = " .   $OjbetTweet->getIdtweet());
 
 
-    while($ComId = $data->fetch()){
-        echo "<br>".$ComId['contenu']."<br><br>";
+        while ($ComId = $data->fetch()) {
+            echo "<br>" . $ComId['contenu'] . "<br><br>";
+        }
     }
-   
-   
-
-}
 
 
 
-?>
+        ?>

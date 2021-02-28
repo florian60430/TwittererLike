@@ -1,8 +1,14 @@
+.inline{
+    display: inline;
+}
+
 .timeLine{
     margin-left: auto;
     margin-right: auto;
     background-color: gray;
     max-width: 500px;
+    max-height: 850px;
+    overflow: auto;
 }
 
 .tweet {
@@ -11,6 +17,7 @@
     padding: 20px;
     font-family: Arial, Helvetica, sans-serif;
 }
+
 
 .cadre {
     margin-left: auto;
@@ -22,20 +29,39 @@
     border-radius: 3px;
 }
 
+.cadreBtn{
+    background-color: white;
+    border-top: solid 5px orange;
+    padding: 7px;
+}
+
+.date{
+    float: right;
+}
+
+
 .cadre:hover{
     background-color: rgb(255, 153, 0)
 }
 
 
 .username{
-    padding: 7px;
-    margin-right: 50px;
-    text-align: right;
+    float: right;
+    font-size: 17px;
+    margin-right: 40px;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 500;
 }
 
+.points{
+    display: inline;
+    font-size: 20px;
+    font-weight: 700;
+}
+
 .picture {
+    border-radius: 5px;
+    margin-top: 10px;
     max-width: 100%;
     max-height: 100%;
 }

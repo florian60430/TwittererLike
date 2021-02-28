@@ -35,31 +35,18 @@ if (isset($_POST['InputTweet'])) {
 <!-------------
   AFFICHAGE TL
 -------------->
-<div class="header">
-  
-</div>
-<div class="sidebar col-sm-12 col-md-12 col-lg-2 col-xl-2">
-    <div  align="center">
-        <button type="submit" class="submit-btn">Profil</button>  
-    </div>
-    <div align="center">
-        <button type="submit" class="submit-btn">Message</button>  
-    </div>
-    <div  align="center">
-        <button type="submit" class="deco-btn">Accueil</button>  
-    </div>
-</div>
-
+<!--
 <div id="poster">
   <form action="" method="POST">
     <input class="input_tweet" type="text" name="InputTweet" placeholder="What's happening ?">
     <button name="btnSubmit" class="btn_tweet">Envoyer</button>
   </form>
 </div>
+-->
 
-<div class="mainStream" id="stream">
+<section class="timeLine" name="timeLine">
   <?php AfficheTimeLine($bdd, $user); ?>
-</div>
+</section>
 
 
 <?php include "IHM/structure/footer.html"; ?>
