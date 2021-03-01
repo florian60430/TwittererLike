@@ -29,7 +29,7 @@ header {
 
 .panel-login>.panel-heading {
     color: #ff8300;
-    background-color: #fff;
+    background-color: #ffffff;
     border-color: #fff;
     text-align: center;
 }
@@ -84,21 +84,16 @@ header {
 .btn-login {
     background-color: orange;
     outline: none;
-    color: #fff;
-    font-size: 14px;
+    color: #000;
+    font-size: 16px;
     height: auto;
-    font-weight: normal;
+    font-weight: 700;
     padding: 14px 0;
     text-transform: uppercase;
     border-color: orange;
 }
 
-.btn-login:hover,
-.btn-login:focus {
-    color: #fff;
-    background-color: orange;
-    border-color: orange;
-}
+
 
 .forgot-password {
     text-decoration: underline;
@@ -114,10 +109,10 @@ header {
 .btn-register {
     background-color: orange;
     outline: none;
-    color: #fff;
-    font-size: 14px;
+    color: #000;
+    font-size: 16px;
     height: auto;
-    font-weight: normal;
+    font-weight: 700;
     padding: 14px 0;
     text-transform: uppercase;
     border-color: orange;
