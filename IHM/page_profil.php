@@ -21,19 +21,14 @@ $user->initId($_SESSION["userId"]);
 
     <?php include './structure/menu.html'; ?>
 
-    <!-----------------
-      HAUT DE LA PAGE
-     ----------------->
-    <section class="set-bg">
+    <!-- BANIERE -->
+    <section class="set-bg"></section>
 
-    </section>
-
-    <!-------------------------
-          MILIEU DE LA PAGE
-     ------------------------->
+    <!-- BIOGRAPHIE -->
     <section>
         <div class="center-element">
             <div class="circle"></div>
+            <div class="pseudo"> <?php echo $user->getPseudo(); ?></div>
             <div class="biographie">
                 <?php echo $user->getBio(); ?>
             </div>

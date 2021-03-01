@@ -3,58 +3,50 @@ include "../BDD/classtweet.php";
 include "../IHM/header.php";
 include "../BDD/classUser.php";
 include "../METIER/function.php";
-?>
 
-<?php
-
-
-/*-----------------------
-      Recuperer l'id du tweet
-    --------------------------*/
 
 $idStranger = $_GET["idUser"];
 $stranger = new user($bdd);
 $stranger->initId($idStranger);
 
+include "./structure/entete.secondary.html";
 
-/*-----------------------
-       Afficher l'utilisateur
-    --------------------------*/
-    include "./structure/entete.secondary.html";
 ?>
 
 
 <body>
 
-<a href="../index.php">Accueil</a>
-  <!-----------------
-      HAUT DE LA PAGE
-     ----------------->
-  <section class="set-bg banniere" data-setbg="../assets/image/hero-bg.jpg">
+  <!-- MENU -->
+  <?php include './structure/menu.html'; ?>
 
-  </section>
-
-  <!-------------------------
-          MILIEU DE LA PAGE
-     ------------------------>
+  <!-- BANIERE -->
+  <section class="set-bg"></section>
 
 
+ 
   <section>
     <div class="center-element">
-      <div class="circle"></div>
-      <span class="username">
-        <?php echo $stranger->getPseudo(); ?>
-      </span>
       
+      <!-- PHOTO DE PROFIL -->
+      <div class="circle"></div>
+    
+      <!-- PSEUDO --> 
+      <div class="pseudo"> <?php echo $stranger->getPseudo(); ?></div>
+  
+      <!-- BIOGRAPHIE -->
       <div class="biographie">
         <?php echo $stranger->getBio(); ?>
       </div>
     </div>
+</section>
 
-  </section>
-  <div class="mainStream" id="stream">
+<!-- AFFICHAGE TWEETS USER -->
+<section class="timeLine" name="timeLine">
     <?php AfficheTimeLineProfil($bdd, $stranger); ?>
-  </div>
+    <a href="IHM/poster.php">
+      <div class="poster"></div>
+      </a>
+  </section>
 </body>
 
 <?php include "structure/footer.html"; ?>

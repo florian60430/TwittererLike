@@ -25,12 +25,12 @@ function AfficheTimeLine($bdd, $ObjetUser)
     ?> <div class="tweet-container"> <?php 
 
         /* ZONE CLIQUABLE DU TWEET */
-        echo "<a href='IHM/cibleTweet.php?idTweet=" . $tabOjbetTweet[$i]->getIdtweet() . "class='tweet-click'>"; ?>
+        echo "<a href='/TwittererLike/IHM/cibleTweet.php?idTweet=" . $tabOjbetTweet[$i]->getIdtweet() . "class='tweet-click'>"; ?>
         <div name="cadre" class="cadre" id="cadre">
             <a class="points"> . . . </a>
 
             <!-- NOM D UTILISATEUR -->
-            <?php echo "<a class='username' href='IHM/page_profil_user.php?idUser=" . $tabOjbetUser[$i]->getIdUser() . "'>" . $tabOjbetUser[$i]->getPseudo() . "</a>"; ?>
+            <?php echo "<a class='username' href='/TwittererLike/IHM/page_profil_user.php?idUser=" . $tabOjbetUser[$i]->getIdUser() . "'>" . $tabOjbetUser[$i]->getPseudo() . "</a>"; ?>
 
             <!-- CONTENU DU TWEET -->
             </span>
@@ -108,12 +108,12 @@ function AfficheTimeLineProfil($bdd, $ObjetUser)
         ?> <div class="tweet-container"> <?php 
 
         /* ZONE CLIQUABLE DU TWEET */
-        echo "<a href='IHM/cibleTweet.php?idTweet=" . $tabOjbetTweet[$i]->getIdtweet() . "class='tweet-click'>"; ?>
+        echo "<a href='/TwittererLike/IHM/cibleTweet.php?idTweet=" . $tabOjbetTweet[$i]->getIdtweet() . "class='tweet-click'>"; ?>
         <div name="cadre" class="cadre" id="cadre">
             <a class="points"> . . . </a>
 
             <!-- NOM D UTILISATEUR -->
-            <?php echo "<a class='username' href='IHM/page_profil_user.php?idUser=" . $tabOjbetUser[$i]->getIdUser() . "'>" . $tabOjbetUser[$i]->getPseudo() . "</a>"; ?>
+            <?php echo "<a class='username' href='/TwittererLike/IHM/page_profil_user.php?idUser=" . $tabOjbetUser[$i]->getIdUser() . "'>" . $tabOjbetUser[$i]->getPseudo() . "</a>"; ?>
 
             <!-- CONTENU DU TWEET -->
             </span>
