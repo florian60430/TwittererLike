@@ -12,46 +12,41 @@ $user->initId($_SESSION["userId"]);
 
 ?>
 
-<!DOCTYPE html>
-<html lang="zxx">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="description" content="HVAC Template">
-    <meta name="keywords" content="HVAC, unica, creative, html">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>TWATER</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <link rel="stylesheet" href="../assets/css/style.css">
-</head>
+<?php include "./structure/entete.secondary.html"; ?>
 
 <body>
-    <a href="../index.php">Accueil</a>
+
+
+    <!-- MENU -->
+
+    <?php include './structure/menu.html'; ?>
 
     <!-----------------
       HAUT DE LA PAGE
      ----------------->
-    <section class="set-bg" data-setbg="../assets/image/hero-bg.jpg">
-        <div class="username">
-            <?php echo $user->getPseudo(); ?>
-        </div>
+    <section class="set-bg">
+
     </section>
 
     <!-------------------------
           MILIEU DE LA PAGE
-     ------------------------>
+     ------------------------->
     <section>
         <div class="center-element">
             <div class="circle"></div>
             <div class="biographie">
-                Je m'apelle Valentin Bouet fan de tuning, j'aime la bonne binouse, le paté en croute, et les bonnes meules alors met ta culotte Simone c'est moi qui pilote ;)
+                <?php echo $user->getBio(); ?>
             </div>
         </div>
     </section>
-    <div class="mainStream" id="stream">
+
+    <!-- AFFICHAGE TWEET USER -->
+    <section class="timeLine" name="timeLine">
         <?php AfficheTimeLineProfil($bdd, $user); ?>
-    </div>
+        <a href="IHM/poster.php">
+            <div class="poster"></div>
+        </a>
+    </section>
 </body>
 
 <?php include "structure/footer.html"; ?>

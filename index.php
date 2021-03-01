@@ -2,13 +2,13 @@
 
 <!-------------
   JOURNAUX
----------->
+---------
 <h3>
 <div>
     <a href="IHM/journal.html">Journal des DEV</a>
     <a href="IHM/journalTest.html">Journal de TEST</a>
 </div>
-</h3>
+</h3> -->
 <?php session_start();
 
 include "IHM/header.php";

@@ -105,14 +105,57 @@ function AfficheTimeLineProfil($bdd, $ObjetUser)
         if (isset($_POST[$i])) {
             $tabOjbetTweet[$i]->like($ObjetUser);
         }
-        echo "<div class='tweet' name='tweet'><div class='user' name='user'>" . $tabOjbetUser[$i]->getPseudo() . " a dit : <p><div class ='text' name='text'>" . $tabOjbetTweet[$i]->getContenu() . " </div></p><p> Date du post : " . $tabOjbetTweet[$i]->getDate() . "</p><br>";
-    ?>
+        ?> <div class="tweet-container"> <?php 
+
+        /* ZONE CLIQUABLE DU TWEET */
+        echo "<a href='IHM/cibleTweet.php?idTweet=" . $tabOjbetTweet[$i]->getIdtweet() . "class='tweet-click'>"; ?>
+        <div name="cadre" class="cadre" id="cadre">
+            <a class="points"> . . . </a>
+
+            <!-- NOM D UTILISATEUR -->
+            <?php echo "<a class='username' href='IHM/page_profil_user.php?idUser=" . $tabOjbetUser[$i]->getIdUser() . "'>" . $tabOjbetUser[$i]->getPseudo() . "</a>"; ?>
+
+            <!-- CONTENU DU TWEET -->
+            </span>
+            <?php echo "<div class='tweet' name='tweet" . $i . "'>";
+
+            echo $tabOjbetTweet[$i]->getContenu() ?>
+            <!--<a href="assets/image/Baniere/tuning.jpg">
+                <img src="assets/image/Baniere/tuning.jpg" class="picture">
+            </a>
+    -->
         </div>
-        <div class='bouton' name='bouton'>
-            <form method='POST' action=''>
-                <input type='submit' id=<?php echo "btn" . $i; ?> name=<?php echo $i; ?> value='Like' <?php echo " <span id='liked" . $i . "'>" . $tabOjbetTweet[$i]->getNumberLikes() . " likes" ?> </form>
-        </div>
-        </div>
+        <!-- BOUTONS -->
+        <form method="POST" action="">
+            <div class="cadreBtn">
+
+                <!-- BTN LIKE -->
+                <span class="btn-like">
+                    <input type='submit' class="btn" id=<?php echo "btn" . $i; ?> name=<?php echo $i; ?> value='Like'>
+                </span>
+
+                <!-- NOMBRE DE LIKE -->
+                <?php echo " <span id='liked" . $i . "'>"; ?>
+                <?php echo $tabOjbetTweet[$i]->getNumberLikes(); ?>
+                </span>
+
+                <!-- BTN RETWEET -->
+                <span class="btn-retweet">
+                <button type='submit' class="btn-retweeter" id=<?php echo "retweeter" . $i; ?> name=<?php echo "btn-retweeter" . $i; ?>>Retweeter</button>
+                </span>
+
+                <!-- NOMBRE DE RETWEET -->
+                <span class="number-retweet">
+                    1359
+                </span>
+                <span class="date">
+                    <?php echo "17/02/2021"; //echo $tabOjbetTweet[$i]->getDate(); ?>
+                </span>
+            </div>
+            </div>
+            </a>
+        </form>
+    </div>
     <?php
         $i++;
     }

@@ -15,8 +15,7 @@ $user->initId($_SESSION["userId"]);
 <!-------------------------
    FORMULAIRE POSTER TWEET
  ------------------------> 
-<a href="IHM/deconnexion.php">Deconnexion</a>
-<a href="IHM/page_profil.php">Mon profil</a>
+
 <?php
 /*-------------
   POSTER TWEET
@@ -43,10 +42,31 @@ if (isset($_POST['InputTweet'])) {
   </form>
 </div>
 -->
+<?php
+
+/*-------------
+  POSTER TWEET
+--------------*/
+
+if (isset($_POST['InputTweet'])) {
+
+    $textTweet = htmlspecialchars($_POST["twatContent"]); // Empeche d'executé le code implanter dans le formulaire
+    $content = addslashes($textTweet); // On peut mettre des guillet
+    $tweet = new tweet($bdd);
+    $tweet->setContenu($content);
+    $tweet->setUser($user);
+    $tweet->posterTweet();
+}
+?>
+
+<!------------
+  MENU HEADER
+------------->
+<?php include 'structure/menu.html'; ?>
 
 <section class="timeLine" name="timeLine">
   <?php AfficheTimeLine($bdd, $user); ?>
-  <a href=""><div class="poster"></div></a>
+  <a href="IHM/poster.php"><div class="poster"></div></a>
 </section>
 
 
