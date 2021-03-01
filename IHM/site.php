@@ -46,7 +46,9 @@ if (isset($_POST['InputTweet'])) {
 
 <section class="timeLine" name="timeLine">
   <?php AfficheTimeLine($bdd, $user); ?>
+  <a href=""><div class="poster"></div></a>
 </section>
+
 
 
 <?php include "IHM/structure/footer.html"; ?>

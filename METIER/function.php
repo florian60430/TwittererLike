@@ -66,7 +66,7 @@ function AfficheTimeLine($bdd, $ObjetUser)
                     1359
                 </span>
                 <span class="date">
-                    <?php echo $tabOjbetTweet[$i]->getDate(); ?>
+                    <?php echo "17/02/2021"; //echo $tabOjbetTweet[$i]->getDate(); ?>
                 </span>
             </div>
             </div>
