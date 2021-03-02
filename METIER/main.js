@@ -1,4 +1,4 @@
-let i;
+/*let i;
 let j;
 nbTweet = 3;
 let spanLike = new Array();
@@ -21,7 +21,18 @@ for (i = 0; i<nbTweet; i++)
         divLikeur[j.srcElement.id].innerHTML = "bonjour monsieur";
 
     });
-}
+}*/
+
+
+spanLike = document.getElementById('liked');
+
+spanLike.addEventListener('click', function(){
+
+    console.log("coucou");
+});
+
+
+
 /*
     spanLike[1].addEventListener('click', function () {
 

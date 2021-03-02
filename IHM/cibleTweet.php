@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 include "header.php";
 include "../METIER/function.php";
@@ -9,9 +9,13 @@ include "../BDD/classtweet.php";
 $tweet = new tweet($bdd);
 $tweet->init($_GET["idTweet"]);
 
+$idStranger = $_GET["idUser"];
+$stranger = new user($bdd);
+$stranger->initId($idStranger);
+
+
 $user = new user($bdd);
 $user->initId($_SESSION["userId"]);
-
 
 include "./structure/entete.secondary.html";
 
@@ -20,27 +24,39 @@ include "./structure/entete.secondary.html";
 
 <body>
 
-<a href="../index.php">Accueil</a>
+    <?php
+    include "structure/menu.html";
 
-<?php 
+    if (isset($_POST['submitTweet'])) {
+        $tweetReponse = new tweet($bdd);
+        $tweetReponse->setContenu($_POST["commenter"]);
+        $tweetReponse->setUser($user);
+        $tweetReponse->setTweetARepondre($tweet);
 
-AfficheTweet($user, $tweet); 
-AfficheCommentaire($bdd, $tweet); 
+        //Appelle fonction commentaire
+        $tweetReponse->commenter();
+    }
+    ?>
 
-if (isset($_POST['submitTweet'])) {
-    $tweetReponse = new tweet($bdd);
-    $tweetReponse->setContenu($_POST["com"]);
-    $tweetReponse->setUser($user);
-    $tweetReponse->setTweetARepondre($tweet);
+    <section class="oneTweet">
+        <?php AfficheTweet($stranger, $tweet); ?>
+    </section>
 
-    //Appelle fonction commentaire
-    $tweetReponse->commenter();
-}
-?>
+    <section class="timeLine" name="timeLine">
+        <?php AfficheCommentaire($bdd, $tweet, $user); ?>
+    </section>
 
-<form method="POST" action="">
-    <input type="text" name="com">
-    <input type="submit" name="submitTweet" value="Comment">
-</form>
+    <section class="commenter">
+        <form method="POST" action="">
+            <input type="text" name="commenter" class="champCommenter">
+            <input type="submit" name="submitTweet" value="Commenter" class="btnCommenter">
+        </form>
+    </section>
+
+    <section class="likeur-container">
+
+        <div class="likeur-content">Floriannnnnnnnnnnnnnnnnnnnnnnnnnnnnn </div>
 
 
+    </section>
+</body>
