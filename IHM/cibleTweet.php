@@ -53,10 +53,5 @@ include "./structure/entete.secondary.html";
         </form>
     </section>
 
-    <section class="likeur-container">
 
-        <div class="likeur-content">Floriannnnnnnnnnnnnnnnnnnnnnnnnnnnnn </div>
-
-
-    </section>
 </body>

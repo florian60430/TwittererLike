@@ -203,7 +203,10 @@ function AfficheTweet($ObjetUser, $ObjetTweet)
 
                 <!-- NOMBRE DE LIKE -->
                 <span id='liked'>
-                    <?php echo "<span class='nbLike'>" . $ObjetTweet->getNumberLikes() . "</span>"; ?> <span class="labelLike" id="labelLike">J'aime</span>
+                    <?php echo "<span class='nbLike'>" . $ObjetTweet->getNumberLikes() . "</span>"; ?>
+                    <span class="labelLike" id="labelLike">
+                        <?php echo "<a class='labelLike' href='liker.php?idTweet=".$ObjetTweet->getIdTweet()."&amp;idUser=".$ObjetUser->getIdUser()."'>"; ?>  J'aime </a>
+                    </span>
                 </span>
 
                 <!-- NOMBRE DE RETWEET -->

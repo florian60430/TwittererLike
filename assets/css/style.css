@@ -504,19 +504,51 @@ margin-bottom: 15px;
 
 .likeur-container {
 
-    max-width: 500px;
-    max-height: 650px;
-    background-color: white;
     border-radius: 15px;
+    min-width: 100%;
+    max-height: 600px;
     position: fixed;
     top: 0;
 }
 
-.like-content {
+.likeur-content {
+
     margin-left: auto;
     margin-right: auto;
+    background-color: white;
+    max-width: 1350px;
+    max-height: 600px;
+    overflow: auto;
+    padding-top: 10px;
+    padding: 10px;
+    border-radius: 15px;
+
 }
 
+.btnClose{
+    position: fixed;
+    font-size: 55px;
+}
+.btnClose:hover{
+    cursor: pointer;
+}
+.colorLiker{
+    color: rgb(21, 90, 168);
+    
+}
+
+.btnFolow {
+    text-align: center;
+}
+
+.oneLiker{
+    text-align: center;
+}
+@media (min-width: 952px){
+    .likeur-container {
+        margin-top: 100px;
+    }
+}
 /*---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 /*-----------------------------------------------------------------------------------   CSS MENU HEADER  ---------------------------------------------------------------------------------------
  --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/ 
@@ -564,7 +596,6 @@ margin-bottom: 15px;
     text-transform: uppercase;
   }
   a:hover{
-    background: #ffbd7a;
     transition: .5s;
   }
   .checkbtn{
