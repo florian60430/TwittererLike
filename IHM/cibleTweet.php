@@ -46,12 +46,6 @@ include "./structure/entete.secondary.html";
         <?php AfficheCommentaire($bdd, $tweet, $user); ?>
     </section>
 
-    <section class="commenter">
-        <form method="POST" action="">
-            <input type="text" name="commenter" class="champCommenter">
-            <input type="submit" name="submitTweet" value="Commenter" class="btnCommenter">
-        </form>
-    </section>
 
 
 </body>

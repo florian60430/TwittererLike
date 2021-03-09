@@ -389,6 +389,12 @@ h2{
     margin-left: 10px;
 }
 
+.nbRetweet {
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+
 .labelRetweet {
     margin-left: 5px;
     color: grey
@@ -441,25 +447,21 @@ a
 
 }
 
+form{
+    display: inline;
+}
+
 .champCommenter {
-    margin-left: 15%;
     width: 65%;
-    position: fixed;
-    bottom: 0;
     border-radius: 15px;
     border: solid 1px gray;
-    margin-bottom: 15px;
+
 }
 
 .btnCommenter {
     font-size: 14px;
-    margin-left: 15%;
-    position: fixed;
-    bottom: 0;
     border-radius: 15px;
     border: solid 1px gray;
-    padding: 5px ;
-    margin-bottom: 45px;
     background-color: rgb(224, 224, 224);
 }
 

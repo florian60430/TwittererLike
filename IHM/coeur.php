@@ -3,35 +3,21 @@
     if(isset($_POST["checkbox"]))
     {
        $_SESSION['islike']= true;
-       echo "je suis like";
     }else{
        $_SESSION['islike']= false;
-       echo"";
     }
 ?>
 <html>
 
 <head>
 
-<link rel="stylesheet" href="testcoeur.css">
+<link rel="stylesheet" href="../assets/css/coeur.css">
 <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
 <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 </head>
 
-
 <body>
-
-
-<form  action="" method="POST">
-   
-        <input type="text" name="text" value="bjr">
-        <input id='heart' type="submit" name="DISlike" value="j'aime po">
-   
-</form>
-
-
-
 <form  action="" method="POST">
     <div class="heartbox">
         <input  
@@ -50,8 +36,6 @@
             onclick='setTimeout(function(){  submit(); })'
         />
         
-    
-  
         <label for="checkbox"> 
             <svg id="heart-svg" viewBox="467 392 58 57" xmlns="http://www.w3.org/2000/svg">
                 <g id="Group" fill="none" fill-rule="evenodd" transform="translate(467 392)">

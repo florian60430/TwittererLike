@@ -7,6 +7,7 @@ class tweet
     private $_date;
     private $_user;
     private $_nbLikes;
+    private $_nbRetweet;
     private $_bdd;
     private $_nbCommentaires;
     private $_tweetARepondre;
@@ -47,6 +48,11 @@ class tweet
     public function getNumberLikes()
     {
         return $this->_nbLikes;
+    }
+
+    public function getNumberRetweet()
+    {
+        return $this->_nbRetweet;
     }
 
     public function getNumberCommentaires()
@@ -112,9 +118,13 @@ class tweet
             $this->_date = $userData['date'];
             $this->_idtweet = $userData['id_tweet'];
 
-            $requeteCount = $this->_bdd->query("SELECT COUNT(*) FROM `like` WHERE `id_tweet` = " . $this->_idtweet);
+            $requeteCount = $this->_bdd->query("SELECT COUNT(*) FROM `like` WHERE `id_tweet` = " . $this->_idtweet);//Nombre de like du tweet
             $nbLikes = $requeteCount->fetch();
             $this->_nbLikes = $nbLikes["COUNT(*)"];
+
+            $requeteCount = $this->_bdd->query("SELECT COUNT(*) FROM `retweet` WHERE `id_tweet` = " . $this->_idtweet);// Nombre de Retweet du tweet
+            $nbRetweet = $requeteCount->fetch();
+            $this->_nbRetweet = $nbRetweet["COUNT(*)"];
 
             $requeteCountCom = $this->_bdd->query("SELECT COUNT(*) FROM `tweet` WHERE `id_tweetARepondre` = " . $this->_idtweet);
             $nbCommentaires = $requeteCountCom->fetch();
@@ -169,11 +179,29 @@ class tweet
         }
     }
 
+    /*------------------
+            Methode Retweet
+        -------------------*/
+
+    public function retweet($ObjetStranger)
+     {
+            $data = $this->_bdd->query("SELECT COUNT(*) from `retweet` WHERE `id_tweet` = " . $this->_idtweet . " AND `id_user` = " . $ObjetStranger->getIdUser());
+            $retweetExist = $data->fetch();
+            if ($retweetExist["COUNT(*)"] >= 1) {
+                $this->_bdd->query("DELETE FROM `retweet` WHERE `id_tweet` = " . $this->_idtweet . " AND `id_user` = " . $ObjetStranger->getIdUser());
+                $this->_nbRetweet -= 1;
+            } else {
+                $this->_bdd->query("INSERT INTO `retweet` (`id_retweet`,`id_user`,`id_tweet`) VALUES (NULL, '" . $ObjetStranger->getIdUser() . "','" . $this->_idtweet . "')");
+                $this->_nbRetweet++;
+            }
+        }
+    
+
+
     /*--------------------------------
             Methode voir afficheLiker
         -----------------------------*/
 
-    /* SELECT identifiant FROM `user` INNER JOIN `like` ON user.id_user = like.id_user WHERE like.id_tweet = 131 */
     public function afficheLiker()
     {
 
@@ -197,6 +225,33 @@ class tweet
 
 <?php }
     }
+
+    /*--------------------------------
+            Methode voir afficheLiker
+        -----------------------------*/
+
+        public function afficheRetweeter()
+        {
+    
+            $data = $this->_bdd->query("SELECT * FROM `user` INNER JOIN `retweet` ON user.id_user = retweet.id_user WHERE retweet.id_tweet = " . $this->_idtweet . "");
+          
+            while ($tabData = $data->fetch()) { ?>
+    
+                <form method="POST" action="">
+                    <div class='row likeur-content'>
+                        <div class="col-6 oneLiker">
+                            <?php echo "<a class='colorLiker' href='/TwittererLike/IHM/page_profil_user.php?idUser=" . $tabData['id_user'] . "'>";
+                            echo "@" . $tabData['identifiant'] ?>
+                            </a>
+                        </div>
+                        <div class="col-2 btnFolow">
+                            <input type="submit" class="btn btn-primary" value="folow" name="folows">
+                        </div>
+                    </div>
+                </form>
+    
+    <?php }
+        }
 
     /* ---------------
             Methode Date

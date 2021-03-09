@@ -19,7 +19,10 @@ function AfficheTimeLine($bdd, $ObjetUser)
         if (isset($_POST[$i])) {
             $tabOjbetTweet[$i]->like($ObjetUser);
         }
-        // $tabOjbetTweet[0]->CalculDate();
+
+        if (isset($_POST["rt" . $i])) {
+            $tabOjbetTweet[$i]->retweet($ObjetUser);
+        }
 
 
 ?> <div class="tweet-container"> <?php
@@ -49,26 +52,27 @@ function AfficheTimeLine($bdd, $ObjetUser)
                     <span class="btn-like">
                         <input type='submit' class="btn" id=<?php echo "btn" . $i; ?> name=<?php echo $i; ?> value='Like'>
                     </span>
+            </form>
+            <!-- NOMBRE DE LIKE -->
+            <?php echo " <span id='liked" . $i . "'>"; ?>
+            <?php echo $tabOjbetTweet[$i]->getNumberLikes(); ?>
+            </span>
 
-                    <!-- NOMBRE DE LIKE -->
-                    <?php echo " <span id='liked" . $i . "'>"; ?>
-                    <?php echo $tabOjbetTweet[$i]->getNumberLikes(); ?>
-                    </span>
-
-                    <!-- BTN RETWEET -->
-                    <span class="btn-retweet">
-                        <button type='submit' class="btn-retweeter" id=<?php echo "retweeter" . $i; ?> name=<?php echo "btn-retweeter" . $i; ?>>Retweeter</button>
-                    </span>
-
-                    <!-- NOMBRE DE RETWEET -->
-                    <span class="number-retweet">
-                        1359
-                    </span>
-                    <span class="date">
-                        <?php echo "17/02/2021"; //echo $tabOjbetTweet[$i]->getDate(); 
-                        ?>
-                    </span>
-                </div>
+            <!-- BTN RETWEET -->
+            <form method="POST" action="">
+                <span class="btn-retweet">
+                    <input type='submit' class="btn-retweeter" id=<?php echo "retweeter" . $i; ?> name=<?php echo "rt" . $i; ?> value="retweeter">
+                </span>
+            </form>
+            <!-- NOMBRE DE RETWEET -->
+            <span class="number-retweet">
+                <?php echo $tabOjbetTweet[$i]->getNumberRetweet(); ?>
+            </span>
+            <span class="date">
+                <?php echo "17/02/2021"; //echo $tabOjbetTweet[$i]->getDate(); 
+                ?>
+            </span>
+        </div>
         </div>
         </a>
         </form>
@@ -93,8 +97,9 @@ function AfficheTimeLineProfil($bdd, $ObjetUser)
 
     $data = $bdd->query("SELECT `id_tweet` FROM `tweet` WHERE `id_user` = " . $ObjetUser->getIdUser() . " ORDER BY `date` DESC ");
     if ($data->rowcount() == 0) {
-        echo "vous n'avez pas de twat.";
-    }
+        echo "Aucun Twat trouvé "; ?>
+        <a href="/TwittererLike/IHM/poster.php">Publier </a>
+    <?Php }
     $i = 0;
 
     while ($tabId = $data->fetch()) {
@@ -105,15 +110,21 @@ function AfficheTimeLineProfil($bdd, $ObjetUser)
         if (isset($_POST[$i])) {
             $tabOjbetTweet[$i]->like($ObjetUser);
         }
-    ?> <div class="tweet-container"> <?php
+        if (isset($_POST['rt'.$i]))
+        {
+            $tabOjbetTweet[$i]->retweet($ObjetUser);
+        }
 
-                                        /* ZONE CLIQUABLE DU TWEET */
-                                        echo "<a href='/TwittererLike/IHM/cibleTweet.php?idTweet=" . $tabOjbetTweet[$i]->getIdtweet() . "idUser=" . $tabOjbetUser[$i]->getIdUser() . "class='tweet-click'>"; ?>
-            <div name="cadre" class="cadre" id="cadre">
-                <a class="points"> . . . </a>
+    ?> <div class="tweet-container">
+            <?php
+
+
+            /* ZONE CLIQUABLE DU TWEET */
+            echo "<a  class='tweet-click' href='/TwittererLike/IHM/cibleTweet.php?idTweet=" . $tabOjbetTweet[$i]->getIdtweet() . "&amp;idUser=" . $tabOjbetUser[$i]->getIdUser() . "'>"; ?> <div name="cadre" class="cadre" id="cadre">
+                <span class="points"> . . . </span>
 
                 <!-- NOM D UTILISATEUR -->
-                <?php echo "<a class='username' href='/TwittererLike/IHM/page_profil_user.php?idUser=" . $tabOjbetUser[$i]->getIdUser() . "'>" . $tabOjbetUser[$i]->getPseudo() . "</a>"; ?>
+                <span class='username'> <?php echo $tabOjbetUser[$i]->getPseudo() ?> </span>
 
                 <!-- CONTENU DU TWEET -->
                 </span>
@@ -141,12 +152,12 @@ function AfficheTimeLineProfil($bdd, $ObjetUser)
 
                     <!-- BTN RETWEET -->
                     <span class="btn-retweet">
-                        <button type='submit' class="btn-retweeter" id=<?php echo "retweeter" . $i; ?> name=<?php echo "btn-retweeter" . $i; ?>>Retweeter</button>
+                        <button type='submit' class="retweeter" id=<?php echo "retweeter" . $i; ?> name=<?php echo "rt" . $i; ?>>Retweeter</button>
                     </span>
 
                     <!-- NOMBRE DE RETWEET -->
                     <span class="number-retweet">
-                        1359
+                    <?php echo $tabOjbetTweet[$i]->getNumberRetweet(); ?>
                     </span>
                     <span class="date">
                         <?php echo "17/02/2021"; //echo $tabOjbetTweet[$i]->getDate(); 
@@ -171,7 +182,12 @@ function AfficheTweet($ObjetUser, $ObjetTweet)
 {
     if (isset($_POST["liker"])) {
         $ObjetTweet->like($ObjetUser);
-    } ?>
+    }
+
+    if (isset($_POST["retweeter"])) {
+        $ObjetTweet->retweet($ObjetUser);
+    }
+    ?>
 
 
     <div class="tweet-container">
@@ -205,14 +221,17 @@ function AfficheTweet($ObjetUser, $ObjetTweet)
                 <span id='liked'>
                     <?php echo "<span class='nbLike'>" . $ObjetTweet->getNumberLikes() . "</span>"; ?>
                     <span class="labelLike" id="labelLike">
-                        <?php echo "<a class='labelLike' href='liker.php?idTweet=".$ObjetTweet->getIdTweet()."&amp;idUser=".$ObjetUser->getIdUser()."'>"; ?>  J'aime </a>
+                        <?php echo "<a class='labelLike' href='liker.php?idTweet=" . $ObjetTweet->getIdTweet() . "&amp;idUser=" . $ObjetUser->getIdUser() . "'>"; ?> J'aime </a>
                     </span>
                 </span>
 
                 <!-- NOMBRE DE RETWEET -->
                 <span class="number-retweet">
-                    <b>1359</b> <span class="labelRetweet">Retweet</span>
-                </span>
+                    <?php echo "<span class='nbRetweet'>" . $ObjetTweet->getNumberRetweet() . "</span>"; ?>
+                    <span class="labelRetweet">
+                        <?php echo "<a class='labelLike' href='retweeter.php?idTweet=" . $ObjetTweet->getIdTweet() . "&amp;idUser=" . $ObjetUser->getIdUser() . "'>"; ?> Retweet </a>
+                    </span>
+
             </div>
 
             <!-- BOUTONS -->
@@ -222,14 +241,19 @@ function AfficheTweet($ObjetUser, $ObjetTweet)
                     <span class="btn-like">
                         <input type='submit' id="btn" name="liker" value="Like">
                     </span>
-
-                    <!-- BTN RETWEET -->
-                    <span class="btn-retweet">
-                        <button type='submit' class="btn-retweeter" id="retweeter" name="btn-retweeter">Retweeter</button>
-                    </span>
-                </div>
+            </form>
+            <!-- BTN RETWEET -->
+            <form method="POST" action="">
+                <span class="btn-retweet">
+                    <input type='submit' class="btn-retweeter" id="retweeter" name="retweeter" value="Retweeter">
+                </span>
+            </form>
+            <form method="POST" action="">
+                <input type="text" name="commenter" class="champCommenter">
+                <input type="submit" name="submitTweet" value="Commenter" class="btnCommenter">
             </form>
         </div>
+    </div>
     </div>
     <script type='text/javascript' src='../METIER/main.js'></script>
     <?php
