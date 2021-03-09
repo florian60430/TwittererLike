@@ -28,7 +28,7 @@ function AfficheTimeLine($bdd, $ObjetUser)
 ?> <div class="tweet-container"> <?php
 
                                     /* ZONE CLIQUABLE DU TWEET */
-                                    echo "<a  class='tweet-click' href='/TwittererLike/IHM/cibleTweet.php?idTweet=" . $tabOjbetTweet[$i]->getIdtweet() . "&amp;idUser=" . $tabOjbetUser[$i]->getIdUser() . "'>"; ?>
+                                    echo "<a  class='tweet-click' href='/IHM/cibleTweet.php?idTweet=" . $tabOjbetTweet[$i]->getIdtweet() . "&amp;idUser=" . $tabOjbetUser[$i]->getIdUser() . "'>"; ?>
             <div name="cadre" class="cadre" id="cadre">
                 <span class="points"> . . . </span>
 
@@ -98,7 +98,7 @@ function AfficheTimeLineProfil($bdd, $ObjetUser)
     $data = $bdd->query("SELECT `id_tweet` FROM `tweet` WHERE `id_user` = " . $ObjetUser->getIdUser() . " ORDER BY `date` DESC ");
     if ($data->rowcount() == 0) {
         echo "Aucun Twat trouvé "; ?>
-        <a href="/TwittererLike/IHM/poster.php">Publier </a>
+        <a href="/IHM/poster.php">Publier </a>
     <?Php }
     $i = 0;
 
@@ -120,7 +120,7 @@ function AfficheTimeLineProfil($bdd, $ObjetUser)
 
 
             /* ZONE CLIQUABLE DU TWEET */
-            echo "<a  class='tweet-click' href='/TwittererLike/IHM/cibleTweet.php?idTweet=" . $tabOjbetTweet[$i]->getIdtweet() . "&amp;idUser=" . $tabOjbetUser[$i]->getIdUser() . "'>"; ?> <div name="cadre" class="cadre" id="cadre">
+            echo "<a  class='tweet-click' href='/IHM/cibleTweet.php?idTweet=" . $tabOjbetTweet[$i]->getIdtweet() . "&amp;idUser=" . $tabOjbetUser[$i]->getIdUser() . "'>"; ?> <div name="cadre" class="cadre" id="cadre">
                 <span class="points"> . . . </span>
 
                 <!-- NOM D UTILISATEUR -->
@@ -198,7 +198,7 @@ function AfficheTweet($ObjetUser, $ObjetTweet)
             <span class='oneUsername'> <?php echo $ObjetUser->getPseudo() ?> </span>
 
             <!-- IDENTIFIANT -->
-            <?Php echo "<a href='/TwittererLike/IHM/page_profil_user.php?idUser=" . $ObjetUser->getIdUser() . "'>" ?>
+            <?Php echo "<a href='/IHM/page_profil_user.php?idUser=" . $ObjetUser->getIdUser() . "'>" ?>
             <span class='oneIdentifiant'> <?php echo "@" . $ObjetUser->getIdentifiant() ?> </span>
             </a>
 
@@ -206,7 +206,7 @@ function AfficheTweet($ObjetUser, $ObjetTweet)
             <div class='tweet' name='tweet'>
                 <div class="oneCircle"></div>
                 <?php echo $ObjetTweet->getContenu() ?>
-                <img src="../assets/image/Baniere/tuning.jpg" class="picture">
+               <!-- <img src="../assets/image/Baniere/tuning.jpg" class="picture"> -->
 
                 <!-- DATE DU TWEET -->
                 <div class="oneDate">
@@ -281,7 +281,7 @@ function AfficheCommentaire($bdd, $OjbetTweet, $ObjetUser)
             <?php
 
             /* ZONE CLIQUABLE DU TWEET */
-            echo "<a  class='tweet-click' href='/TwittererLike/IHM/cibleTweet.php?idTweet=" . $tabOjbetTweet[$i]->getIdtweet() . "&amp;idUser=" . $tabOjbetUser[$i]->getIdUser() . "'>"; ?>
+            echo "<a  class='tweet-click' href='/IHM/cibleTweet.php?idTweet=" . $tabOjbetTweet[$i]->getIdtweet() . "&amp;idUser=" . $tabOjbetUser[$i]->getIdUser() . "'>"; ?>
             <div name="reponseCadre" class="reponseCadre" id="cadre">
                 <span class="points"> . . . </span>
 
@@ -314,7 +314,7 @@ function AfficheCommentaire($bdd, $OjbetTweet, $ObjetUser)
 
                     <!-- NOMBRE DE RETWEET -->
                     <span class="number-retweet">
-                        1359
+                    <?php echo "<span class='nbRetweet'>" . $tabOjbetTweet[$i]->getNumberRetweet() . "</span>"; ?>
                     </span>
                     <span class="date">
                         <?php echo "17/02/2021"; //echo $tabOjbetTweet[$i]->getDate(); 
