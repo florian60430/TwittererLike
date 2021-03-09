@@ -14,7 +14,7 @@ $user->initId($_SESSION["userId"]);
 
 <!-------------------------
    FORMULAIRE POSTER TWEET
- ------------------------> 
+ ------------------------>
 
 <?php
 /*-------------
@@ -23,7 +23,7 @@ $user->initId($_SESSION["userId"]);
 
 if (isset($_POST['InputTweet'])) {
 
-  $textTweet = htmlspecialchars($_POST["InputTweet"]);// Empeche d'executé le code implanter dans le formulaire
+  $textTweet = htmlspecialchars($_POST["InputTweet"]); // Empeche d'executé le code implanter dans le formulaire
   $content = addslashes($textTweet); // On peut mettre des guillet
   $tweet = new tweet($bdd);
   $tweet->setContenu($content);
@@ -50,12 +50,12 @@ if (isset($_POST['InputTweet'])) {
 
 if (isset($_POST['InputTweet'])) {
 
-    $textTweet = htmlspecialchars($_POST["twatContent"]); // Empeche d'executé le code implanter dans le formulaire
-    $content = addslashes($textTweet); // On peut mettre des guillet
-    $tweet = new tweet($bdd);
-    $tweet->setContenu($content);
-    $tweet->setUser($user);
-    $tweet->posterTweet();
+  $textTweet = htmlspecialchars($_POST["twatContent"]); // Empeche d'executé le code implanter dans le formulaire
+  $content = addslashes($textTweet); // On peut mettre des guillet
+  $tweet = new tweet($bdd);
+  $tweet->setContenu($content);
+  $tweet->setUser($user);
+  $tweet->posterTweet();
 }
 ?>
 
@@ -66,7 +66,9 @@ if (isset($_POST['InputTweet'])) {
 
 <section class="timeLine" name="timeLine">
   <?php AfficheTimeLine($bdd, $user); ?>
-  <a href="IHM/poster.php"><div class="poster"></div></a>
+  <a href="IHM/poster.php">
+    <div class="poster"></div>
+  </a>
 </section>
 
 
