@@ -38,7 +38,7 @@ $user->initId($_SESSION["userId"]);
     <!-- AFFICHAGE TWEET USER -->
     <section class="timeLine" name="timeLine">
         <?php AfficheTimeLineProfil($bdd, $user); ?>
-        <a href="IHM/poster.php">
+        <a href="poster.php">
             <div class="poster"></div>
         </a>
     </section>
